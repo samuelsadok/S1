@@ -1,0 +1,53 @@
+Designator Footprint               Mid X         Mid Y         Ref X         Ref Y         Pad X         Pad Y TB      Rotation Comment        
+
+R4         0201_(R)          2724.409mil   2220.472mil   2724.409mil   2220.472mil   2724.409mil   2234.252mil  T        270.00 Res 10k        
+R3         0201_(R)          1972.441mil   2055.118mil   1972.441mil   2055.118mil    1986.22mil   2055.118mil  T        180.00 Res 10k        
+R2         0201_(R)          2752.564mil   2902.653mil   2752.564mil   2902.653mil   2766.343mil   2902.653mil  T        180.00 Res 10k        
+R1         0201_(R)          2043.307mil   2826.772mil   2043.307mil   2826.772mil   2043.307mil   2840.551mil  T        270.00 Res 10k        
+C5         0201_(C)          2200.787mil   2476.378mil   2200.787mil   2476.378mil   2200.787mil   2490.157mil  T        270.00 Cap 100nF      
+C6         0201_(C)           2618.11mil   2283.465mil    2618.11mil   2283.465mil    2618.11mil   2269.685mil  T         90.00 Cap 100nF      
+C7         0201_(C)          2496.063mil   2240.157mil   2496.063mil   2240.157mil   2482.284mil   2240.157mil  T        360.00 Cap 100nF      
+C8         0201_(C)          2566.929mil   2476.378mil   2566.929mil   2476.378mil    2553.15mil   2476.378mil  T        360.00 Cap 2.2nF      
+C1         0201_(C)          2633.858mil       2000mil   2633.858mil       2000mil   2620.079mil       2000mil  T        360.00 Cap 1µF        
+C2         0201_(C)          2700.787mil       2000mil   2700.787mil       2000mil   2714.567mil       2000mil  T        180.00 Cap 1µF        
+H1         KLTFSN2K5200      1377.953mil   3610.236mil    1342.52mil   3610.236mil   1413.386mil   3610.236mil  T          0.00 LED1           
+H2         KLTFSN2K5200      3346.457mil   3610.236mil   3311.024mil   3610.236mil    3381.89mil   3610.236mil  T          0.00 LED1           
+U2         LQFN24_(4x4mm)    2492.126mil   2358.268mil   2413.386mil    2407.48mil   2413.386mil    2407.48mil  T          0.00 MPU6050        
+A1         SOT23             2667.323mil   2100.394mil   2629.921mil   2055.118mil   2629.921mil   2055.118mil  T         90.00 AP7333-28SA    
+R10        0201_(R)          2429.134mil   2472.441mil   2429.134mil   2472.441mil   2415.354mil   2472.441mil  T        360.00 Res 4k7        
+R9         0201_(R)          2287.402mil   2440.945mil   2287.402mil   2440.945mil   2287.402mil   2454.724mil  T        270.00 Res 4k7        
+R5         0201_(R)          1535.433mil   3444.882mil   1535.433mil   3444.882mil   1535.433mil   3431.102mil  T         90.00 Res 100R       
+R6         0201_(R)          3188.976mil   3444.882mil   3188.976mil   3444.882mil   3188.976mil   3458.661mil  T        270.00 Res 100R       
+S1         SWITCH_RIGHT_ANGLE   2677.165mil    2460.63mil   2677.165mil    2460.63mil    2710.63mil   2350.394mil  T        270.00 TL1014BF160QG  
+C11        0201_(C)           2342.52mil   2893.701mil    2342.52mil   2893.701mil    2342.52mil   2879.921mil  T         90.00 Cap 15pF       
+C12        0201_(C)          2192.913mil   2893.701mil   2192.913mil   2893.701mil   2192.913mil   2879.921mil  T         90.00 Cap 8.2pF      
+C20        0402_(C)          2472.441mil   2740.157mil   2472.441mil   2740.157mil   2452.756mil   2740.157mil  T          0.00 Cap 2.2µF      
+C16        0402_(C)          2346.457mil   2511.811mil   2346.457mil   2511.811mil   2346.457mil   2492.126mil  T         90.00 Cap 2.2µF      
+U3         QFN-32_(5X5MM)    2240.157mil   2714.567mil   2338.583mil   2645.669mil   2338.583mil   2645.669mil  T        180.00 CSR1010        
+L1         0603_(L)          2480.315mil   2653.543mil   2480.315mil   2653.543mil   2480.315mil   2684.543mil  T        270.00 L 4.7µH        
+X1         ANTENNA_3.2X1.6MM_(W3008)   2570.866mil   2905.512mil   2570.866mil   2905.512mil   2507.874mil   2886.811mil  T        180.00 W3008          
+X2         CRYSTAL_1.6MM_X_2MM   2267.716mil   2893.701mil   2267.716mil   2893.701mil   2295.276mil   2915.354mil  T        180.00 8Y-16.000MAAV-T
+X3         CRYSTAL_1MM_X_1.6MM   2401.575mil   2625.984mil   2401.575mil   2625.984mil   2423.228mil   2625.984mil  T        180.00 ABS05-32.768KHZ-9-T
+C4         0201_(C)          2015.748mil   2224.409mil   2015.748mil   2224.409mil   2015.748mil   2238.189mil  T        270.00 Cap 100nF      
+U1         QFN-32_(5X5MM)    2151.575mil   2322.834mil   2082.677mil   2224.409mil   2082.677mil   2224.409mil  T         90.00 Xmega32E5      
+R7         0201_(R)          2102.362mil   2606.299mil   2102.362mil   2606.299mil   2088.583mil   2606.299mil  T          0.00 Res 4k7        
+R8         0201_(R)          2015.748mil   2287.401mil   2015.748mil   2287.401mil   2015.748mil   2273.622mil  T         90.00 Res 4k7        
+V1         SOT23             1881.671mil   2942.876mil   1874.016mil   2897.638mil   1874.016mil   2897.638mil  T        135.00 DMG2302U       
+V2         SOT23             2844.451mil     2945.1mil   2799.213mil   2952.756mil   2799.213mil   2952.756mil  T         45.00 DMG2302U       
+V3         SOT23             1879.959mil    1976.16mil   1925.197mil   1968.504mil   1925.197mil   1968.504mil  T        225.00 DMG2302U       
+V4         SOT23             2842.738mil   1978.384mil   2850.394mil   2023.622mil   2850.394mil   2023.622mil  T        315.00 DMG2302U       
+V6         SOD923            2169.291mil   2153.543mil   2169.291mil   2153.543mil   2188.976mil   2153.543mil  T        360.00 1N4148W        
+C3         0201_(C)          2059.055mil   2003.937mil   2059.055mil   2003.937mil   2045.276mil   2003.937mil  T        360.00 Cap 100nF      
+V5         SOT23             2061.023mil   2096.457mil   2023.622mil   2051.181mil   2023.622mil   2051.181mil  T         90.00 DMG2302U       
+C9         0201_(C)          2090.551mil    2657.48mil   2090.551mil    2657.48mil   2090.551mil   2643.701mil  T         90.00 Cap 100nF      
+U4         UDFN-8_(3X2MM)    2025.591mil   2685.039mil   2055.118mil   2744.095mil   2055.118mil   2744.095mil  T        270.00 AT24C512C      
+C10        0201_(C)          2377.953mil    2803.15mil   2377.953mil    2803.15mil   2377.953mil    2789.37mil  T         90.00 Cap 470nF      
+C13        0201_(C)          2248.032mil    2539.37mil   2248.032mil    2539.37mil   2234.252mil    2539.37mil  T        360.00 Cap 470nF      
+C14        0201_(C)          2248.032mil   2507.874mil   2248.032mil   2507.874mil   2261.811mil   2507.874mil  T        180.00 Cap 150nF      
+C15        0201_(C)          2385.827mil   2515.748mil   2385.827mil   2515.748mil   2385.827mil   2501.968mil  T         90.00 Cap 47nF       
+C17        0201_(C)          2413.386mil   2582.677mil   2413.386mil   2582.677mil   2427.165mil   2582.677mil  T        180.00 Cap 33pF       
+C18        0805_(C)          2669.291mil   2649.606mil   2669.291mil   2649.606mil   2626.968mil   2649.606mil  T        360.00 Cap 47µF       
+C19        0201_(C)          2452.756mil   2779.528mil   2452.756mil   2779.528mil   2466.535mil   2779.528mil  T        180.00 Cap 470nF      
+C21        0201_(C)          2090.551mil   2751.968mil   2090.551mil   2751.968mil   2090.551mil   2738.189mil  T         90.00 Cap 47nF       
+J1         PICO-EZMATE_(4PIN)   2362.205mil   2063.484mil   2362.205mil   2137.795mil   2291.339mil   2137.795mil  T          0.00 Pico-EZMate    
+

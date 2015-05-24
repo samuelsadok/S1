@@ -1,0 +1,32 @@
+Removed Pin From Net: NetName=NetIC1_28 Pin=IC1-28
+Removed Pin From Net: NetName=NetIC1_28 Pin=IC?-27
+Removed Member From Class: ClassName=S1 Member=IC?
+Change Component Designator: OldDesignator=IC1 NewDesignator=IC3
+Change Component Designator: OldDesignator=IC3 NewDesignator=IC5
+Change Component Designator: OldDesignator=IC? NewDesignator=IC1
+Added Component: Designator=D1(SOD923)
+Added Pin To Net: NetName=NetIC1_28 Pin=IC1-28
+Added Pin To Net: NetName=NetIC1_28 Pin=IC3-29
+Added Pin To Net: NetName=NetIC1_28 Pin=R3-2
+Change Net Name : Old Net Name=NetIC1_2 New Net Name=NetIC3_2
+Change Net Name : Old Net Name=NetIC1_3 New Net Name=NetIC3_3
+Change Net Name : Old Net Name=NetIC1_4 New Net Name=NetIC3_4
+Change Net Name : Old Net Name=NetIC1_7 New Net Name=NetIC3_7
+Change Net Name : Old Net Name=NetIC1_31 New Net Name=NetIC3_31
+Change Net Name : Old Net Name=NetIC?_9 New Net Name=NetIC1_9
+Change Net Name : Old Net Name=NetIC?_10 New Net Name=NetIC1_10
+Change Net Name : Old Net Name=NetIC?_11 New Net Name=NetIC1_11
+Change Net Name : Old Net Name=NetIC?_12 New Net Name=NetIC1_12
+Added Pin To Net: NetName=NetIC1_15 Pin=IC1-15
+Added Pin To Net: NetName=NetIC1_15 Pin=IC2-23
+Added Pin To Net: NetName=NetIC1_15 Pin=R2-2
+Added Net: Name=NetIC1_15
+Added Pin To Net: NetName=NetIC1_16 Pin=IC1-16
+Added Pin To Net: NetName=NetIC1_16 Pin=IC2-24
+Added Pin To Net: NetName=NetIC1_16 Pin=R3-2
+Added Net: Name=NetIC1_16
+Added Pin To Net: NetName=NetIC1_27 Pin=IC1-27
+Added Pin To Net: NetName=NetIC1_27 Pin=IC3-28
+Added Pin To Net: NetName=NetIC1_27 Pin=R2-2
+Added Net: Name=NetIC1_27
+Added Member To Class: ClassName=S1 Member=Component IC5 AP7333-28SA

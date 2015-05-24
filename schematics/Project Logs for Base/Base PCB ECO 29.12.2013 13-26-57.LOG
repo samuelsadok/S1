@@ -1,0 +1,4 @@
+Added Component: Designator=C14(0201 (C))
+Added Pin To Net: NetName=+5V Pin=C14-1
+Added Pin To Net: NetName=GND Pin=C14-2
+Added Member To Class: ClassName=Base Member=Component C14 Cap 1µF

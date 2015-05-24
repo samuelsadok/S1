@@ -1,0 +1,63 @@
+<simulation>
+
+<settings>
+	<var id="propOffset" val="0.025" />
+</settings>
+
+<device>
+	<template id="rotor_template"
+		maxSpeed="8000"
+		maxTorque="0.1"
+		idleSpeed="10000"
+		idleTorque="0.0001"
+		staticThrust="0.1"
+		kv="2702"
+		stallCurr="0.2"
+		idleCurr="0.3"
+		runUpTime="0.2"
+		orientation="1 0 0 0"
+		physicalEntity="frame"
+		supply="bat" />
+
+
+	<physicalEntity id="frame"
+		mass="0.020" inertia="0.0001 0.0001 0.001" />
+
+	<visualEntity path="C:/Data/Code/Obj-C/3Dtest/3Dtest/3DAssets/s1.stl" physicalEntity="frame"
+		translation="-60 -62.5 0"
+		orientation="1 0 0 0"
+		scale="0.001 0.001 0.001"
+		color="1.0 0.9 0.8" />
+
+	<inertialSensor id="mpu" interval="0.1" physicalEntity="frame" />
+
+	<battery id="bat" nominalVoltage="3.7" capacity="0.3" innerResistance="0" />
+
+	<rotor template="rotor_template" id="mFL"
+		position="0.025 0.025 0"
+		direction="1" />
+
+	<rotor template="rotor_template" id="mFR"
+		position="0.025 -0.025 0"
+		direction="-1" />
+
+	<rotor template="rotor_template" id="mBL"
+		position="-0.025 0.025 0"
+		direction="-1" />
+
+	<rotor template="rotor_template" id="mBR"
+		position="-0.025 -0.025 0"
+		direction="1" />
+
+	<!-- <software id="basebandProcessor" path="C:/" /> -->
+	<software id="flightController" path="C:/Data/Projects/s1/flightcontroller/simulation/FlightController.exe" />
+
+
+	<gauge label="front left" obj="mFL" field="throttle" style="%-bar" min="0" max="1" />
+	<gauge label="front right" obj="mFR" field="throttle" style="%-bar" min="0" max="1" />
+	<gauge label="back left" obj="mBL" field="throttle" style="%-bar" min="0" max="1" />
+	<gauge label="back right" obj="mBR" field="throttle" style="%-bar" min="0" max="1" />
+
+</device>
+
+</simulation>

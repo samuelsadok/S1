@@ -1,0 +1,755 @@
+#define __HCI_TYPES_H__ 
+#define __DFU_H__ 
+#define __DBL_MIN_EXP__ (-1021)
+#define __int_least8_t_defined 1
+#define HCI_ERROR_DIFFERENT_TRANSACTION_COLLISION ((hci_error_t)0x2A)
+#define GAP_TGAP_gen_disc_scan_intvl 11250U
+#define ATT_UUID16 0x0001
+#define __XAP__ 1
+#define __FLT_MIN__ 1.17549435e-38F
+#define LM_EV_NUMBER_COMPLETED_PACKETS_MAX_HANDLES 3
+#define L2CAP_ERR_QOS_REJECTED HCI_ERROR_QOS_REJECTED
+#define _T_WCHAR_ 
+#define __DEC64_DEN__ 0.000000000000001E-383DD
+#define INT_LEAST16_MIN (-32767-1)
+#define GATT_RESULT_SUCCESS_MORE gatt_status_success_more
+#define GATT_RESULT_INVALID_PARAM_VALUE gatt_status_invalid_param_value
+#define HCI_ERROR_MAX_NR_OF_ACL ((hci_error_t)0x0B)
+#define GATT_RESULT_INVALID_PDU gatt_status_invalid_pdu
+#define __BLE_GATT_H__ 
+#define TRUE 1
+#define __CHAR_BIT__ 16
+#define L2CAP_ERR_CMD_DISALLOWED HCI_ERROR_COMMAND_DISALLOWED
+#define GATT_WRITE_SIGNED ATT_WRITE_SIGNED
+#define SHRT_MAX __SHRT_MAX__
+#define __NVM_H__ 
+#define ATT_PERM_WRITE_AUX 0x0002
+#define HCI_ERROR_HOST_BUSY_PAIRING ((hci_error_t)0x38)
+#define GATT_RESULT_INVALID_LENGTH gatt_status_invalid_length
+#define GAP_TGAP_lim_disc_adv_intvl_max 500000U
+#define INT16_C(x) x
+#define HCI_ERROR_ROLE_CHANGE_NOT_ALLOWED ((hci_error_t)0x21)
+#define L2CAP_ERR_HOST_BUSY_PAIRING HCI_ERROR_HOST_BUSY_PAIRING
+#define UINT_LEAST64_MAX 18446744073709551615ULL
+#define __int32_t_defined 1
+#define va_start(v,l) __builtin_va_start(v,l)
+#define HCI_ERROR_UNSUPP_LMP_PARAM ((hci_error_t)0x20)
+#define HCI_ERROR_RESVD_SLOT_VIOLATION ((hci_error_t)0x34)
+#define HCI_ERROR_LMP_PDU_NOT_ALLOWED ((hci_error_t)0x24)
+#define __WCHAR_MAX__ 32767
+#define BLE_APPEARANCE_COMPUTER 0x0080
+#define INT16_MAX 32767
+#define L2CAP_RESULT_INVALID sys_status_invalid
+#define __int_least32_t_defined 1
+#define __DBL_DENORM_MIN__ 4.9406564584124654e-324
+#define GAP_TGAP_lim_disc_scan_intvl 11250U
+#define LS_APP_IF_EVENT_H_ 
+#define L2CAP_CONNECTION_SLAVE_WHITELIST L2CAP_CONNECTION_FLAG_ENUM(L2CA_CONNECTION_LE_SLAVE_WHITELIST)
+#define GAP_TGAP_gen_disc_scan_window 11250U
+#define __FLT_EVAL_METHOD__ 0
+#define HCI_ERROR_SP_NOT_SUPPORTED_BY_HOST ((hci_error_t)0x37)
+#define SHRT_MIN (-SHRT_MAX - 1)
+#define AD_SM_FLAG_SIMUL_LE_BREDR_HOST 0x04
+#define GATT_RESULT_WRITE_NOT_PERMITTED gatt_status_write_not_permitted
+#define L2CAP_INVALID_CONN_STATE l2cap_status_invalid_conn_state
+#define LS_CON_DEFAULT_SCAN_WINDOW 4096
+#define GAP_TGAP_lim_disc_adv_intvl_min 250000U
+#define __HEAP_H__ 
+#define L2CAP_ERR_ENC_MODE_NOT_ACCEPTABLE HCI_ERROR_ENC_MODE_NOT_ACCEPTABLE
+#define _ATT_PRIM_H_ 
+#define L2CAP_ERR_LMP_PDU_NOT_ALLOWED HCI_ERROR_LMP_PDU_NOT_ALLOWED
+#define __STATUS_H__ 
+#define L2CAP_PEER_ADDR_TYPE_FLAG_ENUM(value) ((uint16)(value) << L2CA_PEER_ADDR_TYPE_OFFSET)
+#define ATT_EXECUTE_CANCEL 0x0000
+#define L2CAP_ERR_DIRECTED_ADVERTISING_TIMEOUT HCI_ERROR_DIRECTED_ADVERTISING_TIMEOUT
+#define __DBL_MIN_10_EXP__ (-307)
+#define L2CAP_ERR_UNIT_KEY_USED HCI_ERROR_UNIT_KEY_USED
+#define INT16_MIN (-32767-1)
+#define __UART_H__ 
+#define __FINITE_MATH_ONLY__ 0
+#define GATT_RESULT_INVALID_HANDLE gatt_status_invalid_handle
+#define UINTMAX_C(x) x ##ULL
+#define AD_SM_FLAG_OOB_PRESENT 0x01
+#define HCI_ERROR_KEY_MISSING ((hci_error_t)0x06)
+#define __STDDEF_H__ 
+#define DebugWriteData(data,nbytes) UartWriteBlocking(data, nbytes)
+#define __GNUC_PATCHLEVEL__ 4
+#define L2CAP_PEER_ADDR_TYPE_PUBLIC L2CAP_PEER_ADDR_TYPE_FLAG_ENUM(L2CA_PUBLIC_ADDR_TYPE)
+#define SIZEOF_APP_TIMER 6
+#define __GATT_SERVICE_H__ 
+#define _LIMITS_H___ 
+#define SYS_APP_PRIM_TEST (SYS_APP_PRIM_DOWN + 0x0080)
+#define __size_t 
+#define GATT_RESULT_ATTR_NOT_FOUND gatt_status_attr_not_found
+#define INT_FAST8_MAX __STDINT_EXP(INT_MAX)
+#define __DEC64_MAX_EXP__ 384
+#define _WCHAR_T_DEFINED 
+#define GATT_RESULT_UNSUPPORTED_GROUP_TYPE gatt_status_unsupported_group_type
+#define L2CAP_ERR_REJ_BY_REMOTE_PERS HCI_ERROR_REJ_BY_REMOTE_PERS
+#define DirectTestTransmitCount() DirectTestReceiveResults(NULL)
+#define WCHAR_MAX INT16_MAX
+#define __FILESYSTEM_H__ 
+#define LL_VER_BLUETOOTH_V2_0 0x03
+#define LL_VER_BLUETOOTH_V2_1 0x04
+#define L2CAP_CONNECTION_FLAG_ENUM(value) ((uint16)(value) << L2CA_CONN_TYPE_OFFSET)
+#define __int_fast8_t_defined 1
+#define LOG_VERBOSITY 0
+#define __SHRT_MAX__ 32767
+#define L2CAP_ERR_INSTANT_PASSED HCI_ERROR_INSTANT_PASSED
+#define __LDBL_MAX__ 1.7976931348623157e+308L
+#define HCI_ERROR_QOS_REJECTED ((hci_error_t)0x2D)
+#define LS_CON_DEFAULT_SLAVE_LATENCY 0
+#define __CSR1010_H__ 
+#define HCI_ERROR_OETC_LOW_RESOURCE ((hci_error_t)0x14)
+#define GATT_RESULT_TIMEOUT gatt_status_timeout
+#define L2CAP_ERR_UNSUPPORTED_REM_FEATURE HCI_ERROR_UNSUPPORTED_REM_FEATURE
+#define L2CA_CONN_TYPE_OFFSET 0
+#define L2CAP_ERR_OETC_LOW_RESOURCE HCI_ERROR_OETC_LOW_RESOURCE
+#define SCHAR_MAX __SCHAR_MAX__
+#define SM_DEFAULT_MIN_ENC_KEY_SIZE SM_MIN_ENC_KEY_SIZE
+#define __UINTMAX_TYPE__ long long unsigned int
+#define STATUS_GROUP_GATT 0x0A00
+#define INT_FAST8_MIN (-__STDINT_EXP(INT_MAX)-1)
+#define I2cRawStop(wait) I2cRawCommand(i2c_cmd_send_stop, wait, I2C_WAIT_CMD_TIMEOUT)
+#define __DEC32_EPSILON__ 1E-6DF
+#define WCHAR_MIN INT16_MIN
+#define L2CAP_ERR_MAX_NR_OF_SCO HCI_ERROR_MAX_NR_OF_SCO
+#define ULONG_LONG_MAX (LONG_LONG_MAX * 2ULL + 1ULL)
+#define __CHAR_UNSIGNED__ 1
+#define MINUTE ((TIME)(60 * SECOND))
+#define SYS_APP_PRIM_DOWN (SYS_APP_PRIM_BASE)
+#define __SIZE_T 
+#define __LDBL_MAX_EXP__ 1024
+#define __have_longlong64 1
+#define UINT_FAST16_MAX (__STDINT_EXP(INT_MAX)*2U+1U)
+#define __THREADING_H__ 
+#define UINT16_C(x) x ##U
+#define GATT_WRITE_COMMAND ATT_WRITE_COMMAND
+#define ATT_UUID_NONE 0x0000
+#define SCHAR_MIN (-SCHAR_MAX - 1)
+#define L2CAP_SUCCESS sys_status_success
+#define _SIZE_T_DEFINED_ 
+#define ATT_WRITE_SIGNED 0x0080
+#define GATT_RESULT_UNLIKELY_ERROR gatt_status_unlikely_error
+#define __SCHAR_MAX__ 32767
+#define ATT_PERM_EXTENDED 0x80
+#define LS_CON_DEFAULT_MIN_CE_LENGTH 0
+#define HCI_ERROR_PARAM_OUT_OF_MAND_RANGE ((hci_error_t)0x30)
+#define __DBL_DIG__ 15
+#define ATT_ATTR_DYNLEN 0x8
+#define ASSERT_CONCAT(a,b) ASSERT_CONCAT_(a, b)
+#define __INT8_T__ 
+#define REGISTER_OUTPUT(stdoutFunc,stderrFunc) stream_t stdoutStruct = { .writeByte = (stdoutFunc) }; stream_t stderrStruct = { .writeByte = (stderrFunc) }; stream_t *stdout = &stdoutStruct; stream_t *stderr = &stderrStruct
+#define TimeCopy48(td,ts) ((td)[0] = (ts)[0], (td)[1] = (ts)[1], (td)[2] = (ts)[2])
+#define __SIZEOF_INT__ 1
+#define __SIZEOF_POINTER__ 1
+#define L2CAP_ERR_SCM_PARAM_CHANGE_PENDING HCI_ERROR_SCM_PARAM_CHANGE_PENDING
+#define USHRT_MAX (SHRT_MAX * 2U + 1U)
+#define BD_ADDR_NAP_RANDOM_TYPE_RESOLVABLE 0x4000
+#define __USER_LABEL_PREFIX__ 
+#define __GLOBAL_I2C_H__ 
+#define LS_CON_TIMEOUT_MAX 3200
+#define GATT_RESULT_DATA_VALIDATION_FAILED gatt_status_data_validation_failed
+#define __PANIC_H__ 
+#define __LS_TYPES_H__ 
+#define ATT_PERM_INDICATE 0x20
+#define memcmp MemCmp
+#define __STDC_HOSTED__ 1
+#define LS2_PRIM_DOWN (GATT_PRIM_DOWN + 0x0030)
+#define __LDBL_HAS_INFINITY__ 1
+#define __CORE_EVENT_TYPES_H__ 
+#define GAP_TGAP_lim_disc_scan_min 10240000U
+#define interrupts_on() 
+#define GAP_TGAP_101 10625U
+#define GAP_TGAP_102 2560000U
+#define GAP_TGAP_103 30720000U
+#define GAP_TGAP_104 60000000U
+#define SMPasskeyDisplayed(bd_addr) SMPasskeyInput(bd_addr, NULL)
+#define ASSERT_CONCAT_(a,b) a ##b
+#define L2CAP_ERR_CONN_TIMEOUT HCI_ERROR_CONN_TIMEOUT
+#define memcpy MemCopy
+#define GATT_RESULT_DEVICE_NOT_FOUND gatt_status_device_not_found
+#define __GAP_APP_IF_H__ 
+#define _BSD_SIZE_T_DEFINED_ 
+#define GATT_WRITE_REQUEST ATT_WRITE_REQUEST
+#define _TIME_H_ 
+#define I2C_SCL_100KBPS_HIGH_PERIOD 78
+#define INVALID_ATT_HANDLE (0x0000)
+#define __FLT_EPSILON__ 1.19209290e-7F
+#define L2CAP_CONN_NOT_ONGOING l2cap_status_conn_not_ongoing
+#define LS_CON_DEFAULT_MAX_INT 20
+#define ATT_WRITE_COMMAND 0x0040
+#define SM_ERROR_REPEATED_ATTEMPTS sm_status_repeated_attempts
+#define L2CA_PEER_ADDR_TYPE_OFFSET 5
+#define SM_ERROR_UNSPECIFIED_REASON sm_status_unspecified_reason
+#define __LDBL_MIN__ 2.2250738585072014e-308L
+#define HCI_ERROR_UNSUPPORTED_FEATURE ((hci_error_t)0x11)
+#define TimeCmpEQ(t1,t2) ((t1) == (t2))
+#define __DEC32_MAX__ 9.999999E96DF
+#define L2CAP_ERR_UNKNOWN_LMP_PDU HCI_ERROR_UNKNOWN_LMP_PDU
+#define PMEM_PAGE_SIZE (1 << PMEM_PAGE_SIZE_BITS)
+#define _ANSI_STDDEF_H 
+#define _WCHAR_T_ 
+#define TimeCmpGE(t1,t2) (TimeSub((t1), (t2)) >= 0)
+#define LS_CON_SCAN_MAX 0x4000
+#define ADVSCAN_MAX_PAYLOAD 31
+#define TimeCmpGT(t1,t2) (TimeSub((t1), (t2)) > 0)
+#define _STDDEF_H 
+#define L2CAP_CONNECTION_MASTER_DIRECTED L2CAP_CONNECTION_FLAG_ENUM(L2CA_CONNECTION_LE_MASTER_DIRECTED)
+#define __LS_ERR_H__ 
+#define __SIZEOF_LONG__ 2
+#define LS_CON_TIMEOUT_MIN 10
+#define GATT_RESULT_DB_FULL gatt_status_db_full
+#define HCI_COMMAND_CURRENTLY_PENDING ((hci_return_t)0x00)
+#define __DECIMAL_DIG__ 17
+#define HCI_ERROR_UNIT_KEY_USED ((hci_error_t)0x26)
+#define L2CAP_ERR_UNSUPPORTED_FEATURE HCI_ERROR_UNSUPPORTED_FEATURE
+#define NVM_MINIMUM_SIZE 32
+#define ATT_ATTR_SEC_W_EXTRACT_ENUM(value) ((uint16)((value) >> ATT_ATTR_SEC_W_OFFS) & ATT_ATTR_SEC_MASK)
+#define HCI_ERROR_QOS_NOT_SUPPORTED ((hci_error_t)0x27)
+#define TimeCmpLT(t1,t2) (TimeSub((t1), (t2)) < 0)
+#define GATT_RESULT_READ_NOT_PERMITTED gatt_status_read_not_permitted
+#define INT_FAST16_MAX __STDINT_EXP(INT_MAX)
+#define GATT_RESULT_INVALID_MTU gatt_status_invalid_mtu
+#define L2CAP_ERR_QOS_NOT_SUPPORTED HCI_ERROR_QOS_NOT_SUPPORTED
+#define PTRDIFF_MAX __STDINT_EXP(LONG_MAX)
+#define __BUILTIN_TEMPERATURE__ 
+#define __LDBL_HAS_QUIET_NAN__ 1
+#define INT64_C(x) x ##LL
+#define LS_CON_SCAN_MIN 0x0004
+#define __int16_t_defined 1
+#define AD_TYPE_APPEARANCE (0x19)
+#define ATT_PERM_READ 0x02
+#define STATUS_GROUP_NVM 0x0100
+#define ___int_wchar_t_h 
+#define _T_PTRDIFF 
+#define __GNUC__ 4
+#define HCI_ERROR_MEMORY_FULL ((hci_error_t)0x07)
+#define offsetof(TYPE,MEMBER) __builtin_offsetof (TYPE, MEMBER)
+#define ATT_WRITE_REQUEST 0x0000
+#define L2CAP_OWN_ADDR_TYPE_RANDOM L2CAP_OWN_ADDR_TYPE_FLAG_ENUM(L2CA_RANDOM_ADDR_TYPE)
+#define LOGE(...) 
+#define LOGI(...) 
+#define LOGW(...) 
+#define __int_least16_t_defined 1
+#define GAP_TGAP_gen_disc_scan_min 10240000U
+#define __FLT_HAS_DENORM__ 1
+#define __SIZEOF_LONG_DOUBLE__ 4
+#define __UNICODE_H__ 
+#define LE8_L(x) ((x) & 0xff)
+#define INT_FAST16_MIN (-__STDINT_EXP(INT_MAX)-1)
+#define PTRDIFF_MIN (-PTRDIFF_MAX - 1)
+#define LONG_MAX __LONG_MAX__
+#define HCI_VER_INVALID ((hci_version_t)0xff)
+#define ATT_ATTR_SEC_R_OFFS 6
+#define I2C_SCL_100KBPS_LOW_PERIOD 78
+#define GATT_PRIM_DOWN (GATT_PRIM_BASE)
+#define HCI_ERROR_DIRECTED_ADVERTISING_TIMEOUT ((hci_error_t)0x3C)
+#define __DBL_MAX__ 1.7976931348623157e+308
+#define __DBL_HAS_INFINITY__ 1
+#define HCI_ERROR_CONN_TIMEOUT ((hci_error_t)0x08)
+#define ATT_ACCESS_PERMISSION 0x8000
+#define HCI_ERROR_CONN_REJ_NO_SUITABLE_CHANNEL_FOUND ((hci_error_t)0x39)
+#define HCI_ERROR_CHANNEL_CLASS_NO_SUPPORT ((hci_error_t)0x2E)
+#define HCI_ERROR_MAX_NR_OF_CONNS ((hci_error_t)0x09)
+#define HCI_ERROR_INVALID_LMP_PARAMETERS ((hci_error_t)0x1E)
+#define interrupts_off() 
+#define __DEC32_MIN_EXP__ (-95)
+#define SM_ERROR_RESERVED sm_status_reserved
+#define LONG_MIN (-LONG_MAX - 1L)
+#define BLE_APPEARANCE_UNKNOWN 0x0000
+#define _SIZE_T_DEFINED 
+#define _WCHAR_T_DEFINED_ 
+#define HCI_ERROR_ILLEGAL_COMMAND ((hci_error_t)0x01)
+#define UINT_LEAST8_MAX 255
+#define __LDBL_HAS_DENORM__ 1
+#define __DEC128_MAX__ 9.999999999999999999999999999999999E6144DL
+#define __USING_SJLJ_EXCEPTIONS__ 1
+#define BD_ADDR_NAP_RANDOM_TYPE_NONRESOLV 0x0000
+#define GATT_PRIM_UP (GATT_PRIM_DOWN | 0x0080)
+#define __BLE_HCI_TEST_H__ 
+#define __DEC32_MIN__ 1E-95DF
+#define GATT_RESULT_PREPARE_QUEUE_FULL gatt_status_prepare_queue_full
+#define AD_FLAG_LE_LIMITED_DISCOVERABLE 0x01
+#define __BUF_UTILS_H__ 
+#define ATT_ATTR_RESERVED1 0x0400
+#define ATT_ATTR_RESERVED2 0x0800
+#define __DBL_MAX_EXP__ 1024
+#define L2CAP_ERR_LMP_RESPONSE_TIMEOUT HCI_ERROR_LMP_RESPONSE_TIMEOUT
+#define SM_ERROR_PAIRING_NOT_SUPPORTED sm_status_pairing_not_supported
+#define __DEC128_EPSILON__ 1E-33DL
+#define __LS_APP_IF_H__ 
+#define L2CAP_ERR_UNSPECIFIED HCI_ERROR_UNSPECIFIED
+#define _VA_LIST_ 
+#define __MEMORY_H__ 
+#define __FAULT_H__ 
+#define L2CAP_ERR_AUTH_FAIL HCI_ERROR_AUTH_FAIL
+#define ATT_HANDLE_VALUE_NOTIFICATION 0x0000
+#define forever for(;;)
+#define UARTCFG_TWO_STOP_BITS 0x01
+#define __CRYPT_H__ 
+#define SM_ERROR_PASSKEY_ENTRY_FAILED sm_status_passkey_entry_failed
+#define atomic() for (int i = 0; i < 1; i++)
+#define _STDARG_H 
+#define _T_WCHAR 
+#define __LONG_LONG_MAX__ 9223372036854775807LL
+#define __SIZEOF_SIZE_T__ 1
+#define LL_VER_BLUETOOTH_V3_0 0x05
+#define _WCHAR_T 
+#define L2CAP_CONNECTION_MASTER_WHITELIST L2CAP_CONNECTION_FLAG_ENUM(L2CA_CONNECTION_LE_MASTER_WHITELIST)
+#define SIZE_MAX (__STDINT_EXP(LONG_MAX) * 2UL + 1)
+#define __SIZEOF_WINT_T__ 1
+#define __SYSTEM_H__ 
+#define UINT64_C(x) x ##ULL
+#define _GCC_WCHAR_T 
+#define WINT_MAX (__STDINT_EXP(INT_MAX) * 2U + 1U)
+#define NVM_DEFAULT_ERASED_WORD 0xFFFF
+#define UINTPTR_MAX 65535U
+#define GATT_RESULT_INSUFFICIENT_RESOURCES gatt_status_insufficient_resources
+#define _PTRDIFF_T 
+#define GATT_RESULT_SUCCESS_SENT gatt_status_success_sent
+#define __GXX_ABI_VERSION 1002
+#define GATT_RESULT_INSUFFICIENT_ENCR_KEY_SIZE gatt_status_insufficient_encr_key_size
+#define STATIC_ASSERT(e,m) ;enum { ASSERT_CONCAT(static_assert_, __COUNTER__) = 1/(!!(e)) }
+#define UINT_LEAST16_MAX 65535
+#define __FLT_MIN_EXP__ (-125)
+#define ATT_HANDLE_MAX 0xFFFF
+#define ATT_PERM_WRITE_SIGNED 0x40
+#define UINT32_MAX 4294967295UL
+#define SECOND ((TIME)(1000 * MILLISECOND))
+#define HCI_ERROR_ILLEGAL_FORMAT ((hci_error_t)0x12)
+#define LE8_H(x) (((x) >> 8) & 0xff)
+#define __PTRDIFF_T 
+#define UART_RATE_DEFAULT 0
+#define L2CAP_ERR_ILLEGAL_FORMAT HCI_ERROR_ILLEGAL_FORMAT
+#define LS_CON_DEFAULT_SCAN_INTERVAL 4100
+#define __DBL_MIN__ 2.2250738585072014e-308
+#define WINT_MIN 0U
+#define HCI_ERROR_LMP_RESPONSE_TIMEOUT ((hci_error_t)0x22)
+#define HCI_ERROR_CONTROLLER_BUSY ((hci_error_t)0x3A)
+#define __DRIVERS_H__ 
+#define LS_CON_DEFAULT_SUPER_TIMEOUT 200
+#define LL_VER_BLUETOOTH_V1_0b 0x00
+#define UNUSED(x) (void) x
+#define L2CAP_CONNECTION_SLAVE_UNDIRECTED L2CAP_CONNECTION_FLAG_ENUM(L2CA_CONNECTION_LE_SLAVE_UNDIRECTED)
+#define GATT_RESULT_INVALID_UUID gatt_status_invalid_uuid
+#define MACROS_H 
+#define __HCI_EVENT_TYPES_H__ 
+#define ATT_ACCESS_WRITE_COMPLETE 0x4000
+#define __int64_t_defined 1
+#define CHAR_MAX UCHAR_MAX
+#define INT_LEAST8_MAX 127
+#define HCI_ERROR_SCO_AIR_MODE_REJECTED ((hci_error_t)0x1D)
+#define ULONG_MAX (LONG_MAX * 2UL + 1UL)
+#define HCI_ERROR_SCM_NO_LONGER_REQD ((hci_error_t)0x31)
+#define L2CAP_ERR_CONNECTION_FAILED_TO_BE_ESTABLISHED HCI_ERROR_CONNECTION_FAILED_TO_BE_ESTABLISHED
+#define __DEC128_MIN__ 1E-6143DL
+#define __REGISTER_PREFIX__ 
+#define I2cRawWaitAck(wait) I2cRawCommand(i2c_cmd_wait_ack, wait, I2C_WAIT_ACK_TIMEOUT)
+#define __DBL_HAS_DENORM__ 1
+#define INT_LEAST32_MAX 2147483647L
+#define ATT_ATTR_SEC_W_ENUM(value) ((uint16)((value) & ATT_ATTR_SEC_MASK) << ATT_ATTR_SEC_W_OFFS)
+#define CHAR_BIT __CHAR_BIT__
+#define L2CAP_ERR_UNSUPP_LMP_PARAM HCI_ERROR_UNSUPP_LMP_PARAM
+#define __NO_INLINE__ 1
+#define L2CAP_ERR_LMP_TRANSACTION_COLLISION HCI_ERROR_LMP_TRANSACTION_COLLISION
+#define COMPILE_TIME_ASSERT(expr,msg) struct compile_time_assert_ ## msg { int compile_time_assert_ ## msg [1 - (!(expr))*2]; }
+#define GATT_RESULT_INVALID_CID gatt_status_invalid_cid
+#define BLE_APPEARANCE_PHONE 0x0040
+#define L2CA_OWN_ADDR_TYPE_OFFSET 4
+#define LONG_LONG_MAX __LONG_LONG_MAX__
+#define __STDLIB_H 
+#define L2CAP_ERR_HARDWARE_FAIL HCI_ERROR_HARDWARE_FAIL
+#define io_init() csr1010_init()
+#define CHAR_MIN 0U
+#define __FLT_MANT_DIG__ 24
+#define INT_LEAST8_MIN -128
+#define __VERSION__ "4.3.4 CSR version 22 for xap [1468380]"
+#define TimeWaitWithAbsoluteTimeout16(cond,endtime,result) do { while (!(cond) && ((int16)(TimeGet16() - endtime) < 0)) ; result = (cond); } while (0)
+#define _PTRDIFF_T_ 
+#define GATT_RESULT_INVALID_PERMISSIONS gatt_status_invalid_permissions
+#define HCI_ERROR_SCM_INSUFFICIENT_RESOURCES ((hci_error_t)0x2B)
+#define HCI_VER_BTLE ((hci_version_t)LL_VER_BTLE)
+#define AD_FLAG_LE_GENERAL_DISCOVERABLE 0x02
+#define TimeWaitWithAbsoluteTimeout32(cond,endtime,result) do { while (!(cond) && TimeCmpLT(TimeGet32(), endtime)) ; result = (cond); } while (0)
+#define CONFIG_H_ 
+#define INT_LEAST32_MIN (-2147483647L-1)
+#define __INT_WCHAR_T_H 
+#define L2CAP_ERR_OETC_USER HCI_ERROR_OETC_USER
+#define SM_PRIM_UP (SM_PRIM_DOWN | 0x0080)
+#define L2CAP_ERR_SCO_AIR_MODE_REJECTED HCI_ERROR_SCO_AIR_MODE_REJECTED
+#define _T_PTRDIFF_ 
+#define MemCopy __builtin_memcpy
+#define L2CAP_OWN_ADDR_TYPE_PUBLIC L2CAP_OWN_ADDR_TYPE_FLAG_ENUM(L2CA_PUBLIC_ADDR_TYPE)
+#define ota_reset() OtaReset()
+#define LONG_LONG_MIN (-LONG_LONG_MAX - 1LL)
+#define HCI_ERROR_CONNECTION_FAILED_TO_BE_ESTABLISHED ((hci_error_t)0x3E)
+#define ATT_PERM_NOTIFY 0x10
+#define _SYS_SIZE_T_H 
+#define L2CAP_OWN_ADDR_TYPE_ENUM_MASK 0x0010
+#define L2CAP_ERR_INVALID_LMP_PARAMETERS HCI_ERROR_INVALID_LMP_PARAMETERS
+#define I2C_SCL_400KBPS_LOW_PERIOD 21
+#define L2CAP_ERR_REJ_BY_REMOTE_NO_RES HCI_ERROR_REJ_BY_REMOTE_NO_RES
+#define __SIZE_T__ 
+#define SIG_ATOMIC_MAX __STDINT_EXP(INT_MAX)
+#define L2CAP_ERR_CONN_TERMINATED_DUE_TO_MIC_FAILURE HCI_ERROR_CONN_TERMINATED_DUE_TO_MIC_FAILURE
+#define __BOOTLOADER_H__ 
+#define __STDINT_EXP(x) __ ##x ##__
+#define INT32_MAX 2147483647L
+#define HCI_ERROR_ENC_MODE_NOT_ACCEPTABLE ((hci_error_t)0x25)
+#define LS_CON_SLAVE_LATENCY_MAX 499
+#define __int_fast32_t_defined 1
+#define CSR_OTA_KEY_NOT_READ 0x80
+#define __BLUETOOTH_H__ 
+#define __int_least64_t_defined 1
+#define SM_DEFAULT_OOB_DATA_PRESENT SM_OOB_DATA_NOT_PRESENT
+#define BLE_APPEARANCE_TAG 0x0200
+#define GATT_INVALID_UCID (0xFFFF)
+#define UUID_FLIGHT_SERVICE 0x1337
+#define DELAY_ONE_CYCLE() __asm__("nop")
+#define SM_DEFAULT_IO_CAP SM_IO_CAP_NO_INPUT_NO_OUTPUT
+#define AD_SM_FLAG_RANDOM_ADDRESS 0x08
+#define __DEC64_EPSILON__ 1E-15DD
+#define __DEC128_MIN_EXP__ (-6143)
+#define __BUILTIN_VOLTAGE__ 
+#define PANIC_NONE (0)
+#define AD_FLAG_SIMUL_LE_BREDR_HOST 0x10
+#define __va_copy(d,s) __builtin_va_copy(d,s)
+#define L2CAP_CONN_TYPE_ENUM_MASK 0x000f
+#define HCI_ERROR_SCO_OFFSET_REJECTED ((hci_error_t)0x1B)
+#define UINT64_MAX 18446744073709551615ULL
+#define L2CAP_LIMITED_ADVERTISING_TIMEOUT ls_status_limited_advertising_timeout
+#define _ANSI_STDARG_H_ 
+#define SIG_ATOMIC_MIN (-__STDINT_EXP(INT_MAX) - 1)
+#define __HCI_ERROR_CODES_H__ 
+#define L2CAP_ERR_KEY_MISSING HCI_ERROR_KEY_MISSING
+#define HCI_ERROR_SCM_PARAM_CHANGE_PENDING ((hci_error_t)0x33)
+#define L2CAP_ERR_ROLE_CHANGE_NOT_ALLOWED HCI_ERROR_ROLE_CHANGE_NOT_ALLOWED
+#define INT32_MIN (-2147483647L-1)
+#define TIMER_INVALID 0
+#define _BSD_SIZE_T_ 
+#define BD_ADDR_NAP_RANDOM_TYPE_RESERVED 0x8000
+#define __SIZE_TYPE__ unsigned int
+#define _SIZE_T_DECLARED 
+#define SYS_APP_PRIM_BASE 0x0c00
+#define BLE_APPEARANCE_KEYBOARD 0x03C1
+#define __NTFS_H__ 
+#define __DEC32_DEN__ 0.000001E-95DF
+#define L2CAP_ERR_MAX_NR_OF_CONNS HCI_ERROR_MAX_NR_OF_CONNS
+#define L2CAP_ERR_SCO_OFFSET_REJECTED HCI_ERROR_SCO_OFFSET_REJECTED
+#define HCI_ERROR_UNSUPPORTED_REM_FEATURE ((hci_error_t)0x1A)
+#define __FLT_RADIX__ 2
+#define __LDBL_EPSILON__ 2.2204460492503131e-16L
+#define INTPTR_MAX 32767
+#define L2CAP_ERR_PAGE_TIMEOUT HCI_ERROR_PAGE_TIMEOUT
+#define L2CAP_ERR_PAIR_UNIT_KEY_NO_SUPPORT HCI_ERROR_PAIR_UNIT_KEY_NO_SUPPORT
+#define __PIO_H__ 
+#define ATT_ATTR_ENC_KEY_REQUIREMENTS 0x0200
+#define L2CAP_ERR_INQUIRY_RESPONSE_DATA_TOO_LARGE HCI_ERROR_INQUIRY_RESPONSE_DATA_TOO_LARGE
+#define L2CAP_ERR_HOST_TIMEOUT HCI_ERROR_HOST_TIMEOUT
+#define STATUS_GROUP_SKM 0x0400
+#define BD_ADDR_NAP_RANDOM_TYPE_STATIC 0xC000
+#define INT_LEAST64_MAX 9223372036854775807LL
+#define ATT_ATTR_AUTHORIZATION 0x0100
+#define UCHAR_MAX (SCHAR_MAX * 2U + 1U)
+#define __SIZEOF_PTRDIFF_T__ 1
+#define HCI_ERROR_AUTH_FAIL ((hci_error_t)0x05)
+#define __BITMAP_H__ 
+#define GATT_RESULT_INVALID_OFFSET gatt_status_invalid_offset
+#define STATUS_GROUP_SPI 0x0300
+#define INTPTR_MIN (-32767-1)
+#define INT8_C(x) x
+#define ATT_HANDLE_INVALID 0x0000
+#define BLE_IRK_LENGTH (16)
+#define MILLISECOND ((TIME)(1000))
+#define L2CAP_PEER_ADDR_TYPE_ENUM_MASK 0x0020
+#define __BT_EVENT_TYPES_H__ 
+#define _SIZE_T_ 
+#define UINT_FAST32_MAX UINT_LEAST32_MAX
+#define _WCHAR_T_H 
+#define GCC_ATTRIBUTE(x) __attribute__ ((x))
+#define __CONFIG_STORE_H__ 
+#define INT_MAX __INT_MAX__
+#define INT_LEAST64_MIN (-9223372036854775807LL-1LL)
+#define L2CAP_BUFFER_FULL l2cap_status_buffer_full
+#define I2cRawStart(wait) I2cRawCommand(i2c_cmd_send_start, wait, I2C_WAIT_CMD_TIMEOUT)
+#define UART_DECLARE_BUFFER(_name,_size) static uint16 _name[16<<(_size)] GCC_ATTRIBUTE(aligned (2));
+#define AppProcessLmEventPtr(x,y) AppProcessLmEvent(x, y)
+#define L2CAP_CONNECTION_SLAVE_DIRECTED_LDC L2CAP_CONNECTION_FLAG_ENUM(L2CA_CONNECTION_LE_SLAVE_DIRECTED_LDC)
+#define HCI_ERROR_COMMAND_DISALLOWED ((hci_error_t)0x0C)
+#define __FLT_HAS_QUIET_NAN__ 1
+#define UINTMAX_MAX UINT64_MAX
+#define INT32_C(x) x ##L
+#define __FLT_MAX_10_EXP__ 38
+#define __LONG_MAX__ 2147483647L
+#define LS_MAX_TRANSMIT_POWER_LEVEL 7
+#define __WCHAR_T__ 
+#define va_copy(d,s) __builtin_va_copy(d,s)
+#define LL_VER_BLUETOOTH_V4_1 0x07
+#define SM_PRIM_DOWN (GATT_PRIM_DOWN + 0x0040)
+#define __FLT_HAS_INFINITY__ 1
+#define I2C_POWER_PIO_UNDEFINED 0xFF
+#define HCI_ERROR_REJ_BY_REMOTE_SEC ((hci_error_t)0x0E)
+#define HCI_ERROR_HARDWARE_FAIL ((hci_error_t)0x03)
+#define _BSD_PTRDIFF_T_ 
+#define __DEC64_MAX__ 9.999999999999999E384DD
+#define __DEBUG_H__ 
+#define L2CAP_ERR_REJ_BY_REMOTE_SEC HCI_ERROR_REJ_BY_REMOTE_SEC
+#define NULL ((void *)0)
+#define ATT_ATTR_IRQ 0x4
+#define HCI_SUCCESS ((hci_return_t)0x00)
+#define L2CAP_ERR_ILLEGAL_CMD HCI_ERROR_ILLEGAL_COMMAND
+#define _VA_LIST_DEFINED 
+#define ATT_PERM_AUTHENTICATED ATT_PERM_WRITE_SIGNED
+#define GATT_RESULT_SIGN_FAILED gatt_status_sign_failed
+#define INT_MIN (-INT_MAX - 1)
+#define __DEC64_MANT_DIG__ 16
+#define INT64_MAX 9223372036854775807LL
+#define L2CAP_ERR_SP_NOT_SUPPORTED_BY_HOST HCI_ERROR_SP_NOT_SUPPORTED_BY_HOST
+#define SYSTEM_PRIM_BASE 0x0b00
+#define LS_CON_INTERVAL_MAX 3200
+#define ATT_PERM_WRITE_REQ 0x08
+#define MemSet __builtin_memset
+#define __DEC32_MAX_EXP__ 96
+#define TimeWaitWithTimeout16(cond,delay,result) do { uint16 wwt_start_time = TimeGet16(); while (!(cond) && ((TimeGet16() - wwt_start_time) <= (uint16)(delay))) ; result = (cond); } while (0)
+#define __GAP_TYPES_H__ 
+#define PMEM_PAGE_SIZE_BITS (10)
+#define L2CAP_ERR_CONTROLLER_BUSY HCI_ERROR_CONTROLLER_BUSY
+#define __DEC128_DEN__ 0.000000000000000000000000000000001E-6143DL
+#define BLE_CREATE_SERVICE(__name,__context,__attributes,__attributesCount) { .handleStart = HANDLE_ ## __name, .handleEnd = HANDLE_ ## __name ## _END, .context = (__context), .attributes = (__attributes), .attributesCount = (__attributesCount), .next = NULL }
+#define TimeWaitWithTimeout32(cond,delay,result) do { TIME wwt_end_time = TimeAdd(TimeGet32(), delay); while (!(cond) && TimeCmpLT(TimeGet32(), wwt_end_time)) ; result = (cond); } while (0)
+#define HCI_ERROR_PAIRING_NOT_ALLOWED ((hci_error_t)0x18)
+#define HCI_ERROR_INSUFFICIENT_SECURITY ((hci_error_t)0x2F)
+#define L2CAP_ERR_PARAM_OUT_OF_MAND_RANGE HCI_ERROR_PARAM_OUT_OF_MAND_RANGE
+#define ATT_ATTR_SEC_MASK 0x3
+#define SM_MAX_ENC_KEY_SIZE ((sm_enc_key_size)0x10)
+#define HCI_ERROR_ROLE_SWITCH_FAILED ((hci_error_t)0x35)
+#define HCI_ERROR_PAGE_TIMEOUT ((hci_error_t)0x04)
+#define BLE_APPEARANCE_HID 0x03C0
+#define HCI_ERROR_HOST_TIMEOUT ((hci_error_t)0x10)
+#define INT64_MIN (-9223372036854775807LL-1LL)
+#define __LDBL_MANT_DIG__ 53
+#define HCI_ERROR_REJ_BY_REMOTE_PERS ((hci_error_t)0x0F)
+#define _CSR_OTA_H 
+#define AD_FLAG_SIMUL_LE_BREDR_CONTROLLER 0x08
+#define bug_check(reason,info) bug_check_ex((reason), (info), __FILE__, __LINE__)
+#define LS_PRIM_DOWN (GATT_PRIM_DOWN + 0x0060)
+#define GATT_RESULT_INVALID_OPERATION gatt_status_invalid_operation
+#define __DBL_HAS_QUIET_NAN__ 1
+#define ATT_EXECUTE_WRITE 0x0001
+#define L2CAP_ERR_NO_CONNECTION HCI_ERROR_NO_CONNECTION
+#define __GNUC_VA_LIST 
+#define LS2_PRIM_UP (LS2_PRIM_DOWN | 0x0080)
+#define assert(expression) assert_ex((uintptr_t)(expression), __FILE__, __LINE__)
+#define L2CAP_ERR_PAIRING_NOT_ALLOWED HCI_ERROR_PAIRING_NOT_ALLOWED
+#define __WCHAR_TYPE__ int
+#define LS_CON_DEFAULT_MIN_INT 20
+#define __SIZEOF_FLOAT__ 2
+#define ATT_UUID128 0x0002
+#define FALSE 0
+#define __BLUETOOTH_LE_H__ 
+#define __GATT_PRIM_H__ 
+#define I2cRawSendAck(wait) I2cRawCommand(i2c_cmd_send_ack, wait, I2C_WAIT_CMD_TIMEOUT)
+#define L2CAP_ERR_DIFFERENT_TRANSACTION_COLLISION HCI_ERROR_DIFFERENT_TRANSACTION_COLLISION
+#define GATT_PRIM_BASE 0x0a00
+#define __DEC64_MIN_EXP__ (-383)
+#define GATT_RESULT_INSUFFICIENT_AUTHENTICATION gatt_status_insufficient_authentication
+#define L2CAP_ERR_INSUFFICIENT_SECURITY HCI_ERROR_INSUFFICIENT_SECURITY
+#define __FLT_DIG__ 6
+#define INT_FAST32_MAX INT_LEAST32_MAX
+#define _WCHAR_T_DECLARED 
+#define __UINT8_T__ 
+#define HCI_ERROR_OETC_USER ((hci_error_t)0x13)
+#define I2C_EEPROM_POLLED_WRITE_CYCLE 0
+#define UINT_FAST8_MAX (__STDINT_EXP(INT_MAX)*2U+1U)
+#define __INT_MAX__ 32767
+#define ATT_PRIM_BASE 0x0900
+#define I2C_RESERVED_PIO 0xFF
+#define GATT_RESULT_NOT_LONG gatt_status_not_long
+#define L2CAP_ERR_MEMORY_FULL HCI_ERROR_MEMORY_FULL
+#define STATUS_GROUP_I2C 0x0200
+#define UINT_MAX (INT_MAX * 2U + 1U)
+#define BLE_APPEARANCE_THERMOMETER 0x0300
+#define _T_SIZE_ 
+#define LOGE__(...) 
+#define __FLT_MAX_EXP__ 128
+#define _CSR_OTA_SERVICE_H 
+#define BD_ADDR_NAP_RANDOM_TYPE_MASK 0xC000
+#define UINT32_C(x) x ##UL
+#define ATT_ATTR_SEC_R_EXTRACT_ENUM(value) ((uint16)((value) >> ATT_ATTR_SEC_R_OFFS) & ATT_ATTR_SEC_MASK)
+#define __DBL_MANT_DIG__ 53
+#define ___int_size_t_h 
+#define HCI_ERROR_LMP_TRANSACTION_COLLISION ((hci_error_t)0x23)
+#define UINT_FAST64_MAX UINT_LEAST64_MAX
+#define __int_fast16_t_defined 1
+#define INT_FAST32_MIN INT_LEAST32_MIN
+#define __DEC64_MIN__ 1E-383DD
+#define GATT_RESULT_APP_MASK gatt_status_app_mask
+#define __WINT_TYPE__ unsigned int
+#define BITMASK64(bits) (UINT64_C(0xFFFFFFFFFFFFFFFF) >> (64 - (bits)))
+#define __SIZEOF_SHORT__ 1
+#define L2CAP_ERR_AUTH_REPEATED HCI_ERROR_AUTH_REPEATED
+#define L2CAP_ERR_QOS_UNACCEPTABLE_PARAMETER HCI_ERROR_QOS_UNACCEPTABLE_PARAMETER
+#define __intptr_t_defined 
+#define __LDBL_MIN_EXP__ (-1021)
+#define LS_CON_DEFAULT_MAX_CE_LENGTH 0
+#define ATT_ATTR_SEC_W_OFFS 0
+#define BLE_APPEARANCE_WATCH 0x00C0
+#define NORETURN GCC_ATTRIBUTE(__noreturn__)
+#define BLE_CREATE_ATTRIBUTE(__name,__readCallback,__writeCallback,__writeCompleteCallback) { .handle = HANDLE_ ## __name, .read = (__readCallback), .write = (__writeCallback), .writeComplete = (__writeCompleteCallback) }
+#define __LDBL_MAX_10_EXP__ 308
+#define __DBL_EPSILON__ 2.2204460492503131e-16
+#define I2C_WAIT_CMD_TIMEOUT (1UL * MILLISECOND)
+#define TimeAdd(t1,t2) ((t1) + (t2))
+#define _SIZET_ 
+#define __LOG_H__ 
+#define ATT_ACCESS_WRITE 0x0002
+#define __GLOBAL_IO_H__ 
+#define L2CAP_CONN_DISALLOWED l2cap_status_conn_disallowed
+#define GATT_STATUS_FROM_ATT_RESULT(_r) ((_r)?(STATUS_GROUP_GATT+((_r)&0x3f)):sys_status_success)
+#define TimeSub(t1,t2) ((int32) (t1) - (int32) (t2))
+#define GAP_TGAP_lim_disc_scan_window 11250U
+#define __wchar_t__ 
+#define UARTCFG_EVEN_PARITY 0x04
+#define __SIZEOF_WCHAR_T__ 1
+#define L2CAP_ERR_ROLE_SWITCH_FAILED HCI_ERROR_ROLE_SWITCH_FAILED
+#define __I2C_H__ 
+#define L2CAP_ERR_UNACCEPTABLE_CONN_INTERVAL HCI_ERROR_UNACCEPTABLE_CONN_INTERVAL
+#define _STDDEF_H_ 
+#define max(a,b) (((a) < (b)) ? (b) : (a))
+#define SM_ERROR_ENCRYPTION_KEY_SIZE sm_status_encryption_key_size
+#define __XAP 1
+#define LL_VER_BLUETOOTH_V1_1 0x01
+#define LL_VER_BLUETOOTH_V1_2 0x02
+#define HCI_ERROR_SCO_INTERVAL_REJECTED ((hci_error_t)0x1C)
+#define GAP_TGAP_lim_disc_adv_max 30720000U
+#define SM_ERROR_CONFIRM_VALUE_FAILED sm_status_confirm_value_failed
+#define __GATT_H__ 
+#define va_arg(v,l) __builtin_va_arg(v,l)
+#define LS_CON_INTERVAL_MIN 6
+#define ATT_PERM_WRITE_CMD 0x04
+#define L2CAP_ERR_MAX_NR_OF_ACL HCI_ERROR_MAX_NR_OF_ACL
+#define SM_ERROR_INVALID_PARAMETER sm_status_invalid_parameter
+#define INTMAX_MAX __INTMAX_MAX__
+#define HCI_ERROR_ROLE_SWITCH_PENDING ((hci_error_t)0x32)
+#define LL_VER_BTLE LL_VER_BLUETOOTH_V4_1
+#define __DEC_EVAL_METHOD__ 2
+#define _SIZE_T 
+#define __SECURITY_H__ 
+#define TimeCmpLE(t1,t2) (TimeSub((t1), (t2)) <= 0)
+#define __CSR_NVM_H__ 
+#define GATT_RESULT_INSUFFICIENT_ENCRYPTION gatt_status_insufficient_encryption
+#define min(a,b) (((a) < (b)) ? (a) : (b))
+#define LOGI__(...) 
+#define LS_MIN_TRANSMIT_POWER_LEVEL 0
+#define AUTO_RESET 
+#define SM_DEFAULT_MAX_ENC_KEY_SIZE SM_MAX_ENC_KEY_SIZE
+#define HCI_ERROR_INQUIRY_RESPONSE_DATA_TOO_LARGE ((hci_error_t)0x36)
+#define BLE_APPEARANCE_MOUSE 0x03C2
+#define _GCC_SIZE_T 
+#define TYPES_H 
+#define L2CAP_PEER_ADDR_TYPE_RANDOM L2CAP_PEER_ADDR_TYPE_FLAG_ENUM(L2CA_RANDOM_ADDR_TYPE)
+#define __INTMAX_MAX__ 9223372036854775807LL
+#define __size_t__ 
+#define __TIMER_H__ 
+#define __FLT_DENORM_MIN__ 1.40129846e-45F
+#define INTMAX_MIN (-INTMAX_MAX - 1)
+#define L2CAP_ERR_ROLE_SWITCH_PENDING HCI_ERROR_ROLE_SWITCH_PENDING
+#define GAP_TGAP_100 10240000U
+#define L2CAP_CONNECTION_SLAVE_DIRECTED L2CAP_CONNECTION_FLAG_ENUM(L2CA_CONNECTION_LE_SLAVE_DIRECTED)
+#define _VA_LIST_T_H 
+#define GATT_RESULT_REQUEST_NOT_SUPPORTED gatt_status_request_not_supported
+#define L2CAP_ERR_CONN_TERM_LOCAL_HOST HCI_ERROR_CONN_TERM_LOCAL_HOST
+#define ATT_ACCESS_READ 0x0001
+#define L2CAP_ERR_SCO_INTERVAL_REJECTED HCI_ERROR_SCO_INTERVAL_REJECTED
+#define HCI_ERROR_UNSPECIFIED ((hci_error_t)0x1F)
+#define GATT_RESULT_INSUFFICIENT_AUTHORIZATION gatt_status_insufficient_authorization
+#define I2cRawRestart(wait) I2cRawCommand(i2c_cmd_send_restart, wait, I2C_WAIT_CMD_TIMEOUT)
+#define HCI_ERROR_OETC_POWERING_OFF ((hci_error_t)0x15)
+#define __FLT_MAX__ 3.40282347e+38F
+#define _VA_LIST 
+#define __MEM_H__ 
+#define SM_ERROR_AUTHENTICATION_REQUIREMENTS sm_status_authentication_requirements
+#define INT_FAST64_MAX INT_LEAST64_MAX
+#define UINT_LEAST32_MAX 4294967295UL
+#define L2CAP_ERR_OETC_POWERING_OFF HCI_ERROR_OETC_POWERING_OFF
+#define __va_list__ 
+#define HCI_ERROR_NO_CONNECTION ((hci_error_t)0x02)
+#define STATUS_GROUP_LS 0x0900
+#define GATT_RESULT_BUSY gatt_status_busy
+#define __SIZEOF_DOUBLE__ 4
+#define __BUILTIN_I2C_H__ 
+#define __FLT_MIN_10_EXP__ (-37)
+#define __INTMAX_TYPE__ long long int
+#define AD_FLAG_BR_EDR_NOT_SUPPORTED 0x04
+#define __RESET_H__ 
+#define I2C_SCL_400KBPS_HIGH_PERIOD 15
+#define __DEC128_MAX_EXP__ 6144
+#define _T_SIZE 
+#define UINT8_C(x) x
+#define va_end(v) __builtin_va_end(v)
+#define L2CAP_ERR_SCM_INSUFFICIENT_RESOURCES HCI_ERROR_SCM_INSUFFICIENT_RESOURCES
+#define GAP_TGAP_gen_disc_adv_intvl_max 2560000U
+#define __GNUC_MINOR__ 3
+#define __DEC32_MANT_DIG__ 7
+#define HCI_ERROR_CONN_TERMINATED_DUE_TO_MIC_FAILURE ((hci_error_t)0x3D)
+#define INTMAX_C(x) x ##LL
+#define ATT_PERM_CONFIGURE_BROADCAST 0x01
+#define ATT_PERM_RELIABLE_WRITE 0x0001
+#define INT_FAST64_MIN INT_LEAST64_MIN
+#define SM_ERROR_OOB_NOT_AVAILABLE sm_status_oob_not_available
+#define STATUS_GROUP_SM 0x0B00
+#define _STDINT_H 
+#define __DBL_MAX_10_EXP__ 308
+#define ATT_ATTR_SEC_R_ENUM(value) ((uint16)((value) & ATT_ATTR_SEC_MASK) << ATT_ATTR_SEC_R_OFFS)
+#define UINT16_MAX 65535
+#define __LDBL_DENORM_MIN__ 4.9406564584124654e-324L
+#define MAX(a,b) max(a,b)
+#define L2CAP_ERR_CONN_REJ_NO_SUITABLE_CHANNEL_FOUND HCI_ERROR_CONN_REJ_NO_SUITABLE_CHANNEL_FOUND
+#define SYS_APP_PRIM_UP (SYS_APP_PRIM_DOWN + 0x0040)
+#define __KERNEL_H__ 
+#define __STDC__ 1
+#define __PTRDIFF_TYPE__ int
+#define LS_PRIM_UP (LS_PRIM_DOWN | 0x0080)
+#define __have_long32 1
+#define HCI_ERROR_QOS_UNACCEPTABLE_PARAMETER ((hci_error_t)0x2C)
+#define XAP 1
+#define L2CAP_ERR_CHANNEL_CLASS_NO_SUPPORT HCI_ERROR_CHANNEL_CLASS_NO_SUPPORT
+#define STATUS_GROUP_L2CAP 0x0800
+#define I2cRawSendNack(wait) I2cRawCommand(i2c_cmd_send_nack, wait, I2C_WAIT_CMD_TIMEOUT)
+#define GAP_TGAP_gen_disc_adv_intvl_min 1280000U
+#define BLE_APPEARANCE_HR_SENSOR 0x0340
+#define HCI_ERROR_MAX_NR_OF_SCO ((hci_error_t)0x0A)
+#define HCI_ERROR_CONN_TERM_LOCAL_HOST ((hci_error_t)0x16)
+#define HCI_ERROR_REJ_BY_REMOTE_NO_RES ((hci_error_t)0x0D)
+#define AD_SM_FLAG_LE_SUPPORTED_HOST 0x02
+#define __DEC128_MANT_DIG__ 34
+#define __LDBL_MIN_10_EXP__ (-307)
+#define __int_fast64_t_defined 1
+#define I2C_WAIT_ACK_TIMEOUT (1UL * MILLISECOND)
+#define __STATUS_DEPRECATED_H__ 
+#define SM_ERROR_COMMAND_NOT_SUPPORTED sm_status_command_not_supported
+#define HCI_ERROR_INSTANT_PASSED ((hci_error_t)0x28)
+#define HCI_ERROR_AUTH_REPEATED ((hci_error_t)0x17)
+#define L2CAP_ERR_SCM_NO_LONGER_REQD HCI_ERROR_SCM_NO_LONGER_REQD
+#define MIN(a,b) min(a,b)
+#define UARTCFG_FORCE_ZERO_OUT 0x40
+#define __SIZEOF_LONG_LONG__ 4
+#define _GCC_PTRDIFF_T 
+#define SM_MIN_ENC_KEY_SIZE ((sm_enc_key_size)0x07)
+#define L2CAP_OWN_ADDR_TYPE_FLAG_ENUM(value) ((uint16)(value) << L2CA_OWN_ADDR_TYPE_OFFSET)
+#define __LDBL_DIG__ 15
+#define L2CAP_ERR_RESVD_SLOT_VIOLATION HCI_ERROR_RESVD_SLOT_VIOLATION
+#define GATT_RESULT_INVALID_DB gatt_status_invalid_db
+#define HCI_ERROR_UNKNOWN_LMP_PDU ((hci_error_t)0x19)
+#define LL_VER_BLUETOOTH_V4_0 0x06
+#define __GNUC_GNU_INLINE__ 1
+#define HCI_ERROR_PAIR_UNIT_KEY_NO_SUPPORT ((hci_error_t)0x29)
+#define ___int_ptrdiff_t_h 
+#define MB_LEN_MAX 1
+#define UARTCFG_ONE_PARITY_BIT 0x02
+#define HCI_ERROR_UNACCEPTABLE_CONN_INTERVAL ((hci_error_t)0x3B)
+#define INT_LEAST16_MAX 32767
+#define abs(a) (((a) < 0) ? -(a) : (a))
+#define ATT_HANDLE_VALUE_INDICATION 0x0001
+#define __WCHAR_T 

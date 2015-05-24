@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=V_SYS Pin=D1-K
+Removed Member From Class: ClassName=Base Member=D1
+Added Component: Designator=V1(SOD923)
+Added Pin To Net: NetName=V_SYS Pin=V1-K
+Added Pin To Net: NetName=NetIC1_9 Pin=IC1-9
+Added Pin To Net: NetName=NetIC1_9 Pin=S1-4
+Added Pin To Net: NetName=NetIC1_9 Pin=V1-A
+Added Net: Name=NetIC1_9
+Added Member To Class: ClassName=Base Member=Component J1 USB
+Added Member To Class: ClassName=Base Member=Component V1 1N4148W

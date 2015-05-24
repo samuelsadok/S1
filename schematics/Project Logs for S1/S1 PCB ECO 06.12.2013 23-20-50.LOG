@@ -1,0 +1,55 @@
+Removed Pin From Net: NetName=GND Pin=C2-1
+Removed Pin From Net: NetName=GND Pin=D1-K
+Removed Pin From Net: NetName=NetIC1_28 Pin=IC2-23
+Removed Pin From Net: NetName=NetIC1_14 Pin=J1-CASE_A
+Removed Pin From Net: NetName=V+ Pin=R5-2
+Removed Member From Class: ClassName=S1 Member=R5
+Change Component Footprint: Designator=C1 Old Footprint=0805 (C) New Footprint=0201 (C)
+Change Component Footprint: Designator=C3 Old Footprint=0805 (C) New Footprint=0201 (C)
+Change Component Footprint: Designator=C5 Old Footprint=0805 (C) New Footprint=0201 (C)
+Added Component: Designator=C1(0201 (C))
+Added Component: Designator=IC?(QFN-32 (5x5mm))
+Added Component: Designator=R2(0201 (C))
+Added Component: Designator=R3(0201 (C))
+Added Pin To Net: NetName=VCC Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=NetC2_2 Pin=C2-2
+Added Pin To Net: NetName=NetC2_2 Pin=IC1-9
+Added Pin To Net: NetName=NetIC1_14 Pin=IC1-14
+Added Pin To Net: NetName=NetIC1_28 Pin=IC1-28
+Added Pin To Net: NetName=GND Pin=IC?-1
+Added Pin To Net: NetName=VCC Pin=IC?-17
+Added Pin To Net: NetName=GND Pin=IC?-18
+Added Pin To Net: NetName=VCC Pin=IC?-32
+Added Pin To Net: NetName=NetIC1_28 Pin=R1-1
+Added Pin To Net: NetName=VCC Pin=R2-1
+Added Pin To Net: NetName=VCC Pin=R3-1
+Added Pin To Net: NetName=NetC2_2 Pin=X2-1
+Change Net Name : Old Net Name=V+ New Net Name=NetC7_1
+Added Pin To Net: NetName=NetIC2_12 Pin=IC2-12
+Added Net: Name=NetIC2_12
+Added Pin To Net: NetName=NetIC2_23 Pin=IC2-23
+Added Pin To Net: NetName=NetIC2_23 Pin=IC?-15
+Added Pin To Net: NetName=NetIC2_23 Pin=R2-2
+Added Net: Name=NetIC2_23
+Added Pin To Net: NetName=NetIC2_24 Pin=IC2-24
+Added Pin To Net: NetName=NetIC2_24 Pin=IC?-16
+Added Pin To Net: NetName=NetIC2_24 Pin=R3-2
+Added Net: Name=NetIC2_24
+Added Pin To Net: NetName=NetIC?_27 Pin=IC?-27
+Added Pin To Net: NetName=NetIC?_27 Pin=R2-2
+Added Net: Name=NetIC?_27
+Added Pin To Net: NetName=NetIC?_28 Pin=IC?-28
+Added Pin To Net: NetName=NetIC?_28 Pin=R3-2
+Added Net: Name=NetIC?_28
+Added Pin To Net: NetName=NetR1_1 Pin=R1-1
+Added Net: Name=NetR1_1
+Added Pin To Net: NetName=NetR4_2 Pin=R4-2
+Added Net: Name=NetR4_2
+Added Pin To Net: NetName=NetR10_1 Pin=R10-1
+Added Net: Name=NetR10_1
+Added Pin To Net: NetName=PDI_CLK Pin=IC?-8
+Added Net: Name=PDI_CLK
+Added Pin To Net: NetName=PDI_DATA Pin=IC?-7
+Added Net: Name=PDI_DATA
+Added Member To Class: ClassName=S1 Member=Component IC? Xmega32E5

@@ -1,0 +1,157 @@
+
+extract from bootloader,
+the following A0 bytes are loaded at 8F00 (code address 6F00)
+
+Disassembly of section .text:
+
+
+control header: 0x8F50
+block header: 0x8F53
+
+(?) loadBlock(uint16_t appOffset, uint16_t blockNumber)
+
+0x00006F00 <.LFE2+0x5A54>:
+    6F00:	080B      	enter      #+0x8
+	6F01:	0627      	st         al, @(+0x6, y)
+    6F02:	F821      	st         ah, @0xFFF8 <(scratchpad)>
+
+	// x = 4 * (blockNumber + 1)
+    6F03:	E015      	ld         al, @0xFFE0 <register ah>
+    6F04:	0134      	add        al, #+0x1
+    6F05:	02A0      	asl        #0x2
+    6F06:	E119      	ld         x, @0xFFE1 <register al>
+
+	// blockLength = [x + 0x8F51] = blocks[blockNumber].length
+    6F07:	8F00      	**prefx    0x8F
+    6F08:	511A      	ld         x, @(-0x70AF, x)
+    6F09:	042B      	st         x, @(+0x4, y)
+    
+	// x = 4 * blockNumber
+	6F0A:	F815      	ld         al, @0xFFF8 <(scratchpad)>
+    6F0B:	02A0      	asl        #0x2
+    6F0C:	E119      	ld         x, @0xFFE1 <register al>
+
+	// load buffer addr from [x + 0x8F54] = blocks[blockNumber].memAddr
+    6F0D:	8F00      	**prefx    0x8F
+    6F0E:	5416      	ld         al, @(-0x70AC, x)
+    6F0F:	0327      	st         al, @(+0x3, y)
+
+	// load app offset from [y+6] and add to it the value [x + 0x8F53] = blocks[blockNumber].imgAddr
+	// abort in some case (which case? offset overflow? => all cases)
+    6F10:	0617      	ld         al, @(+0x6, y)
+    6F11:	8F00      	**prefx    0x8F
+    6F12:	5336      	add        al, @(-0x70AD, x)
+	6F13:	0627      	st         al, @(+0x6, y)
+    6F14:	21E0      	bra        +0x21 <___libgatt_lib_db_3862+0x801:0x6F35[p]>
+
+loop:
+	// load byte length from [y+4]
+    6F15:	0417      	ld         al, @(+0x4, y)
+    6F16:	0527      	st         al, @(+0x5, y)
+
+	// limit effective block read length to 0x400?
+    6F17:	0400      	**prefx    0x4
+    6F18:	0084      	cmp        al, #+0x400
+    6F19:	042C      	bcz        +0x4 <___libgatt_lib_db_3862+0x7E9:0x6F1D[p]>
+    6F1A:	0400      	**prefx    0x4
+    6F1B:	0014      	ld         al, #+0x400
+    6F1C:	0527      	st         al, @(+0x5, y)
+
+	// wait: yes
+    6F1D:	0114      	ld         al, #+0x1
+    6F1E:	0027      	st         al, @(0x0, y)
+
+	// byte length (at most 0x400?)
+    6F1F:	0517      	ld         al, @(+0x5, y)
+    6F20:	0127      	st         al, @(+0x1, y)
+
+	// buffer addr
+    6F21:	0317      	ld         al, @(+0x3, y)
+    6F22:	0227      	st         al, @(+0x2, y)	
+
+	// chip: 0x50
+    6F23:	5014      	ld         al, #+0x50
+
+	// eeprom addr from y+6
+    6F24:	0613      	ld         ah, @(+0x6, y)
+    
+	// read from EEPROM
+	6F25:	7C00      	**prefx    0x7C
+    6F26:	B09C      	bsr        +0x7BB0 <I2cEepromRead:0xEAD6[p]>
+
+	// eeprom addr += effective bytes read
+    6F27:	0617      	ld         al, @(+0x6, y)
+    6F28:	0537      	add        al, @(+0x5, y)
+    6F29:	0627      	st         al, @(+0x6, y)
+
+	// buffer addr += effective words read (rounded up)
+    6F2A:	051B      	ld         x, @(+0x5, y)
+    6F2B:	01C8      	and        x, #0x1
+    6F2C:	0513      	ld         ah, @(+0x5, y)
+    6F2D:	0009      	**unsigned
+    6F2E:	01A4      	lsr        #0x1
+    6F2F:	E039      	add        x, @0xFFE0 <register ah>
+    6F30:	033B      	add        x, @(+0x3, y)
+    6F31:	032B      	st         x, @(+0x3, y)
+
+	// remaining bytes -= effective bytes to read
+    6F32:	0417      	ld         al, @(+0x4, y)
+    6F33:	0557      	sub        al, @(+0x5, y)
+    6F34:	0427      	st         al, @(+0x4, y)
+
+	// loop if there are bytes left in the block
+    6F35:	049B      	tst        @(+0x4, y)
+    6F36:	DFF0      	bne        -0x21 <___libgatt_lib_db_3862+0x7E1:0x6F15[p]>
+    6F37:	080F      	leave      #+0x8
+
+
+
+
+
+
+
+    6F38:	030B      	enter      #+0x3
+
+	// check arg1
+    6F39:	0284      	cmp        al, #+0x2
+    6F3A:	04F0      	bne        +0x4 <___libgatt_lib_db_3862+0x80A:0x6F3E[p]>
+
+	// case1: arg1 == 2
+    6F3B:	9A00      	**prefx    0x9A
+    6F3C:	6E14      	ld         al, #-0x6592
+    6F3D:	03E0      	bra        +0x3 <___libgatt_lib_db_3862+0x80C:0x6F40[p]>
+
+	// case2: arg1 != 2
+    6F3E:	3D00      	**prefx    0x3D
+    6F3F:	0014      	ld         al, #+0x3D00
+
+	// appOffset = ((arg1 == 2) ? 0x9A6E : 0x3D00)
+    6F40:	0127      	st         al, @(+0x1, y)
+    
+	// i = 0, go to loop check
+	6F41:	0014      	ld         al, #+0x0
+    6F42:	06E0      	bra        +0x6 <___libgatt_lib_db_3862+0x814:0x6F48[p]>
+
+loop:
+	// loadBlock(appOffset, i)
+    6F43:	0117      	ld         al, @(+0x1, y)
+    6F44:	0013      	ld         ah, @(0x0, y)
+    6F45:	BB9C      	bsr        -0x45 <___libgatt_lib_db_3862+0x7CC:0x6F00[p]>
+
+	// i++
+    6F46:	0017      	ld         al, @(0x0, y)
+    6F47:	0134      	add        al, #+0x1
+
+	// store i
+    6F48:	0027      	st         al, @(0x0, y)
+    6F49:	0017      	ld         al, @(0x0, y)
+    
+	// if i >= blockCount, go to loop => ?
+	6F4A:	8F00      	**prefx    0x8F
+    6F4B:	5285      	cmp        al, @0x8F52 <LsStartStopAdvertise_A05+0x3F>
+    6F4C:	F7FC      	bcs        -0x9 <___libgatt_lib_db_3862+0x80F:0x6F43[p]>
+
+	// call 0x0 (5) ??
+    6F4D:	0518      	ld         x, #+0x5
+    6F4E:	00E2      	bra        0x0, x
+    6F4F:	030F      	leave      #+0x3

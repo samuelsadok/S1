@@ -1,0 +1,25 @@
+Removed Pin From Net: NetName=V_BAT Pin=C7-1
+Removed Pin From Net: NetName=NetIC1_15 Pin=R2-2
+Change Component Designator: OldDesignator=D1 NewDesignator=H1
+Change Component Designator: OldDesignator=D1 NewDesignator=V6
+Change Component Designator: OldDesignator=D2 NewDesignator=H2
+Change Component Designator: OldDesignator=IC5 NewDesignator=A1
+Change Component Designator: OldDesignator=Q1 NewDesignator=V1
+Change Component Designator: OldDesignator=Q2 NewDesignator=V2
+Change Component Designator: OldDesignator=Q3 NewDesignator=V3
+Change Component Designator: OldDesignator=Q4 NewDesignator=V4
+Change Component Designator: OldDesignator=Q5 NewDesignator=V5
+Added Pin To Net: NetName=V_BAT Pin=C7-1
+Added Pin To Net: NetName=NetIC1_15 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_27 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_16 Pin=R3-2
+Change Net Name : Old Net Name=NetD1_1 New Net Name=NetH1_1
+Change Net Name : Old Net Name=NetD1_A New Net Name=NetV5_1
+Change Net Name : Old Net Name=NetD1_K New Net Name=NetS1_4
+Change Net Name : Old Net Name=NetD2_1 New Net Name=NetH2_1
+Change Net Name : Old Net Name=NetD2_2 New Net Name=NetH2_2
+Change Net Name : Old Net Name=NetQ1_3 New Net Name=NetV1_3
+Change Net Name : Old Net Name=NetQ2_3 New Net Name=NetV2_3
+Change Net Name : Old Net Name=NetQ3_3 New Net Name=NetV3_3
+Change Net Name : Old Net Name=NetQ4_3 New Net Name=NetV4_3
+Added Member To Class: ClassName=S1 Member=Component V6 1N4148W

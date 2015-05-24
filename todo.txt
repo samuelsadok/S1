@@ -1,0 +1,27 @@
+set mpu struct
+mpu data format
+init uav
+--
+i2c async read
+i2c slave
+i2c error handling
+endpoints (control, configuration, version, logging)
+unify i2c endpoints with bluetooth endpoints
+extract factory bootloader
+i2c bootloader (with 5s button)
+nvm
+DFU endpoint
+i2c logging
+power, battery, temperature
+interrupt vectors at startup
+bootloader range check
+bug check
+atomic
+extract XUV
+pack firmware
+
+DFU service
+i2c bootloader interface
+config service
+control service
+state service

@@ -1,0 +1,131 @@
+
+BLUETOOTH TOPICS
+
+service
+characteristic
+descriptor
+attribute
+
+ads
+connection
+pairing
+bond
+irk
+	identity resolve key (max 1 per bond)
+diversifier
+	
+white list
+address types
+
+
+
+
+HOW TO BOOTSTRAP AN EMPTY DEVICE
+
+The flight processor flash can be accessed through the ISP connection. This way,
+a factory bootloader code can be written to the device along with a I2C bootloader.
+The factory bootloader will then program the baseband processor with its bootloader
+so that the the device is available for over-the-air updates.
+
+
+FLIGHT PROCESSOR BOOTLOADER
+
+If magic number = 0xB007, control is transferred to the application
+immediately without anychecks. This special case is only used for
+factory bootstrapping.
+If magic number = 0xB007, wait for a firmware update on I2C (connected
+to the baseband) or for a command to launch the application.
+If magic code != 0xC0DE, the bootloader refuses to launch the application.
+When a firmware update begins, the magic number is invalidated.
+After a firmware has been received and the checksum is valid, the magic number
+is set to 0xC0DE.
+
+
+FLIGHT PROCESSOR FACTORY BOOTLOADER
+
+Contains the baseband bootloader hardcoded and uses software I2C to program
+the onboard EEPROM. After programming and verifying the baseband bootloader,
+the flight processor is put into DFU mode by invalidating the magic number.
+
+
+FLIGHT PROCESSOR APPLICATION
+
+Controls the flight systems and waits for control commands on I2C. If no commands
+are received for a while, the motors are shut down. The application can be commanded
+to transfer control to the bootloader.
+
+
+BASEBAND BOOTLOADER
+
+Tries to place the flight processor into bootloader mode.
+If magic number = 0xC0DE and the bootloader reports that it has a valid application,
+the DFU mode is only temporary and the bootloader disables itself, so that the next
+reboot will start the application.
+Sends advertisements using a "DFU mode" device name and exposes the DFU service.
+
+
+
+BASEBAND APPLICATION
+
+Tries to command the flight processor to enter application mode. If this fails, it
+bugchecks. Any bug check in the application will temporarily put the device into to DFU mode.
+
+
+
+
+
+DFU SERVICE (while in DFU mode)
+
+DFU version			r
+baseband version		r	may be unknown
+baseband application		rw	Reading maps to the active application, writing maps to the inactive application and stages it for activation.
+flight software version		r	May be unknown
+flight processor application	rw	Writing to this locks the baseband processor (and consequently the flight processor) to DFU mode
+state				rw	Reading from this indicates whether the DFU mode is temporary or permanent (locked).
+					Writing to this causes both bootloaders to check their application and possibly activate it if valid. This will unlock the device from DFU mode.
+
+DFU SERVICE (while in normal mode)
+
+DFU version			r
+state				rw	Reading from this indicates that the device is in normal mode.
+					Writing to this causes the device to enter temporary DFU mode.
+
+
+
+IMAGE FILE
+proj.xuv contains what should be in the RAM
+
+proj.flash.xuv and proj.img contain a mapping of the RAM:
+All values are 16 bit values and are stored in EEPROM in little endian.
+
+[Control Header]:
+CRC of some kind (?)
+number of blocks n (stored in EEPROM in big endian!)
+SCL high/low period: 5050 on flash, 0F15 on EEPROM
+
+[n Block Headers]:
+byte offset in image
+address in memory (in words)
+byte length
+CRC of the block contents
+
+[n Data Blocks]
+
+Code memory (program counter) maps to memory address 0x2000
+After loading the image, the code starts at memroy address 0x2010 (code address 0x10)
+at memory address 0x2008, we find 8 words of info for the firmware:
+1 word: function pointer to the program entry point (ram_app_init)
+6 words: firmware patch bitmap
+1 word: pointer to the firmware patch table
+the patch table consists of 24 (?) pairs of words:
+- ??
+- function pointer (to somewhere in the image)
+
+
+CSR ABI:
+if all arguments are 16bit wide:
+1st arg: al
+2nd arg: ah
+3rd arg: y+0
+4th arg: y+1
+5th arg: y+2

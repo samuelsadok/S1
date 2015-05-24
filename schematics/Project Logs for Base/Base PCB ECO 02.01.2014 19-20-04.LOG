@@ -1,0 +1,24 @@
+Change Component Designator: OldDesignator=IC1 NewDesignator=U1
+Change Component Designator: OldDesignator=IC2 NewDesignator=U2
+Change Component Designator: OldDesignator=IC3 NewDesignator=U3
+Change Component Designator: OldDesignator=IC4 NewDesignator=U4
+Change Component Designator: OldDesignator=IC5 NewDesignator=A1
+Change Component Designator: OldDesignator=IC7 NewDesignator=U5
+Change Net Name : Old Net Name=NetIC1_4 New Net Name=NetR4_2
+Change Net Name : Old Net Name=NetIC1_9 New Net Name=NetS1_4
+Change Net Name : Old Net Name=NetIC1_10 New Net Name=NetU1_10
+Change Net Name : Old Net Name=NetIC1_11 New Net Name=NetS1_L1
+Change Net Name : Old Net Name=NetIC1_12 New Net Name=NetR3_2
+Change Net Name : Old Net Name=NetIC1_15 New Net Name=NetR7_2
+Change Net Name : Old Net Name=NetIC1_16 New Net Name=NetR8_2
+Change Net Name : Old Net Name=NetIC1_21 New Net Name=NetU1_21
+Change Net Name : Old Net Name=NetIC1_22 New Net Name=NetU1_22
+Change Net Name : Old Net Name=NetIC1_23 New Net Name=NetU1_23
+Change Net Name : Old Net Name=NetIC1_24 New Net Name=NetU1_24
+Change Net Name : Old Net Name=NetIC1_25 New Net Name=NetU1_25
+Change Net Name : Old Net Name=NetIC1_26 New Net Name=NetU1_26
+Change Net Name : Old Net Name=NetIC1_27 New Net Name=NetR2_2
+Change Net Name : Old Net Name=NetIC1_28 New Net Name=NetR1_2
+Change Net Name : Old Net Name=NetIC1_30 New Net Name=NetR10_1
+Change Net Name : Old Net Name=NetIC4_5 New Net Name=NetL2_1
+Change Net Name : Old Net Name=NetIC7_5 New Net Name=NetR9_2

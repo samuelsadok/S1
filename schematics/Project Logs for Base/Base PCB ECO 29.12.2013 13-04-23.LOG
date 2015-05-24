@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C6-1
+Added Pin To Net: NetName=GND Pin=IC3-1
+Added Pin To Net: NetName=GND Pin=IC3-2
+Added Pin To Net: NetName=GND Pin=IC3-3
+Added Pin To Net: NetName=NetC6_2 Pin=C6-2
+Added Pin To Net: NetName=NetC6_2 Pin=IC3-24
+Added Net: Name=NetC6_2
+Added Member To Class: ClassName=Base Member=Component C4 Cap 47pF
+Added Member To Class: ClassName=Base Member=Component C5 Cap 100nF

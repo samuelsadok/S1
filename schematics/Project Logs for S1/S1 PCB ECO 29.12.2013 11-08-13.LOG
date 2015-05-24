@@ -1,0 +1,46 @@
+Removed Pin From Net: NetName=NetH1_1 Pin=R1-2
+Removed Pin From Net: NetName=NetH2_2 Pin=R2-1
+Removed Pin From Net: NetName=GND Pin=R2-2
+Removed Pin From Net: NetName=VCC Pin=R3-1
+Removed Pin From Net: NetName=NetIC1_27 Pin=R3-2
+Removed Pin From Net: NetName=VCC Pin=R4-1
+Removed Pin From Net: NetName=NetIC1_28 Pin=R4-2
+Change Component DesignItemId : Designator=R3 Old DesignItemId=Res 4k7 New DesignItemId=Res 10k
+Change Component DesignItemId : Designator=R4 Old DesignItemId=Res 4k7 New DesignItemId=Res 10k
+Change Component DesignItemId : Designator=R1 Old DesignItemId=Res 100R New DesignItemId=Res 10k
+Change Component DesignItemId : Designator=R2 Old DesignItemId=Res 100R New DesignItemId=Res 10k
+Change Component Footprint: Designator=R3 Old Footprint=0201 (C) New Footprint=0805 (R)
+Change Component Footprint: Designator=R4 Old Footprint=0201 (C) New Footprint=0805 (R)
+Change Component Footprint: Designator=R1 Old Footprint=0201 (R) New Footprint=0805 (R)
+Change Component Footprint: Designator=R2 Old Footprint=0201 (R) New Footprint=0805 (R)
+Change Component Comment : Designator=R3 Old Comment=Res 4k7 New Comment=Res 10k
+Change Component Comment : Designator=R4 Old Comment=Res 4k7 New Comment=Res 10k
+Change Component Comment : Designator=R1 Old Comment=Res 100R New Comment=Res 10k
+Change Component Comment : Designator=R2 Old Comment=Res 100R New Comment=Res 10k
+Change Component Designator: OldDesignator=R5 NewDesignator=R9
+Change Component Designator: OldDesignator=R6 NewDesignator=R10
+Added Component: Designator=R5(0201 (R))
+Added Component: Designator=R6(0201 (R))
+Added Component: Designator=R7(0201 (C))
+Added Component: Designator=R8(0201 (C))
+Added Pin To Net: NetName=NetIC1_11 Pin=R1-1
+Added Pin To Net: NetName=BAT- Pin=R1-2
+Added Pin To Net: NetName=BAT- Pin=R2-1
+Added Pin To Net: NetName=NetIC1_12 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_9 Pin=R3-1
+Added Pin To Net: NetName=BAT- Pin=R3-2
+Added Pin To Net: NetName=BAT- Pin=R4-1
+Added Pin To Net: NetName=NetIC1_10 Pin=R4-2
+Added Pin To Net: NetName=NetH1_1 Pin=R5-2
+Added Pin To Net: NetName=NetH2_2 Pin=R6-1
+Added Pin To Net: NetName=GND Pin=R6-2
+Added Pin To Net: NetName=VCC Pin=R7-1
+Added Pin To Net: NetName=NetIC1_27 Pin=R7-2
+Added Pin To Net: NetName=VCC Pin=R8-1
+Added Pin To Net: NetName=NetIC1_28 Pin=R8-2
+Added Pin To Net: NetName=NetR5_1 Pin=R5-1
+Added Net: Name=NetR5_1
+Added Member To Class: ClassName=S1 Member=Component R7 Res 4k7
+Added Member To Class: ClassName=S1 Member=Component R8 Res 4k7
+Added Member To Class: ClassName=S1 Member=Component R9 Res 4k7
+Added Member To Class: ClassName=S1 Member=Component R10 Res 4k7

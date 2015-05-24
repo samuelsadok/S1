@@ -1,0 +1,16 @@
+Added Component: Designator=R1(0201 (R))
+Added Component: Designator=R2(0201 (R))
+Added Component: Designator=R3(0201 (R))
+Added Component: Designator=R4(0201 (R))
+Added Pin To Net: NetName=NetIC1_11 Pin=R1-1
+Added Pin To Net: NetName=BAT- Pin=R1-2
+Added Pin To Net: NetName=BAT- Pin=R2-1
+Added Pin To Net: NetName=NetIC1_12 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_9 Pin=R3-1
+Added Pin To Net: NetName=BAT- Pin=R3-2
+Added Pin To Net: NetName=BAT- Pin=R4-1
+Added Pin To Net: NetName=NetIC1_10 Pin=R4-2
+Added Member To Class: ClassName=S1 Member=Component R1 Res 10k
+Added Member To Class: ClassName=S1 Member=Component R2 Res 10k
+Added Member To Class: ClassName=S1 Member=Component R3 Res 10k
+Added Member To Class: ClassName=S1 Member=Component R4 Res 10k

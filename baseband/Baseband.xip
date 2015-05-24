@@ -1,0 +1,72 @@
+<project buildenvironment="{067c869e-5bd9-4595-9f4c-60348133ad8e}" buildenvironmentname="uEnergy" executionenvironmentoption="XAP2+ P0 ELF DWARF BINUTILS UENERGYSDK" buildenvironmentoption="UENERGYSDK" executionenvironmentname="uEnergy" name="CSR uEnergy" executionenvironment="{39e65239-59f4-4d78-b84a-26eaebfaa4de}" >
+ <folder name="src" >
+  <extension name="c" />
+  <folder name="application" >
+   <folder name="bootloader" >
+    <file path="../shared/application/bootloader/csr_ota.h" />
+    <file path="../shared/application/bootloader/csr_ota_service.c" />
+    <file path="../shared/application/bootloader/csr_ota_service.h" />
+   </folder>
+  </folder>
+  <folder name="system" >
+   <file path="../shared/system/callback.c" />
+   <file path="../shared/system/callback.h" />
+   <file path="../shared/system/log.c" />
+   <file path="../shared/system/log.h" />
+   <file path="../shared/system/system.c" />
+   <file path="../shared/system/system.h" />
+   <file path="../shared/system/timer.h" />
+  </folder>
+  <folder name="hardware" >
+   <folder name="csr" >
+    <file path="../shared/hardware/csr/csr1010.h" />
+    <file path="../shared/hardware/csr/csr1010.c" />
+    <file path="../shared/hardware/csr/ble.c" />
+    <file path="../shared/hardware/csr/ble.h" />
+    <file path="../shared/hardware/csr/gatt.c" />
+    <file path="../shared/hardware/csr/gatt.h" />
+    <file path="../shared/hardware/csr/gatt_service.c" />
+    <file path="../shared/hardware/csr/gatt_service.h" />
+   </folder>
+   <file path="../shared/hardware/hal.h" />
+  </folder>
+  <file path="device.h" />
+  <file path="config.h" />
+  <file path="customisation.h" />
+  <file path="main.c" />
+ </folder>
+ <folder name="GATT db files" >
+  <extension name="db" />
+  <file path="../shared/hardware/csr/database/app_gatt_db.db" />
+  <file path="../shared/hardware/csr/database/dev_info_service_db.db" />
+  <file path="../shared/hardware/csr/database/gap_service_db.db" />
+  <file path="../shared/hardware/csr/database/gatt_service_db.db" />
+  <file path="../shared/hardware/csr/database/battery_service_db.db" />
+  <file path="../shared/hardware/csr/database/heart_rate_service_db.db" />
+  <file path="../shared/hardware/csr/database/csr_ota_db.db" />
+  <file path="../shared/hardware/csr/database/csr_ota_uuids.h" />
+  <file path="../shared/hardware/csr/database/i2c_service_db.db" />
+ </folder>
+ <properties currentconfiguration="Release" >
+  <configuration name="Debug" >
+   <property key="csr101x_a05_keyr" >C:\Data\Code\C\Quadrocopter\Baseband\baseband.keyr</property>
+   <property key="debugtransport" ></property>
+   <property key="defines" ></property>
+   <property key="hw_version" >1</property>
+   <property key="incpaths" >./../shared/</property>
+   <property key="libpaths" >./../shared/application/bootloader/</property>
+   <property key="libs" >ota_lib</property>
+   <property key="output" ></property>
+  </configuration>
+  <configuration name="Release" >
+   <property key="csr101x_a05_keyr" >C:\Data\Code\C\Quadrocopter\BluetoothDFU\beacon.keyr</property>
+   <property key="debugtransport" ></property>
+   <property key="defines" ></property>
+   <property key="hw_version" >1</property>
+   <property key="incpaths" >./../shared/</property>
+   <property key="libpaths" >./../shared/application/bootloader/</property>
+   <property key="libs" >ota_lib</property>
+   <property key="output" ></property>
+  </configuration>
+ </properties>
+</project>

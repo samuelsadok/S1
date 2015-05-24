@@ -1,0 +1,51 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Designator~String~Designator~100|Field=Footprint~String~Footprint~100|Field=Manufacturer~String~Manufacturer~100|Field=Quantity~Integer~Quantity~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~S1.PrjPCB|ReportField=ProjectFullPath~\\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\S1.PrjPCB|ReportField=Title~Bill of Materials For Project [S1.PrjPCB] (No PCB Document Selected)|ReportField=TotalQuantity~50|ReportField=ReportTime~11:42:40|ReportField=ReportDate~03.01.2014|ReportField=ReportDateTime~03.01.2014 11:42:40|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~03.01.2014|ReportField=CurrentTime~11:40:44|ReportField=Date~|ReportField=DocumentFullPathAndName~\\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\S1.SchDoc|ReportField=DocumentName~S1.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~Samuel Sadok|ReportField=ImagePath~|ReportField=ModifiedDate~03.01.2014|ReportField=Organization~|ReportField=ProjectName~S1.PrjPCB|ReportField=Revision~1|ReportField=Rule~|ReportField=SheetNumber~1|ReportField=SheetTotal~1|ReportField=Time~|ReportField=Title~Codename S1|ReportField=DataSourceFileName~S1.PrjPCB|ReportField=DataSourceFullPath~\\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\S1.PrjPCB
+AP7333-28SA|Low Dropout Regulator 2.8V, 300mA|A1|SOT23||1
+Cap 1µF|Ceramic Capacitor 1µF|C1|0201 (C)||1
+Cap 1µF|Ceramic Capacitor 1µF|C2|0201 (C)||1
+Cap 100nF|Ceramic Capacitor 100nF|C3|0201 (C)||1
+Cap 100nF|Ceramic Capacitor 100nF|C4|0201 (C)||1
+Cap 100nF|Ceramic Capacitor 100nF|C5|0201 (C)||1
+Cap 100nF|Ceramic Capacitor 100nF|C6|0201 (C)||1
+Cap 100nF|Ceramic Capacitor 100nF|C7|0201 (C)||1
+Cap 2.2nF|Ceramic Capacitor 2.2nF|C8|0201 (C)||1
+Cap 100nF|Ceramic Capacitor 100nF|C9|0201 (C)||1
+Cap 470nF|Ceramic Capacitor 470nF|C10|0201 (C)||1
+Cap 15pF|Ceramic Capacitor 15pF|C11|0201 (C)||1
+Cap 8.2pF|Ceramic Capacitor 8.2pF|C12|0201 (C)||1
+Cap 470nF|Ceramic Capacitor 470nF|C13|0201 (C)||1
+Cap 150nF|Ceramic Capacitor 150nF|C14|0201 (C)||1
+Cap 47nF|Ceramic Capacitor 47nF|C15|0201 (C)||1
+Cap 2.2µF|Ceramic Capacitor 2.2µF|C16|0402 (C)||1
+Cap 33pF|Ceramic Capacitor 33pF|C17|0201 (C)||1
+Cap 47µF|Ceramic Capacitor 47µF|C18|0805 (C)||1
+Cap 470nF|Ceramic Capacitor 470nF|C19|0201 (C)||1
+Cap 2.2µF|Ceramic Capacitor 2.2µF|C20|0402 (C)||1
+Cap 47nF|Ceramic Capacitor 47nF|C21|0201 (C)||1
+LED1|Side View LED|H1|KLTFSN2K5200||1
+LED1|Side View LED|H2|KLTFSN2K5200||1
+Pico-EZMate|Programming & Charging Connector for S1|J1|Pico-EZMate (4Pin)||1
+L 4.7µH|Inductor 4.7µH|L1|0603 (L)||1
+Res 10k|Resistor 10k|R1|0201 (R)||1
+Res 10k|Resistor 10k|R2|0201 (R)||1
+Res 10k|Resistor 10k|R3|0201 (R)||1
+Res 10k|Resistor 10k|R4|0201 (R)||1
+Res 100R|Resistor 100R|R5|0201 (R)||1
+Res 100R|Resistor 100R|R6|0201 (R)||1
+Res 4k7|Resistor 4k7|R7|0201 (R)||1
+Res 4k7|Resistor 4k7|R8|0201 (R)||1
+Res 4k7|Resistor 4k7|R9|0201 (R)||1
+Res 4k7|Resistor 4k7|R10|0201 (R)||1
+TL1014BF160QG|Tactile Switch, Right Angle|S1|Switch Right Angle||1
+Xmega32E5|8-Bit AVR Microcontroller|U1|QFN-32 (5x5mm)||1
+MPU6050|9DOF Motion Processing Unit|U2|LQFN24 (4x4mm)||1
+CSR1010|Bluetooth v4.0 Low Energy Chip|U3|QFN-32 (5x5mm)||1
+AT24C512C|512kbit I2C EEPROM|U4|UDFN-8 (3x2mm)||1
+DMG2302U|MOSFET N-Channel|V1|SOT23|Diodes Inc.|1
+DMG2302U|MOSFET N-Channel|V2|SOT23|Diodes Inc.|1
+DMG2302U|MOSFET N-Channel|V3|SOT23|Diodes Inc.|1
+DMG2302U|MOSFET N-Channel|V4|SOT23|Diodes Inc.|1
+DMG2302U|MOSFET N-Channel|V5|SOT23|Diodes Inc.|1
+1N4148W|Diode|V6|SOD923||1
+W3008|Antenna 2.4GHz|X1|Antenna 3.2x1.6mm (W3008)||1
+8Y-16.000MAAV-T|Crystal 16MHz|X2|Crystal 1.6mm x 2mm||1
+ABS05-32.768KHZ-9-T|Crystal 32.768kHz|X3|Crystal 1mm x 1.6mm||1

@@ -1,0 +1,1447 @@
+STEP to UG
+! INFO-     NX STEP AP203 - V8.5
+! INFO-      
+! INFO-     Start of Translation: 27-DEC-2013  9:58:16 PM
+! INFO-      
+! STATUS-   Converting Part: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\S1.step
+! SUMMARY-   
+! SUMMARY-    STEP Header Information
+! SUMMARY-   
+! SUMMARY-  Description      Open CASCADE Model
+! SUMMARY-  Imp_Level        2;1
+! SUMMARY-  File_Name        Open CASCADE Shape Model
+! SUMMARY-  Date             2013-12-27T21:53:31
+! SUMMARY-  Author           Author
+! SUMMARY-  Organization     Open CASCADE
+! SUMMARY-  Pre_Version      Open CASCADE STEP processor 6.2
+! SUMMARY-  Orig_System      Open CASCADE 6.2
+! SUMMARY-  Authorization    Unknown
+! SUMMARY-  Schema_ID        automotive_design
+! SUMMARY-   
+! SUMMARY-    Summary of STEP Entities
+! SUMMARY-   
+! SUMMARY-  Entity Type                                                   Count
+! SUMMARY-  -----------                                                   ------
+! SUMMARY-  advanced_brep_shape_representation .........................:     31
+! SUMMARY-  advanced_face ..............................................:    802
+! SUMMARY-  application_context ........................................:      1
+! SUMMARY-  application_protocol_definition ............................:      1
+! SUMMARY-  axis2_placement_2d .........................................:     94
+! SUMMARY-  axis2_placement_3d .........................................:   1180
+! SUMMARY-  b_spline_curve_with_knots ..................................:    397
+! SUMMARY-  b_spline_curve_with_knots_and_rational_b_spline_curve ......:     84
+! SUMMARY-  cartesian_point ............................................:  11408
+! SUMMARY-  circle .....................................................:    260
+! SUMMARY-  closed_shell ...............................................:     31
+! SUMMARY-  conical_surface ............................................:      2
+! SUMMARY-  context_dependent_shape_representation .....................:    195
+! SUMMARY-  cylindrical_surface ........................................:     87
+! SUMMARY-  definitional_representation ................................:   4390
+! SUMMARY-  direction ..................................................:   8282
+! SUMMARY-  edge_curve .................................................:   2195
+! SUMMARY-  edge_loop ..................................................:    819
+! SUMMARY-  ellipse ....................................................:     16
+! SUMMARY-  face_bound .................................................:    819
+! SUMMARY-  geometric_representation_context_and_global_uncertainty_a ..:    107
+! SUMMARY-  item_defined_transformation ................................:    195
+! SUMMARY-  length_unit_and_si_unit ....................................:    107
+! SUMMARY-  line .......................................................:   5828
+! SUMMARY-  manifold_solid_brep ........................................:     31
+! SUMMARY-  next_assembly_usage_occurrence .............................:    195
+! SUMMARY-  oriented_edge ..............................................:   4390
+! SUMMARY-  pcurve .....................................................:   4390
+! SUMMARY-  plane ......................................................:    712
+! SUMMARY-  plane_angle_unit_and_si_unit ...............................:    107
+! SUMMARY-  product ....................................................:    107
+! SUMMARY-  product_context ............................................:    107
+! SUMMARY-  product_definition .........................................:    107
+! SUMMARY-  product_definition_context .................................:    107
+! SUMMARY-  product_definition_formation ...............................:    107
+! SUMMARY-  product_definition_shape ...................................:    302
+! SUMMARY-  product_related_product_category ...........................:    107
+! SUMMARY-  representation_relationship_with_transformation_and_shape ..:    195
+! SUMMARY-  seam_curve .................................................:      7
+! SUMMARY-  shape_definition_representation ............................:    107
+! SUMMARY-  shape_representation .......................................:     76
+! SUMMARY-  si_unit_and_solid_angle_unit ...............................:    107
+! SUMMARY-  spherical_surface ..........................................:      1
+! SUMMARY-  surface_curve ..............................................:   2188
+! SUMMARY-  uncertainty_measure_with_unit ..............................:    107
+! SUMMARY-  vector .....................................................:   5828
+! SUMMARY-  vertex_point ...............................................:   1456
+! SUMMARY-                                                               -------
+! SUMMARY-  Total                                                          58172
+! STATUS-    
+! STATUS-   Converting to Output Form (Phase 2 of 3): 27-DEC-2013 9:58:18 PM
+! STATUS-    
+! STATUS-    
+! STATUS-   Generating UG geometry and placing them in parts
+! STATUS-    
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:18 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 62203
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded62202
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:42 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 61808
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded61807
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:43 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 61321
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded61320
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:44 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 60696
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded60695
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:45 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 60154
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded60153
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:46 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 59649
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded59648
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:47 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 59267
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded59266
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:48 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 58860
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded58859
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:49 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 58478
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded58477
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:50 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 57905
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded57904
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:51 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 57510
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded57509
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:52 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 57115
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded57114
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:52 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 56720
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded56719
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:53 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 56325
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded56324
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:54 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 55925
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded55924
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:55 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 55553
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded55552
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:56 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 55145
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded55144
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:57 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 54773
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded54772
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:58:58 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 43082
+! STATUS-    
+! STATUS-   fixing vertex and/or edge off surface faults
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\TL1014_Cover
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:00 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 40244
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\TL1014_Actuator
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:01 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 32693
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\TL1014_B_Housing
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:02 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 32244
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded32243
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:03 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 31729
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded31728
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:04 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 31357
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded31356
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:05 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 30950
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded30949
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:06 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 30215
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded30214
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:07 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 29682
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded29681
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:08 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 29305
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded29304
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:09 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 28856
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded28855
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:10 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 28479
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Extruded
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:11 PM
+! STATUS-    
+! STATUS-   Creating UG solid body from Input Ent Id 214
+! STATUS-    
+! STATUS-   fixing inconsistent loop faults
+! STATUS-    
+! STATUS-   simplifying Bsplines to analytics
+! STATUS-    
+! STATUS-   converting tolerant edges into exact edges
+! STATUS-    
+! STATUS-   doing final check of body to report any faults
+! STATUS-    
+! WARNING-  solid body contains fault: 13826 - RTSTLC: Loops inconsistent.
+! WARNING-  solid body contains fault: 13826 - RTSTLC: Loops inconsistent.
+! WARNING-  solid body (Unnamed) contains faults that could not be corrected
+! WARNING-   
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\Board
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Solid .......................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:13 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446772528
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:14 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\J1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:15 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446769712
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:16 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\FB1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:18 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446769456
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:19 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446769584
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:20 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C21
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:21 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446769840
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:22 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446770096
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:24 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C19
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:25 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446772912
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:26 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C18
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:27 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C17
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:28 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C15
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:30 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C14
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:32 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C13
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:33 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C10
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:34 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416638432
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:36 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\IC4
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:37 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C9
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:38 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446770352
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:39 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446770224
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:40 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\V5
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     4
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              4
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:41 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C3
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:42 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446770480
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:44 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\V6
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:45 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446771120
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:46 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446771376
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:47 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\V4
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     4
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              4
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:48 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446770608
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:49 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446770992
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:51 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\V3
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     4
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              4
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:52 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\V2
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     4
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              4
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:53 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\V1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     4
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              4
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:54 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\R4
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:55 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\R3
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:57 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416636384
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:58 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\IC1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  9:59:59 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C4
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:00 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416638944
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:01 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\X3
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:03 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446771504
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:04 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\X2
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:05 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416639072
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:06 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\X1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:07 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416639200
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:08 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\L1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:10 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\IC3
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:11 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446769328
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:12 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446768432
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:13 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C16
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:14 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416638560
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:15 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\416638688
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:17 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C20
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:18 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C12
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:19 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C11
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:20 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\TL1014BFxxxQG
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:21 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\S1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:22 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446771632
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:24 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\R2
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:25 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\R1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:26 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\R5
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:27 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\R6
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:28 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\A1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     4
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              4
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:30 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446771760
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:31 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\IC2
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:32 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\446771888
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:33 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\H2
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:34 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\H1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     1
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              1
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:36 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C2
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:37 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C1
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:38 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C8
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:39 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C7
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:40 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C6
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:41 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\C5
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:     3
+! SUMMARY-                                 -----
+! SUMMARY-  Total                              3
+! STATUS-   Creating the UG part (Phase 3 of 3): 27-DEC-2013  10:00:43 PM
+! INFO-     Filing Part ..: \\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Project Outputs for S1\ExportSTEP\S1_step.prt
+! SUMMARY-   
+! SUMMARY-  Summary of Unigraphics Part Entities
+! SUMMARY-   
+! SUMMARY-  Entities Processed             Count
+! SUMMARY-  ------------------             -----
+! SUMMARY-  Component ...................:    48
+! SUMMARY-                                 -----
+! SUMMARY-  Total                             48
+! INFO-      
+! INFO-     Total number of solids input for this translation       :        31
+! INFO-      
+! INFO-     Number of solids created without body validation faults :        30
+! INFO-      
+! INFO-     Number of solids created with body validation fault(s)  :         1
+! INFO-      
+! INFO-     Number of solids ending up as sheet bodies              :         0
+! INFO-      
+! INFO-     End of Translation: 27-DEC-2013  10:00:46 PM
+! INFO-      

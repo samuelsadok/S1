@@ -1,0 +1,17 @@
+Output: Gerber Files
+Type  : Gerber
+From  : PCB Document [Base.PcbDoc]
+   Generated File[Base.GTL]
+   Generated File[Base.GBL]
+   Generated File[Base.GTP]
+   Generated File[Base.GTS]
+   Generated File[Base.GM3]
+   Generated File[Base.RUL]
+   Generated File[Base.EXTREP]
+   Generated File[Base.REP]
+
+
+Files Generated   : 8
+Documents Printed : 0
+
+Finished Output Generation At 12:45:38 On 03.01.2014

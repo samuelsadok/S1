@@ -1,0 +1,24 @@
+Field=Comment~String~Comment~209|Field=Description~String~Description~211|Field=Designator~String~Designator~147|Field=Footprint~String~Footprint~92|Field=Quantity~Integer~Quantity~91|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~Base.PrjPCB|ReportField=ProjectFullPath~\\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Base.PrjPCB|ReportField=Title~Bill of Materials For PCB Document [Base.PcbDoc]|ReportField=TotalQuantity~41|ReportField=ReportTime~11:11:00|ReportField=ReportDate~03.01.2014|ReportField=ReportDateTime~03.01.2014 11:11:00|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=DataSourceFileName~Base.PcbDoc|ReportField=DataSourceFullPath~\\H0ME-SERVER\Benutzer\1337_H4xX0r\Projekte\S1\Base.PcbDoc
+AP7313-33SA|Low Dropout Regulator 3.3V, 150mA|A1|SOT23|1
+Cap 100nF|Ceramic Capacitor 100nF|C1, C5, C16, C17|0201 (C)|4
+Cap 4.7µF|Ceramic Capacitor 4.7µF|C2, C13, C18, C19|0402 (C)|4
+Cap 47pF|Ceramic Capacitor 47pF|C3, C4|0201 (C)|2
+Cap 1µF|Ceramic Capacitor 1µF|C6, C7, C11, C14, C15|0201 (C)|5
+Cap 2.2µF|Ceramic Capacitor 2.2µF|C8, C12|0402 (C)|2
+Cap 33nF|Ceramic Capacitor 33nF|C9|0201 (C)|1
+Cap 22µF|Ceramic Capacitor 22µF|C10|0805 (C)|1
+USB|Micro USB Type B Receptacle|J1|MICRO USB RECEPTACLE VERTICAL|1
+Battery|Connector 2-Pos 2.54mm Pitch|J2|Conn 2-Pos 2.54mm Pitch|1
+L 1µH|Inductor 1µH|L1, L2|INDUCTOR 2X2.5MM|2
+Res 27R|Resistor 27R|R1, R2|0201 (R)|2
+Res 100R|Resistor 100R|R3|0201 (R)|1
+Res 10k|Resistor 10k|R4, R5, R10, R11|0201 (R)|4
+Res 4k7|Resistor 4k7|R7, R8|0201 (R)|2
+Res 2k2|Resistor 2k2|R9|0201 (R)|1
+ITS13FV1|Through-Hole Tactile Switch|S1|SWITCH THROUGH-HOLE|1
+Xmega32E5|8-Bit AVR Microcontroller|U1|QFN-32 (5X5MM)|1
+FT230X|USB-UART Bridge|U2|QFN-16 (4X4MM)|1
+bq24250|LiPo Chargering Regulator with Step-Down Converter|U3|QFN-24 (4X4MM)|1
+FAN4860UMP5X|Boost Converter 5V|U4|6-UMLP|1
+MCP73831|500mA Linear LiPo Charger|U5|SOT-23-5|1
+1N4148W|Diode|V1|SOD923|1

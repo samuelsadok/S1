@@ -1,0 +1,9 @@
+Added Component: Designator=J1(Pico-EZMate (4Pin))
+Added Pin To Net: NetName=PDI_DATA Pin=J1-2
+Added Pin To Net: NetName=PDI_CLK Pin=J1-3
+Added Pin To Net: NetName=BAT+ Pin=J1-0b
+Added Pin To Net: NetName=BAT+ Pin=J1-1
+Added Net: Name=BAT+
+Added Pin To Net: NetName=BAT- Pin=J1-0a
+Added Pin To Net: NetName=BAT- Pin=J1-4
+Added Net: Name=BAT-

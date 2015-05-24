@@ -1,0 +1,19 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: S1.PcbDoc   20.01.2014  00:30:11
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : S1-RoundHoles.TXT
+ASCII SlotHoles File : S1-SlotHoles.TXT
+EIA File   : S1.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        13mil (0.3302mm)         Round          76               9.49 Inch (241.03 mm)
+T2        23.62mil (0.59995mm)     Round          8                3.63 Inch (92.09 mm)
+T3        23.62mil (0.59995mm)     Slot           8         NPTH   294.31 Inch (7475.42 mm)
+T4        29.53mil (0.75006mm)     Round          2         NPTH   0.11 Inch (2.75 mm)
+---------------------------------------------------------------------------
+Totals                                            94               307.53 Inch (7811.29 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

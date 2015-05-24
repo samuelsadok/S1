@@ -1,0 +1,28 @@
+Bill of Material for 
+On 03.01.2014 at 10:45:17
+
+ Comment             Pattern     Quantity  Components
+------------------------------------------------------------------------------
+ 1N4148W             SOD923           1    V1                           Diode                
+ AP7313-33SA         SOT23            1    A1                           Low Dropout Regulator 3.3V, 150mA 
+ Battery             Conn 2-Pos 2.54mm Pitch    1    J2                           Connector 2-Pos 2.54mm Pitch 
+ bq24250             QFN-24 (4X4MM)    1    U3                           LiPo Chargering Regulator with Step-Down Converter 
+ Cap 1µF             0201 (C)         5    C6, C7, C11, C14, C15        Ceramic Capacitor 1µF 
+ Cap 100nF           0201 (C)         4    C1, C5, C16, C17             Ceramic Capacitor 100nF 
+ Cap 2.2µF           0402 (C)         2    C8, C12                      Ceramic Capacitor 2.2µF 
+ Cap 22µF            0805 (C)         1    C10                          Ceramic Capacitor 22µF 
+ Cap 33nF            0201 (C)         1    C9                           Ceramic Capacitor 33nF 
+ Cap 4.7µF           0402 (C)         4    C2, C13, C18, C19            Ceramic Capacitor 4.7µF 
+ Cap 47pF            0201 (C)         2    C3, C4                       Ceramic Capacitor 47pF 
+ FAN4860UMP5X        6-UMLP           1    U4                           Boost Converter 5V   
+ FT230X              QFN-16 (4X4MM)    1    U2                           USB-UART Bridge      
+ ITS13FV1            SWITCH THROUGH-HOLE    1    S1                           Through-Hole Tactile Switch 
+ L 1µH               INDUCTOR 2X2.5MM    2    L1, L2                       Inductor 1µH         
+ MCP73831            SOT-23-5         1    U5                           500mA Linear LiPo Charger 
+ Res 100R            0201 (R)         1    R3                           Resistor 100R        
+ Res 10k             0201 (R)         4    R4, R5, R10, R11             Resistor 10k         
+ Res 27R             0201 (R)         2    R1, R2                       Resistor 27R         
+ Res 2k2             0201 (R)         1    R9                           Resistor 2k2         
+ Res 4k7             0201 (C)         2    R7, R8                       Resistor 4k7         
+ USB                 MICRO USB RECEPTACLE VERTICAL    1    J1                           Micro USB Type B Receptacle 
+ Xmega32E5           QFN-32 (5X5MM)    1    U1                           8-Bit AVR Microcontroller 

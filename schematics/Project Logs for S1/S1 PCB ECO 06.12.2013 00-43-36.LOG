@@ -1,0 +1,88 @@
+Added Component: Designator=C1(0805 (C))
+Added Component: Designator=C2(0402 (C))
+Added Component: Designator=C3(0402 (C))
+Added Component: Designator=C4(0805 (C))
+Added Component: Designator=C5(0805 (C))
+Added Component: Designator=C6(0805 (C))
+Added Component: Designator=C7(0805 (C))
+Added Component: Designator=C8(0805 (C))
+Added Component: Designator=C9(0805 (C))
+Added Component: Designator=D1(LED Through-Hole)
+Added Component: Designator=IC1(QFN-32 (5x5mm))
+Added Component: Designator=L1(0603 (L))
+Added Component: Designator=R1(0805 (R))
+Added Component: Designator=R2(0805 (R))
+Added Component: Designator=R3(0805 (R))
+Added Component: Designator=R4(0805 (R))
+Added Component: Designator=X1(Antenna 3.2x1.6mm (W3008))
+Added Component: Designator=X2(Crystal 1.6mm x 2mm)
+Added Component: Designator=X3(Crystal 1mm x 1.6mm)
+Added Pin To Net: NetName=GND Pin=C1-2
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=GND Pin=C3-2
+Added Pin To Net: NetName=GND Pin=C4-2
+Added Pin To Net: NetName=GND Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=GND Pin=C8-1
+Added Pin To Net: NetName=GND Pin=C9-1
+Added Pin To Net: NetName=GND Pin=D1-K
+Added Pin To Net: NetName=GND Pin=IC1-0
+Added Pin To Net: NetName=GND Pin=IC1-4
+Added Pin To Net: NetName=GND Pin=X1-2
+Added Pin To Net: NetName=GND Pin=X1-3
+Added Pin To Net: NetName=GND Pin=X2-2
+Added Pin To Net: NetName=GND Pin=X2-4
+Added Pin To Net: NetName=+3.3V Pin=C8-2
+Added Pin To Net: NetName=+3.3V Pin=C9-2
+Added Pin To Net: NetName=+3.3V Pin=IC1-1
+Added Pin To Net: NetName=+3.3V Pin=IC1-21
+Added Pin To Net: NetName=+3.3V Pin=IC1-32
+Added Net: Name=+3.3V
+Added Pin To Net: NetName=NetC1_1 Pin=C1-1
+Added Pin To Net: NetName=NetC1_1 Pin=IC1-8
+Added Net: Name=NetC1_1
+Added Pin To Net: NetName=NetC3_1 Pin=C3-1
+Added Pin To Net: NetName=NetC3_1 Pin=IC1-10
+Added Pin To Net: NetName=NetC3_1 Pin=X2-3
+Added Net: Name=NetC3_1
+Added Pin To Net: NetName=NetC4_1 Pin=C4-1
+Added Pin To Net: NetName=NetC4_1 Pin=IC1-5
+Added Net: Name=NetC4_1
+Added Pin To Net: NetName=NetD1_A Pin=D1-A
+Added Pin To Net: NetName=NetD1_A Pin=R4-2
+Added Net: Name=NetD1_A
+Added Pin To Net: NetName=NetIC1_2 Pin=IC1-2
+Added Pin To Net: NetName=NetIC1_2 Pin=X3-2
+Added Net: Name=NetIC1_2
+Added Pin To Net: NetName=NetIC1_3 Pin=IC1-3
+Added Pin To Net: NetName=NetIC1_3 Pin=X3-1
+Added Net: Name=NetIC1_3
+Added Pin To Net: NetName=NetIC1_7 Pin=IC1-7
+Added Pin To Net: NetName=NetIC1_7 Pin=X1-1
+Added Net: Name=NetIC1_7
+Added Pin To Net: NetName=NetIC1_15 Pin=IC1-15
+Added Net: Name=NetIC1_15
+Added Pin To Net: NetName=NetIC1_16 Pin=IC1-16
+Added Pin To Net: NetName=NetIC1_16 Pin=R3-2
+Added Net: Name=NetIC1_16
+Added Pin To Net: NetName=NetIC1_17 Pin=IC1-17
+Added Pin To Net: NetName=NetIC1_17 Pin=R2-1
+Added Net: Name=NetIC1_17
+Added Pin To Net: NetName=NetIC1_29 Pin=IC1-29
+Added Net: Name=NetIC1_29
+Added Pin To Net: NetName=NetIC1_31 Pin=IC1-31
+Added Pin To Net: NetName=NetIC1_31 Pin=L1-2
+Added Net: Name=NetIC1_31
+Added Pin To Net: NetName=NetR1_2 Pin=R1-2
+Added Net: Name=NetR1_2
+Added Pin To Net: NetName=NetR2_2 Pin=R2-2
+Added Net: Name=NetR2_2
+Added Pin To Net: NetName=NetR3_1 Pin=R3-1
+Added Net: Name=NetR3_1
+Added Member To Class: ClassName=S1 Member=Component C4 Cap 100nF
+Added Member To Class: ClassName=S1 Member=Component C9 Cap 2.2µF
+Added Member To Class: ClassName=S1 Member=Component L1 L 4.7µH
+Added Member To Class: ClassName=S1 Member=Component X1 W3008
+Added Member To Class: ClassName=S1 Member=Component X2 8Y-16.000MAAV-T
+Added Member To Class: ClassName=S1 Member=Component X3 ABS05-32.768KHZ-9-T

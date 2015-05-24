@@ -1,0 +1,20 @@
+Removed Pin From Net: NetName=NetIC2_23 Pin=R2-2
+Removed Pin From Net: NetName=NetIC2_24 Pin=R3-2
+Added Pin To Net: NetName=NetIC1_28 Pin=R2-2
+Added Pin To Net: NetName=NetIC2_23 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_29 Pin=R3-2
+Added Pin To Net: NetName=NetIC2_24 Pin=R3-2
+Added Pin To Net: NetName=NetIC?_9 Pin=IC?-9
+Added Pin To Net: NetName=NetIC?_9 Pin=Q1-1
+Added Net: Name=NetIC?_9
+Added Pin To Net: NetName=NetIC?_10 Pin=IC?-10
+Added Pin To Net: NetName=NetIC?_10 Pin=Q2-1
+Added Net: Name=NetIC?_10
+Added Pin To Net: NetName=NetIC?_11 Pin=IC?-11
+Added Pin To Net: NetName=NetIC?_11 Pin=Q3-1
+Added Net: Name=NetIC?_11
+Added Pin To Net: NetName=NetIC?_12 Pin=IC?-12
+Added Pin To Net: NetName=NetIC?_12 Pin=Q4-1
+Added Net: Name=NetIC?_12
+Added Member To Class: ClassName=S1 Member=Component R2 Res 4k7
+Added Member To Class: ClassName=S1 Member=Component R3 Res 4k7

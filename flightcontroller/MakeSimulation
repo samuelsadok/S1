@@ -1,0 +1,47 @@
+#*******************************************************
+#
+# FlightController Makefile
+#
+# Builds the firmware for the Flight Processor
+#
+# created: 24.02.15
+#
+#*******************************************************
+
+
+# application name
+OUTPUT = FlightController
+APPLICATION_NAME = OEM_Flight_Controller
+OUTDIR = ./simulation
+
+# select hardware
+PLATFORM_NAME := S1_Prototype_1_Flight_Processor
+
+
+# select required features
+FEATURES = 			\
+	SIMULATION		\
+	BUILTIN_SYSCLK_32MHZ	\
+	BUILTIN_RTC		\
+	BUILTIN_TWIC_MASTER	\
+	BUILTIN_TWIC_SLAVE	\
+	BUILTIN_TIMERS		\
+	BUILTIN_PWM		\
+	I2C_MASTER		\
+	UNICODE			\
+	NVM			\
+	MATH_EXTENSIONS		\
+	MPU			\
+	VIRTUAL_MPU		\
+	UAV			\
+	LOCAL_UAV		\
+	VIRTUAL_MOTOR
+
+
+# include application specific source files
+SRC = main.c
+
+
+# let the framework control the actual build process
+FRAMEWORK = ./../shared-c/
+include $(FRAMEWORK)/Makefile

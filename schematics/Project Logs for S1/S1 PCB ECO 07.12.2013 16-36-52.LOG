@@ -1,0 +1,19 @@
+Removed Pin From Net: NetName=NetIC2_23 Pin=R2-2
+Removed Pin From Net: NetName=NetIC2_24 Pin=R3-2
+Removed Pin From Net: NetName=V_BAT Pin=S1-1
+Removed Pin From Net: NetName=V_BAT Pin=S1-1
+Removed Pin From Net: NetName=NetC7_1 Pin=S1-2
+Removed Pin From Net: NetName=NetC7_1 Pin=S1-2
+Removed Pin From Net: NetName=NetC7_1 Pin=S1-3
+Removed Pin From Net: NetName=NetC7_1 Pin=S1-3
+Removed Pin From Net: NetName=V_BAT Pin=S1-CASE
+Removed Pin From Net: NetName=V_BAT Pin=S1-CASE
+Removed Pin From Net: NetName=V_BAT Pin=S1-CASE
+Removed Pin From Net: NetName=V_BAT Pin=S1-CASE
+Change Component DesignItemId : Designator=S1 Old DesignItemId=SSSS820201 New DesignItemId=TL1014BF160QG
+Change Component Footprint: Designator=S1 Old Footprint=Mini Switch New Footprint=Switch Right Angle
+Change Component Comment : Designator=S1 Old Comment=SSSS820201 New Comment=TL1014BF160QG
+Added Pin To Net: NetName=NetIC1_28 Pin=R2-2
+Added Pin To Net: NetName=NetIC2_23 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_29 Pin=R3-2
+Added Pin To Net: NetName=NetIC2_24 Pin=R3-2

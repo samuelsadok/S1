@@ -1,0 +1,8 @@
+Change Component Designator: OldDesignator=R1 NewDesignator=R5
+Change Component Designator: OldDesignator=R2 NewDesignator=R6
+Change Component Designator: OldDesignator=R3 NewDesignator=R7
+Change Component Designator: OldDesignator=R4 NewDesignator=R8
+Change Component Designator: OldDesignator=R5 NewDesignator=R9
+Change Component Designator: OldDesignator=R6 NewDesignator=R10
+Change Net Name : Old Net Name=NetR1_1 New Net Name=NetR5_1
+Added Member To Class: ClassName=S1 Member=Component R10 Res 4k7

@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=BAT+ Pin=C7-1
+Removed Pin From Net: NetName=NetIC1_16 Pin=R3-2
+Removed Pin From Net: NetName=GND Pin=V2-2
+Removed Pin From Net: NetName=GND Pin=V3-2
+Removed Pin From Net: NetName=GND Pin=V4-2
+Added Pin To Net: NetName=BAT+ Pin=C7-1
+Added Pin To Net: NetName=NetIC1_15 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_16 Pin=R3-2
+Added Pin To Net: NetName=NetIC1_28 Pin=R3-2
+Added Pin To Net: NetName=BAT- Pin=V1-2
+Added Pin To Net: NetName=BAT- Pin=V2-2
+Added Pin To Net: NetName=BAT- Pin=V3-2
+Added Pin To Net: NetName=BAT- Pin=V4-2

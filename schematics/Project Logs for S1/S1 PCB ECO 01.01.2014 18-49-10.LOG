@@ -1,0 +1,6 @@
+Added Pin To Net: NetName=NetIC3_16 Pin=IC3-16
+Added Pin To Net: NetName=NetIC3_16 Pin=R5-1
+Added Net: Name=NetIC3_16
+Added Member To Class: ClassName=S1 Member=Component R1 Res 10k
+Added Member To Class: ClassName=S1 Member=Component R2 Res 10k
+Added Member To Class: ClassName=S1 Member=Component R3 Res 10k

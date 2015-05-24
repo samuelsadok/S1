@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=GND Pin=J1-1
+Removed Pin From Net: NetName=V_BAT Pin=J1-2
+Removed Pin From Net: NetName=GND Pin=J1-CASE_B
+Removed Pin From Net: NetName=NetIC1_16 Pin=R3-2
+Removed Member From Class: ClassName=S1 Member=J1
+Added Pin To Net: NetName=V_BAT Pin=C7-1
+Added Pin To Net: NetName=V_BAT Pin=IC5-1
+Added Pin To Net: NetName=V_BAT Pin=Q5-3
+Added Pin To Net: NetName=NetIC1_15 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_16 Pin=R3-2
+Added Pin To Net: NetName=NetIC1_28 Pin=R3-2
+Added Pin To Net: NetName=GND Pin=S1-3
+Added Pin To Net: NetName=BAT+ Pin=Q5-2
+Added Net: Name=BAT+
+Added Pin To Net: NetName=NetD1_A Pin=D1-A
+Added Pin To Net: NetName=NetD1_A Pin=Q5-1
+Added Net: Name=NetD1_A
+Added Pin To Net: NetName=NetD1_K Pin=D1-K
+Added Pin To Net: NetName=NetD1_K Pin=S1-4
+Added Net: Name=NetD1_K
+Added Member To Class: ClassName=S1 Member=Component IC1 Xmega32E5

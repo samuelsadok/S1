@@ -1,0 +1,3 @@
+Removed Pin From Net: NetName=V_USB Pin=IC2-11
+Added Pin To Net: NetName=NetIC2_11 Pin=IC2-11
+Added Net: Name=NetIC2_11

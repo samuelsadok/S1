@@ -1,0 +1,4 @@
+Added Component: Designator=J2(Conn 2-Pos 2.54mm Pitch)
+Added Pin To Net: NetName=V_BAT Pin=J2-1
+Added Pin To Net: NetName=GND Pin=J2-2
+Added Member To Class: ClassName=Base Member=Component J2 Battery

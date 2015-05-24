@@ -1,0 +1,23 @@
+Removed Pin From Net: NetName=NetIC1_16 Pin=R3-2
+Removed Pin From Net: NetName=GND Pin=S1-3
+Removed Pin From Net: NetName=BAT+ Pin=V5-2
+Removed Pin From Net: NetName=NetS1_4 Pin=V6-K
+Removed Member From Class: ClassName=S1 Member=V5
+Added Component: Designator=C5(0805 (C))
+Added Component: Designator=V1(SOT23)
+Added Pin To Net: NetName=BAT+ Pin=A1-1
+Added Pin To Net: NetName=BAT+ Pin=C7-1
+Added Pin To Net: NetName=NetIC1_15 Pin=R2-2
+Added Pin To Net: NetName=NetIC1_16 Pin=R3-2
+Added Pin To Net: NetName=NetIC1_28 Pin=R3-2
+Added Pin To Net: NetName=BAT+ Pin=S1-3
+Added Pin To Net: NetName=GND Pin=V1-3
+Added Pin To Net: NetName=NetS1_4 Pin=V6-A
+Added Pin To Net: NetName=BAT- Pin=C5-2
+Added Pin To Net: NetName=BAT- Pin=V1-2
+Added Net: Name=BAT-
+Added Pin To Net: NetName=NetC5_1 Pin=C5-1
+Added Pin To Net: NetName=NetC5_1 Pin=V1-1
+Added Pin To Net: NetName=NetC5_1 Pin=V6-K
+Added Net: Name=NetC5_1
+Added Member To Class: ClassName=S1 Member=Component H1 LED1

@@ -1,0 +1,7 @@
+Removed Pin From Net: NetName=NetC3_1 Pin=IC1-10
+Removed Pin From Net: NetName=NetIC1_13 Pin=IC1-13
+Removed Pin From Net: NetName=BAT- Pin=J1-
+Removed Pin From Net: NetName=BAT+ Pin=J1-
+Added Pin To Net: NetName=NetC3_1 Pin=IC1-5
+Added Pin To Net: NetName=NetIC1_13 Pin=IC1-6
+Change Net Name : Old Net Name=NetIC1_13 New Net Name=NetIC1_6
