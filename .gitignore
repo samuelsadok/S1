@@ -5,6 +5,7 @@ desktop.ini
 
 Thumbs.db
 
+**/*.v12.suo
 bin/
 obj/
 simulation/
