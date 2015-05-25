@@ -1,0 +1,22 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../shared/Hardware/iOS/BluetoothPeripheral.cs">
+    <Files>
+      <File FileName="Application.cs" Line="1" Column="1" />
+      <File FileName="../shared/UI/iOS/MainViewController.cs" Line="1" Column="1" />
+      <File FileName="../shared/UI/Abstraction.cs" Line="1" Column="1" />
+      <File FileName="../RemoteControl_iOS/Main.cs" Line="1" Column="1" />
+      <File FileName="../shared/UI/iOS/UpdateView.cs" Line="1" Column="1" />
+      <File FileName="../shared/System/iOS/Platform.cs" Line="1" Column="1" />
+      <File FileName="../shared/Hardware/BluetoothUpdateManager.cs" Line="1" Column="1" />
+      <File FileName="../RemoteControl_iOS/Hardware/BluetoothDeviceInfo.cs" Line="1" Column="1" />
+      <File FileName="../shared/Hardware/Abstraction.cs" Line="1" Column="1" />
+      <File FileName="../RemoteControl_iOS/Hardware/BluetoothI2CProxy.cs" Line="1" Column="1" />
+      <File FileName="../shared/Hardware/iOS/BluetoothPeripheral.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

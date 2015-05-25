@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFBF4AF2-7EF9-4140-8114-21524C60D4A2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppInstall</RootNamespace>
+    <AssemblyName>Simulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cloo">
+      <HintPath>packages\Sourceforge.Cloo.0.9.1\lib\net35\Cloo.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>packages\OpenTK.1.1.1589.5942\lib\NET40\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\shared\Framework\Activity.cs">
+      <Link>Framework\Activity.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\ArgsParser.cs">
+      <Link>Framework\ArgsParser.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Config.cs">
+      <Link>Framework\Config.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Console.cs">
+      <Link>Framework\Console.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Database.cs">
+      <Link>Framework\Database.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Extensions.cs">
+      <Link>Framework\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\LogSystem.cs">
+      <Link>Framework\LogSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Math\LinearRegression.cs">
+      <Link>Framework\Math\LinearRegression.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Math\Matrix.cs">
+      <Link>Framework\Math\Matrix.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Math\Scalar.cs">
+      <Link>Framework\Math\Scalar.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Math\Transformation.cs">
+      <Link>Framework\Math\Transformation.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Math\Vector.cs">
+      <Link>Framework\Math\Vector.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\PInvoke.cs">
+      <Link>Framework\PInvoke.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\ProgressMonitor.cs">
+      <Link>Framework\ProgressMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\SlowAction.cs">
+      <Link>Framework\SlowAction.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\Utilities.cs">
+      <Link>Framework\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\VolatileList.cs">
+      <Link>Framework\VolatileList.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\InstallerAction.cs">
+      <Link>Installer\InstallerAction.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\InstallerContext.cs">
+      <Link>Installer\InstallerContext.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\InstallerScript.cs">
+      <Link>Installer\InstallerScript.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\InstallerSystem.cs">
+      <Link>Installer\InstallerSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\SoftwareDatabase.cs">
+      <Link>Installer\SoftwareDatabase.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\SoftwareDistributionClient.cs">
+      <Link>Installer\SoftwareDistributionClient.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Installer\SoftwareDistributionProtocol.cs">
+      <Link>Installer\SoftwareDistributionProtocol.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\HTTP.cs">
+      <Link>Networking\HTTP.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\IFirewall.cs">
+      <Link>Networking\IFirewall.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\NetContent.cs">
+      <Link>Networking\NetContent.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\NetUtils.cs">
+      <Link>Networking\NetUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Organization\Definitions.cs">
+      <Link>Organization\Definitions.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Foundation.cs">
+      <Link>OS\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\DispatcherThread.Console.cs">
+      <Link>OS\Windows\DispatcherThread.Console.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\Firewall.cs">
+      <Link>OS\Windows\Firewall.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\Main.Console.cs">
+      <Link>OS\Windows\Main.Console.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\Platform.cs">
+      <Link>OS\Windows\Platform.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\PlatformUtilities.Admin.cs">
+      <Link>OS\Windows\PlatformUtilities.Admin.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\PlatformUtilities.Basic.cs">
+      <Link>OS\Windows\PlatformUtilities.Basic.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\OS\Windows\SystemConsole.cs">
+      <Link>OS\Windows\SystemConsole.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\UI\Foundation.cs">
+      <Link>UI\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\UI\Windows\Abstraction.Console.cs">
+      <Link>UI\Windows\Abstraction.Console.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\UI\Windows\Abstraction.cs">
+      <Link>UI\Windows\Abstraction.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\ApplicationControl.cs">
+      <Link>Framework\ApplicationControl.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Framework\ProcessorPool.cs">
+      <Link>Framework\ProcessorPool.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\Client.cs">
+      <Link>Networking\Client.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\NetMessage.cs">
+      <Link>Networking\NetMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\Networking\Server.cs">
+      <Link>Networking\Server.cs</Link>
+    </Compile>
+    <Compile Include="Framework\EmbeddedResource.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Simulation\Attributes.cs" />
+    <Compile Include="Simulation\Battery.cs" />
+    <Compile Include="Simulation\Camera.cs" />
+    <Compile Include="Simulation\Cube.cs" />
+    <Compile Include="Simulation\DeviceServer.cs" />
+    <Compile Include="Simulation\FollowingCamera.cs" />
+    <Compile Include="Simulation\Gauge.cs" />
+    <Compile Include="Simulation\Grid3D.cs" />
+    <Compile Include="Simulation\InertialSensor.cs" />
+    <Compile Include="Simulation\Interop.cs" />
+    <Compile Include="Simulation\Light.cs" />
+    <Compile Include="Simulation\Object3D.cs" />
+    <Compile Include="Simulation\OpenCL\Kernel.cs" />
+    <Compile Include="Simulation\OpenCL\Context.cs" />
+    <Compile Include="Simulation\OpenCL\Program.cs" />
+    <Compile Include="Simulation\PhysicalEntity.cs" />
+    <Compile Include="Simulation\Rotor.cs" />
+    <Compile Include="Simulation\SimulationContext.cs" />
+    <Compile Include="Simulation\Software.cs" />
+    <Compile Include="Simulation\STLObject.cs" />
+    <EmbeddedResource Include="Simulation\FragmentShader.c" />
+    <EmbeddedResource Include="Simulation\GeometryShader.c" />
+    <EmbeddedResource Include="Simulation\VertexShader.c" />
+    <Compile Include="Simulation\VisualEntity.cs" />
+    <Compile Include="Simulation\Window3D.cs" />
+    <Compile Include="SimulatorApplication.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="NetFwTypeLib">
+      <Guid>{58FBCF7C-E7A9-467C-80B3-FC65E8FCCA08}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulation\OpenCL\BoundingSphere.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulation\OpenCL\SphereTree.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Simulation\OpenCL\utils.h" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

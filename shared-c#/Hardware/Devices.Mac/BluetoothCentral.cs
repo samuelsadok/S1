@@ -108,6 +108,18 @@ namespace AppInstall.Hardware
         }
 
 
+        public static CollectionSource<BluetoothPeripheral> CreateDeviceSource()
+        {
+            BluetoothCentral.StateChanged += bluetooth_StateChanged;
+            BluetoothCentral.DiscoveredPeripheral += (p) => Platform.InvokeMainThread(delegate { deviceListView.AppendItem(p, true, device_identify); });
+            BluetoothCentral.LostPeripheral += (p) => Platform.InvokeMainThread(delegate { deviceListView.RemoveItem(p, true); });
+            BluetoothCentral.ConnectionInitiated += (p) => Platform.InvokeMainThread(deviceListView.UpdateLayout);
+            BluetoothCentral.ConnectionEstablished += (p) => LogSystem.Log("ESTABLISHED!");
+            BluetoothCentral.ConnectionClosed += (p) => { Platform.InvokeMainThread(deviceListView.UpdateLayout); topLayer.Replace(remoteControlView, setupView, false, true, new Vector2D<float>(-1, 0)); };
+            BluetoothCentral.Init();
+        }
+
+
         private static void central_DiscoveredPeripheral(CBPeripheral peripheral, NSDictionary advertismentData, int RSSI)
         {
             try {

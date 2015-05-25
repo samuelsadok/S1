@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{34E58420-12FD-45FC-B582-EF397C3EE158}</ProjectGuid>
+    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AppInstall</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>RemoteControl</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+    <MtouchDebug>true</MtouchDebug>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <MtouchDebug>True</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchExtraArgs>--aot=full</MtouchExtraArgs>
+    <MtouchEnableGenericValueTypeSharing>False</MtouchEnableGenericValueTypeSharing>
+    <MtouchArch>Default, ARMv7</MtouchArch>
+    <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
+    <MtouchI18n>
+    </MtouchI18n>
+    <MtouchSdkVersion>7.1</MtouchSdkVersion>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchProfiling>False</MtouchProfiling>
+    <MtouchFastDev>False</MtouchFastDev>
+    <MtouchUseLlvm>False</MtouchUseLlvm>
+    <MtouchUseThumb>False</MtouchUseThumb>
+    <MtouchUseSGen>False</MtouchUseSGen>
+    <MtouchUseRefCounting>False</MtouchUseRefCounting>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer</CodesignKey>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\Ad-Hoc</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+    <BuildIpa>True</BuildIpa>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\iPhone\AppStore</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <CodesignKey>iPhone Distribution</CodesignKey>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\shared-c#\Framework\ApplicationControl.cs">
+      <Link>Framework\ApplicationControl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\DataSource.cs">
+      <Link>Framework\DataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\TimeRange.cs">
+      <Link>Framework\TimeRange.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Graphics\Color.cs">
+      <Link>Graphics\Color.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Graphics\Graphics2D.cs">
+      <Link>Graphics\Graphics2D.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Graphics\Path.cs">
+      <Link>Graphics\Path.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Graphics\Path.Mac.cs">
+      <Link>Graphics\Path.Mac.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\Devices.Mac\BluetoothCentral.cs">
+      <Link>Hardware\Devices.Mac\BluetoothCentral.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\Devices.Mac\BluetoothPeripheral.cs">
+      <Link>Hardware\Devices.Mac\BluetoothPeripheral.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\Devices.Mac\Screen.cs">
+      <Link>Hardware\Devices.Mac\Screen.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Features.Mac\Feature.cs">
+      <Link>UI\Features.Mac\Feature.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Features\Feature.cs">
+      <Link>UI\Features\Feature.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\DetailViewController.cs">
+      <Link>UI\ViewControllers.Mac\DetailViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\EditorViewController.cs">
+      <Link>UI\ViewControllers.Mac\EditorViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\ListViewController.cs">
+      <Link>UI\ViewControllers.Mac\ListViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\MultiViewController.cs">
+      <Link>UI\ViewControllers.Mac\MultiViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\TreeViewController.cs">
+      <Link>UI\ViewControllers.Mac\TreeViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\ViewController.cs">
+      <Link>UI\ViewControllers.Mac\ViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\DetailViewController.cs">
+      <Link>UI\ViewControllers\DetailViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\EditorViewController.cs">
+      <Link>UI\ViewControllers\EditorViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\ListViewController.cs">
+      <Link>UI\ViewControllers\ListViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\MultiViewController.cs">
+      <Link>UI\ViewControllers\MultiViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\TreeViewController.cs">
+      <Link>UI\ViewControllers\TreeViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\ViewController.cs">
+      <Link>UI\ViewControllers\ViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\AtomicElements.cs">
+      <Link>UI\Views.Mac\AtomicElements.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\BoolInput.cs">
+      <Link>UI\Views.Mac\BoolInput.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Button.cs">
+      <Link>UI\Views.Mac\Button.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Canvas.cs">
+      <Link>UI\Views.Mac\Canvas.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\ContainerView.cs">
+      <Link>UI\Views.Mac\ContainerView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\DataPickerView.cs">
+      <Link>UI\Views.Mac\DataPickerView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\DateTimePicker.cs">
+      <Link>UI\Views.Mac\DateTimePicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\DialogView.cs">
+      <Link>UI\Views.Mac\DialogView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Fields.cs">
+      <Link>UI\Views.Mac\Fields.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Label.cs">
+      <Link>UI\Views.Mac\Label.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\ListView.cs">
+      <Link>UI\Views.Mac\ListView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\ListViewItems.cs">
+      <Link>UI\Views.Mac\ListViewItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\NavigationBar.cs">
+      <Link>UI\Views.Mac\NavigationBar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\NavigationView.cs">
+      <Link>UI\Views.Mac\NavigationView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\ScrollViewHeader.cs">
+      <Link>UI\Views.Mac\ScrollViewHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Slider.cs">
+      <Link>UI\Views.Mac\Slider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Stepper.cs">
+      <Link>UI\Views.Mac\Stepper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\TabView.cs">
+      <Link>UI\Views.Mac\TabView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\TextBox.cs">
+      <Link>UI\Views.Mac\TextBox.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\TextField.cs">
+      <Link>UI\Views.Mac\TextField.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\TimeRangePickerView.cs">
+      <Link>UI\Views.Mac\TimeRangePickerView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Toolbar.cs">
+      <Link>UI\Views.Mac\Toolbar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\ToolbarItems.cs">
+      <Link>UI\Views.Mac\ToolbarItems.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\UpdateView.cs">
+      <Link>UI\Views.Mac\UpdateView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\View.cs">
+      <Link>UI\Views.Mac\View.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Views.Mac\Window.cs">
+      <Link>UI\Views.Mac\Window.cs</Link>
+    </Compile>
+    <Compile Include="..\RemoteControlApplication.cs">
+      <Link>RemoteControlApplication.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Activity.cs">
+      <Link>Framework\Activity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Console.cs">
+      <Link>Framework\Console.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\LogSystem.cs">
+      <Link>Framework\LogSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\LinearRegression.cs">
+      <Link>Framework\Math\LinearRegression.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Matrix.cs">
+      <Link>Framework\Math\Matrix.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Scalar.cs">
+      <Link>Framework\Math\Scalar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Transformation.cs">
+      <Link>Framework\Math\Transformation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Vector.cs">
+      <Link>Framework\Math\Vector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\PInvoke.cs">
+      <Link>Framework\PInvoke.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\SlowAction.cs">
+      <Link>Framework\SlowAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Utilities.cs">
+      <Link>Framework\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\BluetoothDeviceInfo.cs">
+      <Link>Hardware\BluetoothDeviceInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\BluetoothI2CProxy.cs">
+      <Link>Hardware\BluetoothI2CProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\BluetoothUpdateManager.cs">
+      <Link>Hardware\BluetoothUpdateManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\Foundation.cs">
+      <Link>Hardware\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\GravityNegotiationDirect.cs">
+      <Link>Hardware\GravityNegotiationDirect.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\II2CPort.cs">
+      <Link>Hardware\II2CPort.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Organization\Definitions.cs">
+      <Link>Organization\Definitions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\OS\Foundation.cs">
+      <Link>OS\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\OS\Mac\Main.iOS.cs">
+      <Link>OS\Mac\Main.iOS.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\OS\Mac\Platform.iOS.cs">
+      <Link>OS\Mac\Platform.iOS.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\OS\Mac\PlatformUtilities.cs">
+      <Link>OS\Mac\PlatformUtilities.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Foundation.cs">
+      <Link>UI\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Generic\ErrorView.cs">
+      <Link>UI\Generic\ErrorView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Generic\Layout.cs">
+      <Link>UI\Generic\Layout.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Generic\NavigationList.cs">
+      <Link>UI\Generic\NavigationList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Generic\PlotView.cs">
+      <Link>UI\Generic\PlotView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Extensions.cs">
+      <Link>Framework\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\MemoryModels\CSRImage.cs">
+      <Link>Framework\MemoryModels\CSRImage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\MemoryModels\IMemoryModel.cs">
+      <Link>Framework\MemoryModels\IMemoryModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\ProgressMonitor.cs">
+      <Link>Framework\ProgressMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\VolatileList.cs">
+      <Link>Framework\VolatileList.cs</Link>
+    </Compile>
+    <None Include="Info.plist" />
+    <Compile Include="..\..\shared-c#\UI\Specialized\BluetoothUI.cs">
+      <Link>UI\Specialized\BluetoothUI.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Specialized\RemoteControlView.cs">
+      <Link>UI\Specialized\RemoteControlView.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Firmware\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="monotouch" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>rmdir /S /Q \\psf\home\Library\Caches\Xamarin\mtbs</PreBuildEvent>
+  </PropertyGroup>
+</Project>

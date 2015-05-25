@@ -25,11 +25,13 @@ namespace AppInstall.OS
         /// <summary>
         /// Returns applications root path
         /// </summary>
+        [Obsolete("use platform independent version")]
         public static string ApplicationPath { get { return "."; } }
 
         /// <summary>
         /// Returns the path of the applications assets directory
         /// </summary>
+        [Obsolete("use AppData folder", true)]
         public static string AssetsPath { get { return ApplicationPath + "/Assets"; } }
 
         /// <summary>
