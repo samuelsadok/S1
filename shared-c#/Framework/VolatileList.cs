@@ -10,24 +10,26 @@ namespace AppInstall.Framework
     /// <summary>
     /// Represents a list of objects that are volatile.
     /// </summary>
-    public class VolatileList<T>
+    /// <typeparam name="TData">The data type of the list elements.</typeparam>
+    /// <typeparam name="TTouch">The type of data associated with a touch.</typeparam>
+    public class VolatileList<TData, TTouch>
     {
         private readonly TimeSpan timespan;
-        private Dictionary<T, DateTime> objects = new Dictionary<T,DateTime>(); // contains every live object and it's time of death
+        private Dictionary<TData, DateTime> objects = new Dictionary<TData,DateTime>(); // contains every live object and it's time of death
         private AutoResetEvent touchedObject = new AutoResetEvent(false); // triggerd to signal the monitoring task that an object has been touched (in case it was asleep)
 
         /// <summary>
         /// Triggered when a new object is touched for the first time (or after having been lost).
         /// </summary>
-        public event EventHandler<Tuple<T, object[]>> FoundObject;
+        public event EventHandler<Tuple<TData, TTouch>> FoundObject;
         /// <summary>
         /// Triggered when a volatile object is touched (including the first time)
         /// </summary>
-        public event EventHandler<Tuple<T, object[]>> TouchedObject;
+        public event EventHandler<Tuple<TData, TTouch>> TouchedObject;
         /// <summary>
         /// Triggered when an object was not touched for the lifespan associated with this list.
         /// </summary>
-        public event EventHandler<T> LostObject;
+        public event EventHandler<TData> LostObject;
 
 
         public VolatileList(TimeSpan objectLifespan)
@@ -44,7 +46,7 @@ namespace AppInstall.Framework
                 TimeSpan nextWaitTime;
                 do {
                     nextWaitTime = TimeSpan.MaxValue;
-                    List<T> deprecatedObjects = new List<T>();
+                    List<TData> deprecatedObjects = new List<TData>();
 
                     lock (objects) {
                         // determine which objects are deprecated and how long to wait for the next monitoring step
@@ -70,18 +72,19 @@ namespace AppInstall.Framework
 
 
         /// <summary>
-        /// Renews the life of an object
+        /// Renews the life of an object.
         /// </summary>
-        public void Touch(T obj, params object[] parameters)
+        /// <param name="args">data associated with this particular touch</param>
+        public void Touch(TData obj, TTouch args)
         {
             lock (objects) {
                 if (!objects.ContainsKey(obj))
-                    FoundObject.SafeInvoke(this, new Tuple<T, object[]>(obj, parameters));
+                    FoundObject.SafeInvoke(this, new Tuple<TData, TTouch>(obj, args));
 
                 if (!IsResilent(obj))
                     objects[obj] = DateTime.Now + timespan;
 
-                TouchedObject.SafeInvoke(this, new Tuple<T, object[]>(obj, parameters));
+                TouchedObject.SafeInvoke(this, new Tuple<TData, TTouch>(obj, args));
             }
 
             touchedObject.Set();
@@ -90,7 +93,7 @@ namespace AppInstall.Framework
         /// <summary>
         /// Gives an object infinite lifespan
         /// </summary>
-        public void MakeResilent(T obj)
+        public void MakeResilent(TData obj)
         {
             lock (objects)
                 objects[obj] = DateTime.MaxValue;
@@ -99,7 +102,7 @@ namespace AppInstall.Framework
         /// <summary>
         /// Makes a resilent object volatile again
         /// </summary>
-        public void MakeVolatile(T obj)
+        public void MakeVolatile(TData obj)
         {
             lock (objects)
                 objects[obj] = DateTime.Now + timespan;
@@ -108,7 +111,7 @@ namespace AppInstall.Framework
         /// <summary>
         /// Returns true if the specified object is resilent, returns false if it is volatile or not registred
         /// </summary>
-        public bool IsResilent(T obj)
+        public bool IsResilent(TData obj)
         {
             DateTime t;
             lock (objects)

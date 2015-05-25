@@ -27,91 +27,17 @@ namespace AppInstall
 
         public static string ApplicationName { get { return "Remote Control"; } }
         public static Color ThemeColor { get { return GlobalConstants.UIColor; } }
-
-
-        Window mainWindow;
-        LayerLayout topLayer = new LayerLayout();
-
-
-        private ErrorView errView = new ErrorView() {
-            Message = "This is some random text to test various aspects of the implementation of some functionality"
-        };
-        //private BluetoothDeviceListView deviceListView = new BluetoothDeviceListView() { };
-        private ListView deviceListView = new ListView() {
-            VerticalPadding = 44f
-        };
-        //private FramedView setupView = new FramedView() {
-        //    Title = "looking for devices...",
-        //    Footer = "Make sure your device is switched on and within range. Don't have one yet? Tap here to visit our website!",
-        //};
-        private NavigationView setupView = new NavigationView();
-        private RemoteControlView remoteControlView = new RemoteControlView() {
-            P = 0.2f, I = 0.4f, D = 0.6f, ILimit = 0.8f
-        };
-        private PlotView plotView = new PlotView() {
-            Padding = new Margin(10, 30)
-        };
+        
+        
 
         
-        private GravityNegotiationDirect device;
+        private FlightControllerEndpoint device;
 
         /// <summary>
         /// This routine should only be used to set up the initial GUI
         /// </summary>
-        public Application()
+        public Application(string[] args)
         {
-            mainWindow = new Window(topLayer);
-            mainWindow.SetFocus();
-            topLayer.Insert(setupView, true);
-
-
-
-            if (!System.IO.File.Exists(Platform.AssetsPath + "/Firmware/Baseband.img"))
-                Platform.DefaultLog.Log("firmware not found");
-
-            NavigationBarItem i1 = new NavigationBarItem("lol");
-            NavigationBarItem i2 = new NavigationBarItem(NavigationBarItem.iOSNavigationBarItemType.Action);
-            //i2.Engaged += (o) => Platform.RootViewController.SetView(remoteControlView, AnimationType.Push, Direction.ToTheLeft());
-            i2.Engaged += (o) => topLayer.Replace(setupView, remoteControlView, false, true, new Vector2D<float>(-1, 0));
-
-            setupView.NavigateForward(deviceListView, "looking for devices...", false, i1, i2);
-            
-
-
-            // todo: add footer
-            //setupView.TitleClicked += (o, e) => Platform.RootViewController.SetView(remoteControlView, AnimationType.Push, Direction.ToTheLeft());
-            //setupView.FooterClicked += (o, e) => Platform.OpenWWW("http://" + AppInstall.Organization.GlobalConstants.WEB_SERVER);
-
-
-            remoteControlView.ThrottleChanged += (o, e) => { if (device != null) { device.Throttle = e; device.Control(); } };
-            remoteControlView.ConfigurationChanged += (o) => { if (device != null) device.Configure(remoteControlView.P, remoteControlView.I, remoteControlView.D, remoteControlView.ILimit, remoteControlView.A, remoteControlView.T); };
-            remoteControlView.LayoutSubviews();
-            remoteControlView.P = 0.2f;
-            remoteControlView.I = 0f;
-            remoteControlView.D = 0f;
-            remoteControlView.ILimit = 0f;
-            remoteControlView.A = 30f;
-            remoteControlView.T = 0.150f;
-
-
-            remoteControlView.SupplementaryAction += (o) => {
-                plotView.Clear();
-                if (device == null) {
-                    plotView.Plot(new float[] { 1, 2, 6, 1, 6, 4, 9, 3, 6, 3 }, Color.Green);
-                } else {
-                    device.Throttle = 0.01f;
-                    device.Control().WaitOne();
-                    global::System.Threading.Thread.Sleep(500);
-                    device.Throttle = 0.0f;
-                    device.Control().WaitOne();
-                    device.ReadLog();
-                    plotView.Plot(device.PitchSensorLog, Color.Green);
-                    plotView.Plot(device.PitchActionLog, Color.Magenta);
-                }
-                plotView.UpdateLayout();
-                topLayer.Insert(plotView, false, new Vector2D<float>(1, 0));
-            };
-
         }
 
         /// <summary>
@@ -124,7 +50,8 @@ namespace AppInstall
             updater.Init(10, true, Platform.DefaultLog.SubContext("installer system"), ApplicationControl.ShutdownToken);
 
             Platform.DefaultLog.Log("loading bluetooth central...");
-            CollectionSource<BluetoothPeripheral> client = BluetoothCentral.CreateDeviceSource();
+            BluetoothCentral.LogContext = Platform.DefaultLog.SubContext("BT");
+            CollectionSource<BluetoothPeripheral> peripherals = BluetoothCentral.CreateDeviceSource(null, true);
 
             Platform.DefaultLog.Log("loading UI...");
 
@@ -136,19 +63,74 @@ namespace AppInstall
 
 
                 var mainView = new ListViewController<BluetoothPeripheral>() {
-                    Data = client,
+                    Data = peripherals,
                     Title = "Devices",
-                    Footer = "make sure that the device is switched on and in range",
+                    Footer = "make sure that the device is switched on and in range", // todo: implement
                     RefreshText = "pull to scan",
                     RefreshingText = "scanning...",
+                    RefreshErrorMessageFactory = ex => ex.Message,
                     Fields = new Field<BluetoothPeripheral>[] {
-                        new TextFieldView<BluetoothPeripheral>("Name", p => p.Name, true),
+                        new TextFieldView<BluetoothPeripheral>("Name", p => p.Name == null ? null : p.Name, true),
                         new TextFieldView<BluetoothPeripheral>("signal strength", p => p.RSSI.ToString(), false)
                     },
                     DetailViewConstructor = (parent, peripheral, isNew) => new CustomViewController<BluetoothPeripheral> {
-                        // todo: pull existing CustomViewController class into C# framework
+                        Title = "Remote Control",
+                        Data = new DataSource<BluetoothPeripheral>(peripheral),
+                        ViewConstructor = () => {
+
+                            var remoteControlView = new RemoteControlView() {
+                                P = 0.2f,
+                                I = 0.4f,
+                                D = 0.6f,
+                                ILimit = 0.8f
+                            };
+
+                            remoteControlView.ThrottleChanged += (o, e) => { if (device != null) { device.Throttle = e; device.Control(); } };
+                            remoteControlView.ConfigurationChanged += (o) => { if (device != null) device.Configure(remoteControlView.P, remoteControlView.I, remoteControlView.D, remoteControlView.ILimit, remoteControlView.A, remoteControlView.T); };
+                            remoteControlView.UpdateLayout();
+                            remoteControlView.P = 0.2f;
+                            remoteControlView.I = 0f;
+                            remoteControlView.D = 0f;
+                            remoteControlView.ILimit = 0f;
+                            remoteControlView.A = 30f;
+                            remoteControlView.T = 0.150f;
+
+                            remoteControlView.SupplementaryAction += (o) => {
+
+                            };
+
+                            return remoteControlView;
+                        },
+                        Features = new List<FeatureController>() {
+                            new DialogFeature<BluetoothPeripheral>() {
+                                Text = "plot",
+                                ViewConstructor = obj => new CustomViewController<BluetoothPeripheral> {
+                                    Title = "plot",
+                                    ViewConstructor = () => {
+                                        var plotView = new PlotView() {
+                                            Padding = new Margin(10, 30)
+                                        };
+
+                                        if (device == null) {
+                                            plotView.Plot(new float[] { 1, 2, 6, 1, 6, 4, 9, 3, 6, 3 }, Color.Green);
+                                        } else {
+                                            device.Throttle = 0.01f;
+                                            device.Control().WaitOne();
+                                            System.Threading.Thread.Sleep(500);
+                                            device.Throttle = 0.0f;
+                                            device.Control().WaitOne();
+                                            device.ReadLog();
+                                            plotView.Plot(device.PitchSensorLog, Color.Green);
+                                            plotView.Plot(device.PitchActionLog, Color.Magenta);
+                                        }
+
+                                        return plotView;
+                                    }
+                                }
+                            }
+                        }
                     }
-                }
+                };
 
 
 
@@ -169,49 +151,7 @@ namespace AppInstall
 
 
 
-        private void bluetooth_StateChanged(BluetoothCentralState state)
-        {
-            Platform.InvokeMainThread(delegate {
-                deviceListView.Clear();
-
-                deviceListView.UpdateLayout();
-
-                switch (state) {
-                    case BluetoothCentralState.Ready:
-                        //Platform.RootViewController.SetView(setupView, AnimationType.Fade, null);
-                        topLayer.Remove(errView, true);
-                        mainWindow.FrameColor = Color.Black;
-                        //Platform.RootViewController.SetView(remoteControlView, AnimationType.Fade, null);
-                        return;
-
-                    case BluetoothCentralState.Unsupported:
-                        errView.Message = "This device does not have Bluetooth v4.0. You need an iPhone 4S, iPad 3, iPod Touch 5 or newer.\n\n" +
-                                          "Future support is planned for these devices: MacBook Air 2011, MacBook Pro 2012, Mac Mini";
-                        break;
-
-                    case BluetoothCentralState.Unauthorized:
-                        errView.Message = "Please allow this App to use Bluetooth";
-                        break;
-
-                    case BluetoothCentralState.Off:
-                        errView.Message = "Please go to Settings and turn on Bluetooth";
-                        break;
-
-                    default:
-                        errView.Message = "Unknown bluetooth state. Please contact support.";
-                        break;
-                }
-
-                //Platform.RootViewController.SetView(errView, AnimationType.Fade, null);
-                topLayer.Insert(errView, true);
-                mainWindow.FrameColor = Color.White;
-            });
-
-            //if (bluetooth.State == BluetoothCentralState.Ready) bluetooth.StartScan(new Guid[] { new Guid(AppInstall.Organization.GlobalConstants.FLIGHT_SERVICE_UUID) });
-            if (state == BluetoothCentralState.Ready) BluetoothCentral.StartScan(null);
-        }
-
-
+        /*
         private void device_identify(object o, object e)
         {
             BluetoothPeripheral dev = (BluetoothPeripheral)e;
@@ -229,7 +169,7 @@ namespace AppInstall
                         p.ProgressChanged += (o2, e2) => Platform.DefaultLog.Log("at " + Math.Round(e2 * 100) + "%");
                         p.StatusChanged += (o2, e2) => Platform.DefaultLog.Log("upload: " + e2);
 
-                        using (ProgressView pv = Platform.InvokeMainThread(() => new ProgressView("Updating Device Firmware", "A firmware update is being transferred to your device. You may abort the process at any time without breaking the device.", p))) {
+                        using (ProgressView pv = Platform.EvaluateOnMainThread(() => new ProgressView("Updating Device Firmware", "A firmware update is being transferred to your device. You may abort the process at any time without breaking the device.", p))) {
                             Platform.InvokeMainThread(pv.Show, true);
                             BluetoothUpdateManager.Update(dev, new CSRImage(Platform.AssetsPath + "/Firmware/Baseband.img"), p);
                         }
@@ -241,7 +181,7 @@ namespace AppInstall
                     }
 
 
-                    device = new GravityNegotiationDirect(new BluetoothI2CProxy(dev));
+                    device = new FlightControllerEndpoint(new BluetoothI2CProxy(dev));
                     topLayer.Replace(setupView, remoteControlView, false, true, new Vector2D<float>(-1, 0));
 
                     //while (true) {
@@ -278,5 +218,6 @@ namespace AppInstall
             //    }).Start();
             //};
         }
+         */
     }
 }

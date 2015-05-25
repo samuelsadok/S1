@@ -20,6 +20,8 @@ namespace AppInstall.Hardware
     {
         public const int MTU_SIZE = 20;
 
+        public readonly LogContext logContext;
+
         public readonly CBPeripheral peripheral; // used for communications lock - (never lock within a data lock!)
         object activeProcesses; // keeps track of the currently running actions on peripheral
         Exception lastException;
@@ -33,7 +35,7 @@ namespace AppInstall.Hardware
                 Thread.MemoryBarrier();
                 CountdownEvent result;
                 while ((result = (CountdownEvent)Thread.VolatileRead(ref activeProcesses)) == null) {
-                    LogSystem.Log("counter is null");
+                    logContext.Log("counter is null");
                     Thread.Sleep(100);
                 }
                 return result;
@@ -70,20 +72,28 @@ namespace AppInstall.Hardware
         /// </summary>
         public bool IsConnected { get; set; }
 
+        /// <summary>
+        /// Triggered when the metadata of this device are updated (e.g. name, list of services, etc).
+        /// </summary>
+        public event Action<BluetoothPeripheral> InfoChanged;
+
         
         private Dictionary<Guid, Dictionary<Guid, object>> services = new Dictionary<Guid, Dictionary<Guid, object>>(); // used for data lock (on services, characteristics and descriptors)
         
 
 
-        public BluetoothPeripheral(CBPeripheral peripheral, NSDictionary advertismentData, int RSSI)
+        public BluetoothPeripheral(CBPeripheral peripheral, NSDictionary advertismentData, int RSSI, LogContext logContext)
         {
+            this.logContext = logContext;
+
             this.peripheral = peripheral;
             this.RSSI = RSSI;
 
             //ServiceData = new Dictionary<Guid, byte[]>();
 
+            Name = peripheral.Name;
             UpdateData(advertismentData, RSSI);
-            if (Name == null) throw new ArgumentException();
+            //if (Name == null) throw new ArgumentException();
 
 
 
@@ -96,7 +106,7 @@ namespace AppInstall.Hardware
 #endif
                     if (action != null) action();
                 } catch (Exception ex) {
-                    LogSystem.Log("bluetooth error (event: " + eventName + "): " + ex.ToString());
+                    logContext.Log("bluetooth error (event: " + eventName + "): " + ex.ToString());
                     lastException = ex;
                 } finally {
                     ActiveProcesses.Signal();
@@ -164,6 +174,8 @@ namespace AppInstall.Hardware
                     }
                 }
             }
+
+            InfoChanged.SafeInvoke(this);
         }
 
 
@@ -177,11 +189,11 @@ namespace AppInstall.Hardware
                 // discover services and wait until done
                 lastException = null;
                 ActiveProcesses = new CountdownEvent(1);
-                LogSystem.Log("now discovering");
+                logContext.Log("now discovering");
                 peripheral.DiscoverServices();
-                LogSystem.Log("waiting");
+                logContext.Log("waiting");
                 ActiveProcesses.Wait(); // todo: allow cancelling
-                LogSystem.Log("done discovering");
+                logContext.Log("done discovering");
                 ActiveProcesses = null;
 
                 // copy data into our store
@@ -201,12 +213,12 @@ namespace AppInstall.Hardware
 
             lock (services) {
                 foreach (var service in services) {
-                    LogSystem.Log("BTP: service: " + service.Key.ToString());
+                    logContext.Log("  service: " + service.Key.ToString());
                     foreach (var content in service.Value) {
                         if (content.Value.GetType() == typeof(CBCharacteristic))
-                            LogSystem.Log("BTP:     characteristic: " + content.Key.ToString());
+                            logContext.Log("    characteristic: " + content.Key.ToString());
                         else
-                            LogSystem.Log("BTP:     descriptor: " + content.Key.ToString());
+                            logContext.Log("    descriptor: " + content.Key.ToString());
                     }
                 }
             }

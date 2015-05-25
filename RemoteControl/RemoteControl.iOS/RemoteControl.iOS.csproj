@@ -118,6 +118,18 @@
     <Compile Include="..\..\shared-c#\Hardware\Devices.Mac\Screen.cs">
       <Link>Hardware\Devices.Mac\Screen.cs</Link>
     </Compile>
+    <Compile Include="..\..\shared-c#\Hardware\FlightControllerEndpoint.cs">
+      <Link>Hardware\FlightControllerEndpoint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Installer\DummyInstallerSystem.cs">
+      <Link>Installer\DummyInstallerSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Abstraction.iOS.cs">
+      <Link>UI\Abstraction.iOS.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Extensions.cs">
+      <Link>UI\Extensions.cs</Link>
+    </Compile>
     <Compile Include="..\..\shared-c#\UI\Features.Mac\Feature.cs">
       <Link>UI\Features.Mac\Feature.cs</Link>
     </Compile>
@@ -141,6 +153,9 @@
     </Compile>
     <Compile Include="..\..\shared-c#\UI\ViewControllers.Mac\ViewController.cs">
       <Link>UI\ViewControllers.Mac\ViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\CustomViewController.cs">
+      <Link>UI\ViewControllers\CustomViewController.cs</Link>
     </Compile>
     <Compile Include="..\..\shared-c#\UI\ViewControllers\DetailViewController.cs">
       <Link>UI\ViewControllers\DetailViewController.cs</Link>
@@ -286,9 +301,6 @@
     <Compile Include="..\..\shared-c#\Hardware\Foundation.cs">
       <Link>Hardware\Foundation.cs</Link>
     </Compile>
-    <Compile Include="..\..\shared-c#\Hardware\GravityNegotiationDirect.cs">
-      <Link>Hardware\GravityNegotiationDirect.cs</Link>
-    </Compile>
     <Compile Include="..\..\shared-c#\Hardware\II2CPort.cs">
       <Link>Hardware\II2CPort.cs</Link>
     </Compile>
@@ -338,9 +350,6 @@
       <Link>Framework\VolatileList.cs</Link>
     </Compile>
     <None Include="Info.plist" />
-    <Compile Include="..\..\shared-c#\UI\Specialized\BluetoothUI.cs">
-      <Link>UI\Specialized\BluetoothUI.cs</Link>
-    </Compile>
     <Compile Include="..\..\shared-c#\UI\Specialized\RemoteControlView.cs">
       <Link>UI\Specialized\RemoteControlView.cs</Link>
     </Compile>

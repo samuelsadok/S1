@@ -21,7 +21,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>7.0</string>
+	<string>8.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>Remote Control</string>
 	<key>CFBundleIdentifier</key>

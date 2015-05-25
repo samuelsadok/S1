@@ -7,7 +7,7 @@ using AppInstall.Hardware;
 
 namespace AppInstall.UI
 {
-
+    [Obsolete("use common view controller model", true)]
     public class BluetoothPeripheralListItem : ListViewItem
     {
         Button btn = new Button() {

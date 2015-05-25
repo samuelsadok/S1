@@ -152,6 +152,7 @@ namespace AppInstall.UI
                 if (ActivityTracker.Status == ActivityStatus.Active) {
                     listView.RefreshControl.BeginRefreshing();
                     listView.StatusHeader.Visible = true;
+                    listView.StatusHeader.SetText("???", null);
                 } else {
                     listView.RefreshControl.EndRefreshing();
                     listView.StatusHeader.Visible = true;
