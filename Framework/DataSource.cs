@@ -43,8 +43,17 @@ namespace AppInstall.Framework
         /// </summary>
         public async Task Refresh(CancellationToken cancellationToken)
         {
-            Platform.DefaultLog.Log("refresh triggered in " + this.GetHashCode());
+            Platform.DefaultLog.Log("refresh triggered in data source " + this.GetHashCode());
             await refreshAction.TriggerAndWait(cancellationToken);
+        }
+
+        /// <summary>
+        /// Like a normal refresh, but a new refresh is not enqueued if one is already in progress.
+        /// </summary>
+        public async Task SoftRefresh(CancellationToken cancellationToken)
+        {
+            Platform.DefaultLog.Log("soft refresh triggered in data source " + this.GetHashCode());
+            await refreshAction.SoftTriggerAndWait(cancellationToken);
         }
 
         /// <summary>

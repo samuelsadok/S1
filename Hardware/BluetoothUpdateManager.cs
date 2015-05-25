@@ -45,14 +45,14 @@ namespace AppInstall.Hardware
 
             try {
                 BluetoothDeviceInfo devInfo = new BluetoothDeviceInfo(peripheral);
-                LogSystem.Log("Model Number: " + devInfo.ModelNumber);
-                LogSystem.Log("Manufacturer: " + devInfo.ManufacturerName);
-                LogSystem.Log("Serial Number: " + devInfo.SerialNumber);
-                LogSystem.Log("Hardware Revision: " + devInfo.HardwareRevision);
-                LogSystem.Log("Firmware Revision: " + devInfo.FirmwareRevision);
-                LogSystem.Log("Software Revision: " + devInfo.SoftwareRevision);
+                peripheral.logContext.Log("Model Number: " + devInfo.ModelNumber);
+                peripheral.logContext.Log("Manufacturer: " + devInfo.ManufacturerName);
+                peripheral.logContext.Log("Serial Number: " + devInfo.SerialNumber);
+                peripheral.logContext.Log("Hardware Revision: " + devInfo.HardwareRevision);
+                peripheral.logContext.Log("Firmware Revision: " + devInfo.FirmwareRevision);
+                peripheral.logContext.Log("Software Revision: " + devInfo.SoftwareRevision);
             } catch (Exception ex) {
-                LogSystem.Log("could not determine version: " + ex.ToString());
+                peripheral.logContext.Log("could not determine version: " + ex.ToString());
                 return false;
             }
 

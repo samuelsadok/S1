@@ -7,7 +7,7 @@ using AppInstall.Framework;
 
 namespace AppInstall.Hardware
 {
-    public class GravityNegotiationDirect
+    public class FlightControllerEndpoint
     {
         private const int MAX_SUPPORTED_VERSION = 1;
         
@@ -94,6 +94,8 @@ namespace AppInstall.Hardware
 
 
 
+        private readonly LogContext logContext;
+
         private readonly II2CPort port;
 
         private float P, I, D, ILimit, A, T;
@@ -115,8 +117,10 @@ namespace AppInstall.Hardware
         public float[] PitchActionLog { get; private set; }
 
 
-        public GravityNegotiationDirect(II2CPort port)
+        public FlightControllerEndpoint(II2CPort port, LogContext logContext)
         {
+            this.logContext = logContext;
+
             readDataAction = new SlowAction(ReadDataEx);
             readLogAction = new SlowAction(ReadLogEx);
             controlAction = new SlowAction(ControlEx);
@@ -129,7 +133,7 @@ namespace AppInstall.Hardware
             this.port = port;
             byte[] version = port.Read(I2C_SLAVE_ADDRESS, 0, I2C_SLAVE_ADDRESS_BYTES, 2);
             Version = BitConverter.ToInt16(version, 0);
-            LogSystem.Log("actual firmware version: " + Version);
+            logContext.Log("actual firmware version: " + Version);
             if (Version > MAX_SUPPORTED_VERSION) throw new NotSupportedException("the device is too new");
             ControlAttitude = new YawPitchRoll();
         }
@@ -139,17 +143,17 @@ namespace AppInstall.Hardware
         /// </summary>
         public void ReadData()
         {
-            readDataAction.Trigger().WaitOne();
+            readDataAction.Trigger(ApplicationControl.ShutdownToken).WaitOne();
         }
 
         public void ReadLog()
         {
-            readLogAction.Trigger().WaitOne();
+            readLogAction.Trigger(ApplicationControl.ShutdownToken).WaitOne();
         }
 
         public WaitHandle Control()
         {
-            return controlAction.Trigger();
+            return controlAction.Trigger(ApplicationControl.ShutdownToken);
         }
 
         public WaitHandle Configure(float p, float i, float d, float iLimit, float a, float t)
@@ -160,7 +164,7 @@ namespace AppInstall.Hardware
             ILimit = iLimit;
             A = a;
             T = t;
-            return configureAction.Trigger();
+            return configureAction.Trigger(ApplicationControl.ShutdownToken);
         }
 
 
@@ -177,7 +181,7 @@ namespace AppInstall.Hardware
             Array.Copy(BitConverter.GetBytes((UInt16)(angle / (float)Math.PI * (float)0x4000)), 0, data, offset, 2);
         }
 
-        private void ReadDataEx()
+        private void ReadDataEx(CancellationToken cancellationToken)
         {
             byte[] data = port.Read(I2C_SLAVE_ADDRESS, STATE_STRUCT_OFFSET, I2C_SLAVE_ADDRESS_BYTES, STATE_STRUCT_SIZE);
             float y1 = AngleFromData(data, 0), p1 = AngleFromData(data, 2), r1 = AngleFromData(data, 4);
@@ -186,7 +190,7 @@ namespace AppInstall.Hardware
             AngularRate = new YawPitchRoll(y2, p2, r2);
         }
 
-        private void ReadLogEx()
+        private void ReadLogEx(CancellationToken cancellationToken)
         {
             byte[] data = new byte[LOG_STRUCT_SIZE];
             Utilities.PartitionWork(0, LOG_STRUCT_SIZE, 17, (start, count) => {
@@ -205,7 +209,7 @@ namespace AppInstall.Hardware
             }
         }
 
-        public void ControlEx()
+        public void ControlEx(CancellationToken cancellationToken)
         {
             byte[] data = new byte[CONTROL_STRUCT_SIZE];
             Array.Copy(BitConverter.GetBytes((UInt16)(Throttle * (float)FULL_THROTTLE)), 0, data, 0, 2);
@@ -214,10 +218,10 @@ namespace AppInstall.Hardware
             AngleToData(data, 6, ControlAttitude.Roll);
             DateTime start = DateTime.Now;
             port.Write(I2C_SLAVE_ADDRESS, CONTROL_STRUCT_OFFSET, I2C_SLAVE_ADDRESS_BYTES, data);
-            LogSystem.Log("write took " + DateTime.Now.Subtract(start).TotalMilliseconds + " ms");
+            logContext.Log("write took " + DateTime.Now.Subtract(start).TotalMilliseconds + " ms");
         }
 
-        public void ConfigureEx()
+        public void ConfigureEx(CancellationToken cancellationToken)
         {
             byte[] pidData = new byte[20];
             Array.Copy(BitConverter.GetBytes(P), 0, pidData, 0, 4);
