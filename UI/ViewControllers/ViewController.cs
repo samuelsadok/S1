@@ -39,6 +39,17 @@ namespace AppInstall.UI
         public FieldSource<string> SubtitleSource { get; set; }
 
         /// <summary>
+        /// A footer that displays additional info about this view.
+        /// </summary>
+        public string Footer { get; set; }
+
+        /// <summary>
+        /// Same as Footer but can change dynamically.
+        /// If non-null, the Footer field is ignored.
+        /// </summary>
+        public FieldSource<string> FooterSource { get; set; }
+
+        /// <summary>
         /// A path to the icon that represents this view
         /// </summary>
         public string Icon { get; set; }
