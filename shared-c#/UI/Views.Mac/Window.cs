@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using UIKit;
+using CoreGraphics;
 using AppInstall.Framework;
 using AppInstall.Graphics;
 
@@ -45,7 +42,7 @@ namespace AppInstall.UI
                     Application.UILog.Log("platform padding " + platformPadding + ", keyboard padding " + parent.keyboardPadding + ", actual padding" + view.Padding);
                     //platformView.Frame = platformView.Bounds;
                     //if (view.CustomPadding)
-                    platformView.Frame = new RectangleF(0, 0, parent.screen.ApplicationSpace.V1 + parent.screen.ApplicationSpace.V3, parent.screen.ApplicationSpace.V2 + parent.screen.ApplicationSpace.V4);
+                    platformView.Frame = new CGRect(0, 0, parent.screen.ApplicationSpace.V1 + parent.screen.ApplicationSpace.V3, parent.screen.ApplicationSpace.V2 + parent.screen.ApplicationSpace.V4);
                     //else
                     //    platformView.Frame = new RectangleF(view.Padding.Left, view.Padding.Top, parent.screen.ApplicationSpace.V1 + parent.screen.ApplicationSpace.V3 - view.Padding.Left - view.Padding.Right, parent.screen.ApplicationSpace.V2 + parent.screen.ApplicationSpace.V4 - view.Padding.Top - view.Padding.Bottom);
 
@@ -64,7 +61,7 @@ namespace AppInstall.UI
                 return (frameColor == Color.White ? UIStatusBarStyle.LightContent : UIStatusBarStyle.Default);
             }
 
-            public override void ViewWillTransitionToSize(SizeF toSize, IUIViewControllerTransitionCoordinator coordinator)
+            public override void ViewWillTransitionToSize(CGSize toSize, IUIViewControllerTransitionCoordinator coordinator)
             {
                 
             }
@@ -76,7 +73,7 @@ namespace AppInstall.UI
         ViewController viewController = null; // may be null
         Screen screen;
 
-        public Vector2D<float> Location { get { return nativeView.Frame.Location.ToVector2D(); } set { nativeView.Frame = new RectangleF(value.ToPoint(), nativeView.Frame.Size); } }
+        public Vector2D<float> Location { get { return nativeView.Frame.Location.ToVector2D(); } set { nativeView.Frame = new CGRect(value.ToCGPoint(), nativeView.Frame.Size); } }
 
         private void UpdateFrame()
         {
@@ -84,11 +81,11 @@ namespace AppInstall.UI
         }
 
         public Window(Screen screen, ViewController viewController, Color themeColor)
-            : base(new UIWindow(new RectangleF(screen.Bounds.V1, screen.Bounds.V2, screen.Bounds.V3, screen.Bounds.V4)), true)
+            : base(new UIWindow(new CGRect(screen.Bounds.V1, screen.Bounds.V2, screen.Bounds.V3, screen.Bounds.V4)), true)
         {
-            if (screen == null) throw new ArgumentNullException("screen");
-            if (viewController == null) throw new ArgumentNullException("view");
-            if (themeColor == null) throw new ArgumentNullException("themeColor");
+            if (screen == null) throw new ArgumentNullException(nameof(screen));
+            if (viewController == null) throw new ArgumentNullException(nameof(view));
+            if (themeColor == null) throw new ArgumentNullException(nameof(themeColor));
             view = new LayerLayout(); // { CustomPadding = true };
             view.BackgroundColor = Color.Blue;
             this.screen = screen;
@@ -102,7 +99,7 @@ namespace AppInstall.UI
 
             UIKeyboard.Notifications.ObserveWillChangeFrame((o, e) => {
                 UpdateFrame();
-                var frame = e.FrameEnd;
+                var frame = e.FrameEnd.ToVector4D().ToRectangleF(); // ok this looks stupid
                 var alignedBorders = new Vector4D<bool>(frame.X <= Location.X, frame.X + frame.Width >= Location.X + Size.X, frame.Y <= Location.Y, frame.Y + frame.Height >= Location.Y + Size.Y);
                 var paddedBorders = new Vector4D<bool>(alignedBorders.V1 && alignedBorders.V3 && alignedBorders.V4, alignedBorders.V2 && alignedBorders.V3 && alignedBorders.V4, alignedBorders.V3 && alignedBorders.V1 && alignedBorders.V2, alignedBorders.V4 && alignedBorders.V1 && alignedBorders.V2);
                 keyboardPadding.Left = (paddedBorders.V1 ? frame.X + frame.Width - Location.X : 0); // negative paddings may result

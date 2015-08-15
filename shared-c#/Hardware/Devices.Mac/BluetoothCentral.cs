@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using MonoTouch.Foundation;
-using MonoTouch.CoreBluetooth;
+using Foundation;
+using CoreBluetooth;
 using AppInstall.Framework;
 using AppInstall.OS;
 
@@ -92,7 +91,7 @@ namespace AppInstall.Hardware
                 return; // not thread safe!
 
             // init static variables
-            central = new CBCentralManager(new MonoTouch.CoreFoundation.DispatchQueue("bluetooth dispatch queue"));
+            central = new CBCentralManager(new CoreFoundation.DispatchQueue("bluetooth dispatch queue"));
             peripherals = new VolatileList<CBPeripheral, Tuple<NSDictionary, int>>(TimeSpan.FromSeconds(5));
             availablePeripherals = new Dictionary<CBPeripheral, BluetoothPeripheral>();
             connectionAttemptDoneHandler = new Dictionary<CBPeripheral, Action<NSError>>();

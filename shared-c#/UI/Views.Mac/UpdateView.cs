@@ -5,10 +5,10 @@ using System.Text;
 using System.Drawing;
 using AppInstall.Framework;
 using AppInstall.OS;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreAnimation;
-using MonoTouch.CoreGraphics;
+using Foundation;
+using UIKit;
+using CoreAnimation;
+using CoreGraphics;
 
 namespace AppInstall.UI
 {
@@ -32,17 +32,17 @@ namespace AppInstall.UI
             label.Font = UIFont.FromName(label.Font.Name, 12);
             label.SizeToFit();
             outerView.AddSubview(label);
-            label.Frame = new RectangleF(label.Superview.Frame.Width - label.Frame.Width, 0, label.Frame.Width, label.Frame.Height);
+            label.Frame = new CGRect(label.Superview.Frame.Width - label.Frame.Width, 0, label.Frame.Width, label.Frame.Height);
             label.AutoresizingMask = UIViewAutoresizing.FlexibleLeftMargin | UIViewAutoresizing.FlexibleBottomMargin;
 
             UIProgressView progressView = new UIProgressView(UIProgressViewStyle.Bar);
             outerView.AddSubview(progressView);
             progressView.Progress = (float)progressMonitor.Progress;
-            progressView.Frame = new RectangleF(0, 7, progressView.Superview.Frame.Width - label.Frame.Width - PROGRESS_BAR_LABEL_MARGIN, progressView.Superview.Frame.Height);
+            progressView.Frame = new CGRect(0, 7, progressView.Superview.Frame.Width - label.Frame.Width - PROGRESS_BAR_LABEL_MARGIN, progressView.Superview.Frame.Height);
             progressView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
 
             this.SetValueForKey(outerView, new NSString("accessoryView"));
-            outerView.Frame = new RectangleF(0, 0, MESSAGE_BOX_WIDTH - PROGRESS_BAR_MARGIN * 2, label.Frame.Height);
+            outerView.Frame = new CGRect(0, 0, MESSAGE_BOX_WIDTH - PROGRESS_BAR_MARGIN * 2, label.Frame.Height);
 
 
             progressMonitor.ProgressChanged += (o, e) => Platform.InvokeMainThread(() => {
@@ -56,7 +56,7 @@ namespace AppInstall.UI
 
         protected override void Dispose(bool disposing)
         {
-            Platform.InvokeMainThread(() => this.DismissWithClickedButtonIndex(-1, true), true);
+            Platform.InvokeMainThread(() => this.DismissWithClickedButtonIndex(-1, true));
             base.Dispose(disposing);
         }
     }

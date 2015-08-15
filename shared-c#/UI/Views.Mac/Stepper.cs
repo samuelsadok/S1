@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 using AppInstall.Framework;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 
 namespace AppInstall.UI
 {

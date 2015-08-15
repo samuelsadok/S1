@@ -1,0 +1,5 @@
+Added Pin To Net: NetName=VBUS Pin=J1-A4
+Added Pin To Net: NetName=VBUS Pin=J1-A9
+Added Pin To Net: NetName=VBUS Pin=J1-B4
+Added Pin To Net: NetName=VBUS Pin=J1-B9
+Added Net: Name=VBUS

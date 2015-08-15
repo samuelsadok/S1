@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net.Sockets;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using AppInstall.Framework;
@@ -12,10 +13,47 @@ using AppInstall.Hardware;
 using AppInstall.Organization;
 using AppInstall.Graphics;
 using AppInstall.Installer;
+using AppInstall.Networking;
 
 
 namespace AppInstall
 {
+
+    /// <summary>
+    /// Represents a collection of all services supported by this application.
+    /// A device does not have to support all of these services.
+    /// </summary>
+    class RemoteDevice
+    {
+        public readonly ZeroConfService network;
+        public readonly BluetoothPeripheral bluetooth;
+
+        public string Name
+        {
+            get
+            {
+                if (network == null)
+                    return network.Name;
+                else
+                    return bluetooth.Name;
+            }
+        }
+
+        /// <summary>
+        /// Service for controlling the device's immediate actions
+        /// </summary>
+        public readonly FlightControllerService flightControllerService;
+
+
+        public RemoteDevice(ZeroConfService network, BluetoothPeripheral bluetooth)
+        {
+            this.network = network;
+            this.bluetooth = bluetooth;
+
+            flightControllerService = new FlightControllerService(network, bluetooth, Platform.DefaultLog.SubContext("flight control service"));
+        }
+    }
+
 
     /// <summary>
     /// Platform independent implementation of the Remote Control application
@@ -31,7 +69,7 @@ namespace AppInstall
         
 
         
-        private FlightControllerEndpoint device;
+        private FlightControllerService device;
 
         /// <summary>
         /// This routine should only be used to set up the initial GUI
@@ -39,6 +77,11 @@ namespace AppInstall
         public Application(string[] args)
         {
         }
+
+        // legacy pre-build event: rmdir /S /Q \\psf\home\Library\Caches\Xamarin\mtbs
+        // rmdir /S /Q \\psf\home\Library\Caches\Xamarin\mtbs
+        // rmdir /S /Q C:\Data\Projects\s1\remotecontrol.ios\bin
+        // rmdir /S /Q C:\Data\Projects\s1\remotecontrol.ios\obj
 
         /// <summary>
         /// Main thread
@@ -51,7 +94,13 @@ namespace AppInstall
 
             Platform.DefaultLog.Log("loading bluetooth central...");
             BluetoothCentral.LogContext = Platform.DefaultLog.SubContext("BT");
-            CollectionSource<BluetoothPeripheral> peripherals = BluetoothCentral.CreateDeviceSource(null, true);
+            var bluetoothPeripherals = BluetoothCentral.CreateDeviceSource(null, true);
+            var networkPeripherals = ZeroConf.CreateSource("_http._tcp", null, true);
+
+            var list1 = new MappedSource<BluetoothPeripheral, RemoteDevice>(bluetoothPeripherals, dev => new RemoteDevice(null, dev), null, false);
+            var list2 = new MappedSource<ZeroConfService, RemoteDevice>(networkPeripherals, dev => new RemoteDevice(dev, null), null, false);
+            var listX = new JointSource<RemoteDevice>(list1, list2);
+
 
             Platform.DefaultLog.Log("loading UI...");
 
@@ -62,20 +111,20 @@ namespace AppInstall
 
 
 
-                var mainView = new ListViewController<BluetoothPeripheral>() {
-                    Data = peripherals,
+                var mainView = new ListViewController<RemoteDevice>() {
+                    Data = listX,
                     Title = "Devices",
                     Footer = "make sure that the device is switched on and in range", // todo: implement
                     RefreshText = "pull to scan",
                     RefreshingText = "scanning...",
                     RefreshErrorMessageFactory = ex => ex.Message,
-                    Fields = new Field<BluetoothPeripheral>[] {
-                        new TextFieldView<BluetoothPeripheral>("Name", p => p.Name == null ? null : p.Name, true),
-                        new TextFieldView<BluetoothPeripheral>("signal strength", p => p.RSSI.ToString(), false)
+                    Fields = new Field<RemoteDevice>[] {
+                        new TextFieldView<RemoteDevice>("Name", p => p.Name == null ? null : p.Name, true),
+                        new TextFieldView<RemoteDevice>("signal strength", p => p.bluetooth == null ? "N/A" : p.bluetooth.RSSI.ToString(), false)
                     },
-                    DetailViewConstructor = (parent, peripheral, isNew) => new CustomViewController<BluetoothPeripheral> {
+                    DetailViewConstructor = (parent, peripheral, isNew) => new CustomViewController<RemoteDevice> {
                         Title = "Remote Control",
-                        Data = new DataSource<BluetoothPeripheral>(peripheral),
+                        Data = new DataSource<RemoteDevice>(peripheral),
                         ViewConstructor = () => {
 
                             var remoteControlView = new RemoteControlView() {
@@ -119,7 +168,7 @@ namespace AppInstall
                                             System.Threading.Thread.Sleep(500);
                                             device.Throttle = 0.0f;
                                             device.Control().WaitOne();
-                                            device.ReadLog();
+                                            //device.ReadLog();
                                             plotView.Plot(device.PitchSensorLog, Color.Green);
                                             plotView.Plot(device.PitchActionLog, Color.Magenta);
                                         }
@@ -146,6 +195,43 @@ namespace AppInstall
                         win.DumpLayout(Platform.DefaultLog);
                     }
                 }).Start();
+
+
+                /*
+
+
+                var logB = Platform.DefaultLog.SubContext("bttest");
+
+
+                var _serviceList = new List<Foundation.NSNetService>();
+                var _netBrowser = new Foundation.NSNetServiceBrowser();
+
+                EventHandler serviceAddressResolved = (sender, e) => {
+                    var ns = sender as Foundation.NSNetService;
+
+                    if (ns != null)
+                        logB.Log(ns.Name + " resolved");
+
+                    // at this point you could use any networking code you like to communicate with the service
+                };
+
+
+                _netBrowser.SearchForServices("_http._tcp", "");
+
+                _netBrowser.FoundService += delegate(object sender, Foundation.NSNetServiceEventArgs e) {
+                    logB.Log(e.Service.Name + " added");
+
+                    _serviceList.Add(e.Service);
+                    e.Service.AddressResolved += serviceAddressResolved;
+                };
+
+                _netBrowser.ServiceRemoved += delegate(object sender, Foundation.NSNetServiceEventArgs e) {
+                    logB.Log(e.Service.Name + " removed");
+
+                    var nsService = _serviceList.Single(s => s.Name.Equals(e.Service.Name));
+                    _serviceList.Remove(nsService);
+                };
+                */
             });
         }
 

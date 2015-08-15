@@ -1,0 +1,21 @@
+Added Component: Designator=C22(0201 (C))
+Added Component: Designator=C23(0201 (C))
+Added Component: Designator=L3(Inductor (8.4mm x 7.9mm))
+Added Pin To Net: NetName=GND Pin=C22-1
+Added Pin To Net: NetName=NetC22_2 Pin=C22-2
+Added Pin To Net: NetName=NetC22_2 Pin=U5-8
+Added Net: Name=NetC22_2
+Added Pin To Net: NetName=NetC23_1 Pin=C23-1
+Added Pin To Net: NetName=NetC23_1 Pin=L3-1
+Added Pin To Net: NetName=NetC23_1 Pin=U5-10
+Added Pin To Net: NetName=NetC23_1 Pin=U5-11
+Added Pin To Net: NetName=NetC23_1 Pin=U5-12
+Added Pin To Net: NetName=NetC23_1 Pin=U5-13
+Added Pin To Net: NetName=NetC23_1 Pin=U5-14
+Added Net: Name=NetC23_1
+Added Pin To Net: NetName=NetC23_2 Pin=C23-2
+Added Pin To Net: NetName=NetC23_2 Pin=U5-9
+Added Net: Name=NetC23_2
+Added Member To Class: ClassName=Battery Member=Component C22 Cap 100nF
+Added Member To Class: ClassName=Battery Member=Component C23 Cap 100nF
+Added Member To Class: ClassName=Battery Member=Component L3 L 6.8µH

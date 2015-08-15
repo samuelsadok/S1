@@ -6,7 +6,7 @@
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{34E58420-12FD-45FC-B582-EF397C3EE158}</ProjectGuid>
-    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>AppInstall</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
@@ -46,11 +46,11 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchExtraArgs>--aot=full</MtouchExtraArgs>
     <MtouchEnableGenericValueTypeSharing>False</MtouchEnableGenericValueTypeSharing>
-    <MtouchArch>Default, ARMv7</MtouchArch>
+    <MtouchArch>ARMv7</MtouchArch>
     <MtouchOptimizePNGs>True</MtouchOptimizePNGs>
     <MtouchI18n>
     </MtouchI18n>
-    <MtouchSdkVersion>7.1</MtouchSdkVersion>
+    <MtouchSdkVersion>8.3</MtouchSdkVersion>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchProfiling>False</MtouchProfiling>
     <MtouchFastDev>False</MtouchFastDev>
@@ -91,6 +91,9 @@
     <Compile Include="..\..\shared-c#\Framework\ApplicationControl.cs">
       <Link>Framework\ApplicationControl.cs</Link>
     </Compile>
+    <Compile Include="..\..\shared-c#\Framework\ByteConverter.cs">
+      <Link>Framework\ByteConverter.cs</Link>
+    </Compile>
     <Compile Include="..\..\shared-c#\Framework\DataSource.cs">
       <Link>Framework\DataSource.cs</Link>
     </Compile>
@@ -123,6 +126,21 @@
     </Compile>
     <Compile Include="..\..\shared-c#\Installer\DummyInstallerSystem.cs">
       <Link>Installer\DummyInstallerSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Networking\Client.cs">
+      <Link>Networking\Client.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Networking\HTTP.cs">
+      <Link>Networking\HTTP.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Networking\NetContent.cs">
+      <Link>Networking\NetContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Networking\NetMessage.cs">
+      <Link>Networking\NetMessage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Networking\NetUtils.cs">
+      <Link>Networking\NetUtils.cs</Link>
     </Compile>
     <Compile Include="..\..\shared-c#\UI\Abstraction.iOS.cs">
       <Link>UI\Abstraction.iOS.cs</Link>
@@ -289,15 +307,6 @@
     <Compile Include="..\..\shared-c#\Framework\Utilities.cs">
       <Link>Framework\Utilities.cs</Link>
     </Compile>
-    <Compile Include="..\..\shared-c#\Hardware\BluetoothDeviceInfo.cs">
-      <Link>Hardware\BluetoothDeviceInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\..\shared-c#\Hardware\BluetoothI2CProxy.cs">
-      <Link>Hardware\BluetoothI2CProxy.cs</Link>
-    </Compile>
-    <Compile Include="..\..\shared-c#\Hardware\BluetoothUpdateManager.cs">
-      <Link>Hardware\BluetoothUpdateManager.cs</Link>
-    </Compile>
     <Compile Include="..\..\shared-c#\Hardware\Foundation.cs">
       <Link>Hardware\Foundation.cs</Link>
     </Compile>
@@ -353,6 +362,8 @@
     <Compile Include="..\..\shared-c#\UI\Specialized\RemoteControlView.cs">
       <Link>UI\Specialized\RemoteControlView.cs</Link>
     </Compile>
+    <Compile Include="Hardware\Service.cs" />
+    <Compile Include="Networking\ZeroConf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -362,10 +373,11 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="monotouch" />
+    <Reference Include="Xamarin.iOS" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>rmdir /S /Q \\psf\home\Library\Caches\Xamarin\mtbs</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>

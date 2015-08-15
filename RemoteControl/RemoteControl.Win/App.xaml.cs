@@ -16,7 +16,6 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Bluetooth.GenericAttributeProfile;
-using AppInstall.Hardware;
 
 
 namespace RemoteControl_Win
@@ -83,8 +82,8 @@ namespace RemoteControl_Win
             // Ensure the current window is active
             Window.Current.Activate();
 
-            
-            new System.Threading.Tasks.Task((new AppInstall.RemoteControl.Application()).Main).Start();
+            throw new NotImplementedException();
+            //new System.Threading.Tasks.Task((new AppInstall.RemoteControl.Application()).Main).Start();
         }
 
         /// <summary>

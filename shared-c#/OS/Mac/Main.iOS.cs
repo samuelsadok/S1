@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using AppInstall.OS;
-using AppInstall.UI;
+using Foundation;
+using UIKit;
 using AppInstall.Framework;
 
-namespace RemoteControl
+namespace AppInstall.OS
 {
-    public class Application
+    public class iOSApplication
     {
         // This is the main entry point of the application.
         static void Main(string[] args)

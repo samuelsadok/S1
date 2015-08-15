@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
+using CoreGraphics;
 using AppInstall.Framework;
 
 namespace AppInstall.Graphics
@@ -77,7 +71,7 @@ namespace AppInstall.Graphics
         /// <summary>
         /// Closes the current subpath (if any) by connecting the current point with the starting point
         /// </summary>
-        public void CloseSubpath()
+        public override void CloseSubpath()
         {
             base.CloseSubpath();
             nativePath.CloseSubpath();

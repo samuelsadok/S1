@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using AppInstall.Framework;
 
 namespace AppInstall.UI
@@ -42,7 +42,7 @@ namespace AppInstall.UI
             }
         }
 
-        public DateTime? Value { get { return nativeView.Date; } set { if (!value.HasValue) throw new NotImplementedException(); nativeView.Date = value.Value; } }
+        public DateTime? Value { get { return nativeView.Date.ToDateTime(); } set { if (!value.HasValue) throw new NotImplementedException(); nativeView.Date = value.Value.ToNSDate(); } }
 
         public DateTimePicker()
         {

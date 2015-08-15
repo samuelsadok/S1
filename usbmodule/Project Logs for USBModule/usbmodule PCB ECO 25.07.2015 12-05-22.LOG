@@ -1,0 +1,23 @@
+Added Component: Designator=C4(0402 (C))
+Added Component: Designator=C5(1206 (C))
+Added Component: Designator=L1(0806 (L))
+Added Component: Designator=U3(WLCSP-6 (1.2mm x 1.2mm))
+Added Pin To Net: NetName=GND Pin=C4-2
+Added Pin To Net: NetName=+5V Pin=C5-1
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=+5V Pin=U3-A1
+Added Pin To Net: NetName=+5V Pin=U3-A2
+Added Pin To Net: NetName=GND Pin=U3-C1
+Added Pin To Net: NetName=GND Pin=U3-C2
+Added Pin To Net: NetName=GND Pin=U3-C3
+Added Pin To Net: NetName=NetC4_1 Pin=C4-1
+Added Pin To Net: NetName=NetC4_1 Pin=L1-2
+Added Pin To Net: NetName=NetC4_1 Pin=U3-A3
+Added Net: Name=NetC4_1
+Added Pin To Net: NetName=NetL1_1 Pin=L1-1
+Added Pin To Net: NetName=NetL1_1 Pin=U3-B1
+Added Pin To Net: NetName=NetL1_1 Pin=U3-B2
+Added Net: Name=NetL1_1
+Added Pin To Net: NetName=NetU3_B3 Pin=U3-B3
+Added Net: Name=NetU3_B3
+Added Class: Name=Battery

@@ -90,6 +90,8 @@ namespace AppInstall.Framework
             }
         }
 
+        public bool RefreshOnMainThread { get; private set; }
+
         /// <summary>
         /// Creates a data source that cannot be refreshed.
         /// </summary>
@@ -108,6 +110,8 @@ namespace AppInstall.Framework
             this.data = initialData;
             IsLoaded = dataProvider == null;
 
+            RefreshOnMainThread = refreshOnMainThread;
+
             if (dataProvider != null)
                 this.refreshAction = new SlowAction((cancellationToken) => {
                     // refresh all dependencies that aren't loaded yet or that previously failed to load.
@@ -118,11 +122,11 @@ namespace AppInstall.Framework
                     if (exceptions.Any())
                         throw new AggregateException("failed to refresh dependencies", exceptions);
 
-                    var newItems = dataProvider(cancellationToken);
+                    var newData = dataProvider(cancellationToken);
                     if (refreshOnMainThread)
-                        Platform.InvokeMainThread(() => Refresh(newItems));
+                        Platform.InvokeMainThread(() => Refresh(newData));
                     else
-                        Refresh(newItems);
+                        Refresh(newData);
 
                     IsLoaded = true;
                 });
@@ -203,6 +207,15 @@ namespace AppInstall.Framework
         /// </summary>
         public CollectionSource(IEnumerable<T> data)
             : base(new ObservableCollection<T>(data))
+        {
+            SetupHandlers();
+        }
+
+        /// <summary>
+        /// Creates a collection source that can be refreshed. The collection may refresh itself when it is first accessed.
+        /// </summary>
+        public CollectionSource(IEnumerable<T> initialData, Func<CancellationToken, IEnumerable<T>> dataProvider, Action<IEnumerable<T>, CancellationToken> submitAction, bool refreshOnMainThread)
+            : base(new ObservableCollection<T>(initialData), (c) => new ObservableCollection<T>(dataProvider(c)), submitAction, refreshOnMainThread)
         {
             SetupHandlers();
         }
@@ -462,12 +475,89 @@ namespace AppInstall.Framework
         /// Creates a seperate data source that maps from one type from another.
         /// Subsequent operations on either collection will not affect the other collection.
         /// </summary>
-        public MappedSource(CollectionSource<TOrigin> origin, Func<TOrigin, TMapped> originToMapped, Func<TMapped, TOrigin> mappedToOrigin)
-            : base(origin.Select(originToMapped))
+        /// <param name="originToMapped">When called twice with the same input, this shall return two values that are equal (by the standard equality comparer)</param>
+        /// <param name="mappedToOrigin">Converts an origin type object from a mapped type object. If null, the collection cannot be used to construct new items.</param>
+        /// <param name="lazilyCoupled">If true, changes to this collection are not directly propagate to the origin and vice versa. In this case, the Commit function must be called.</param>
+        /// <param name="refreshOnMainThread">Only required if the collections are tightly coupled.</param>
+        public MappedSource(CollectionSource<TOrigin> origin, Func<TOrigin, TMapped> originToMapped, Func<TMapped, TOrigin> mappedToOrigin, bool lazilyCoupled)
+            : base(
+                origin.Select(originToMapped),
+                lazilyCoupled || !origin.CanRefresh ? null : (Func<CancellationToken, IEnumerable<TMapped>>)(c => {
+                    origin.Refresh(c).Wait(c);
+                    return origin.Select(originToMapped);
+                }),
+                lazilyCoupled || !origin.CanSubmit ? null : (Action<IEnumerable<TMapped>, CancellationToken>)((items, c) => {
+                    var originItems = items.Select(mappedToOrigin);
+                    origin.Add(originItems.Except(origin));
+                    origin.RemoveAll(i => originItems.Contains(i));
+                    origin.Submit(c).Wait(c);
+                }), origin.RefreshOnMainThread)
         {
+            if (originToMapped == null)
+                throw new ArgumentNullException("originToMapped");
+
             this.origin = origin;
-            this.mappedToOrigin = mappedToOrigin;
             this.originToMapped = originToMapped;
+            this.mappedToOrigin = mappedToOrigin;
+
+
+            var updating = new List<TOrigin>();
+
+            if (origin.ItemConstructor != null)
+                ItemConstructor = () => originToMapped(origin.ItemConstructor());
+
+
+            if (lazilyCoupled)
+                return;
+
+
+            // propagate changes from source to mapped collection
+            origin.DidAddItem += item => {
+                var i = originToMapped(item);
+                if (!Contains(i))
+                    Add(i);
+            };
+            origin.DidRemoveItem += item => Remove(originToMapped(item));
+
+            origin.DidUpdateItem += item => {
+                lock (updating) {
+                    if (updating.Contains(item))
+                        return;
+                    updating.Add(item);
+                }
+
+                try {
+                    UpdateItem(originToMapped(item));
+                } finally {
+                    lock (updating)
+                        updating.Remove(item);
+                }
+            };
+
+
+            // propagate changes from joint collection to sources
+            this.DidAddItem += item => {
+                var i = mappedToOrigin(item);
+                if (!origin.Contains(i))
+                    origin.Add(i);
+            };
+            this.DidRemoveItem += item => { origin.Remove(mappedToOrigin(item)); };
+
+            this.DidUpdateItem += item => {
+                var i = mappedToOrigin(item);
+                lock (updating) {
+                    if (updating.Contains(i))
+                        return;
+                    updating.Add(i);
+                }
+
+                try {
+                    origin.UpdateItem(i);
+                } finally {
+                    lock (updating)
+                        updating.Remove(i);
+                }
+            };
         }
 
         /// <summary>
@@ -477,9 +567,94 @@ namespace AppInstall.Framework
         {
             var newCommit = this.data.Except(origin.Select(originToMapped)).ToArray();
             origin.RemoveAll((item) => !this.data.Contains(originToMapped(item)));
+
+            if (newCommit.Any() && mappedToOrigin == null)
+                throw new InvalidOperationException("new items were added to the mapped collection, can't convert these items to origin type");
+
             origin.AddRange(newCommit.Select(mappedToOrigin));
         }
     }
+
+
+    /// <summary>
+    /// Makes it possible to join multiple collection sources of the same type.
+    /// A possible use case is for example a document collection were some documents are stored locally and some reside on the network.
+    /// </summary>
+    public class JointSource<T> : CollectionSource<T>
+    {
+        private CollectionSource<T> primarySource;
+
+        /// <summary>
+        /// Creates a single collection source from multiple sources.
+        /// The first of the sources that can construct items is considered the primary source.
+        /// Items that are added to this collection are added to the underlying primary source.
+        /// Issues arise when there are multiple equal items in the entire collection.
+        /// </summary>
+        public JointSource(params CollectionSource<T>[] sources)
+            : base(
+                sources.SelectMany(x => x),
+                !sources.Any(s => s.CanRefresh) ? (Func<CancellationToken, IEnumerable<T>>)null : c => {
+                    Task.WaitAll((from s in sources where s.CanRefresh select s.Refresh(c)).ToArray(), c);
+                    return sources.SelectMany(x => x);
+                }, null /* (items, c) => { // todo: implement submitting primary source
+                items.Except(sources.SelectMany(x => x));
+                throw new NotImplementedException();
+                }*/, sources.Any(s => s.RefreshOnMainThread))
+        {
+            var updating = new List<T>();
+            var primary = sources.FirstOrDefault(source => source.CanConstructItems);
+
+            if (primary != null)
+                ItemConstructor = primary.ItemConstructor;
+
+            // propagate changes from sources to joint collection
+            foreach (var source in sources) {
+                source.DidAddItem += item => { if (!Contains(item)) Add(item); };
+                source.DidRemoveItem += item => Remove(item);
+
+                source.DidUpdateItem += item => {
+                    lock (updating) {
+                        if (updating.Contains(item))
+                            return;
+                        updating.Add(item);
+                    }
+
+                    try {
+                        UpdateItem(item);
+                    } finally {
+                        lock (updating)
+                            updating.Remove(item);
+                    }
+                };
+            }
+
+            // propagate changes from joint collection to sources
+            this.DidAddItem += item => {
+                if (primary == null)
+                    throw new InvalidOperationException("can't determine where to add the item");
+                primary.Add(item);
+            };
+            this.DidRemoveItem += item => { foreach (var source in sources) source.Remove(item); };
+
+            this.DidUpdateItem += item => {
+                lock (updating) {
+                    if (updating.Contains(item))
+                        return;
+                    updating.Add(item);
+                }
+
+                try {
+                    foreach (var source in sources.Where(s => s.Contains(item)))
+                        source.UpdateItem(item);
+                } finally {
+                    lock (updating)
+                        updating.Remove(item);
+                }
+            };
+
+        }
+    }
+
 
     public class TreeSource<TTree, TItem> : DataSource<TTree>
     {

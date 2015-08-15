@@ -1,0 +1,16 @@
+Added Component: Designator=C6(0805 (C))
+Added Component: Designator=C7(0805 (C))
+Added Component: Designator=U4(SDFN-4 (0.8mm x 0.8mm))
+Added Pin To Net: NetName=+5V Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=GND Pin=U4-2
+Added Pin To Net: NetName=+5V Pin=U4-3
+Added Pin To Net: NetName=+5V Pin=U4-4
+Added Pin To Net: NetName=GND Pin=U4-PAD
+Added Pin To Net: NetName=+3.3V Pin=C7-1
+Added Pin To Net: NetName=+3.3V Pin=U4-1
+Added Net: Name=+3.3V
+Added Member To Class: ClassName=Battery Member=Component C6 Cap 100nF
+Added Member To Class: ClassName=Battery Member=Component C7 Cap 100nF
+Added Member To Class: ClassName=Battery Member=Component U4 TCR2LN33

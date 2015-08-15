@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using UIKit;
+using CoreGraphics;
 using AppInstall.Framework;
 using AppInstall.Graphics;
 
@@ -40,7 +39,7 @@ namespace AppInstall.UI
 
         protected override Vector2D<float> GetContentSize(Vector2D<float> maxSize)
         {
-            return nativeView.SizeThatFits(new SizeF(maxSize.X, maxSize.Y)).ToVector2D();
+            return nativeView.SizeThatFits(maxSize.ToCGSize()).ToVector2D();
         }
 
         protected override void UpdateContentLayout()
@@ -63,8 +62,11 @@ namespace AppInstall.UI
         public Margin Margin { get; set; } // left - right - top - bottom
         //public Vector2D<float> Location { get; set; } // X - Y
         public Vector2D<float> Size { get; set; } // width - height
-        public float Opacity { get { return nativeView.Alpha; } set { nativeView.Alpha = value; } }
+        public float Opacity { get { return (float)nativeView.Alpha; } set { nativeView.Alpha = value; } }
+
+        [Obsolete("a background is not neccessarily a solid color")]
         public Color BackgroundColor { get { return nativeView.BackgroundColor == null ? Color.Clear : nativeView.BackgroundColor.ToColor(); } set { nativeView.BackgroundColor = value.ToUIColor(); } }
+
         public Color BorderColor { get { return nativeView.Layer.BorderColor.ToColor(); } set { nativeView.Layer.BorderColor = value.ToCGColor(); } }
         public bool Shadow { get; set; }
         public bool Autosize { get; set; }
@@ -110,6 +112,7 @@ namespace AppInstall.UI
         /// <summary>
         /// This method must be overridden by an inheriting class and should return the minimum size of the content
         /// given the specified max size and respecting the childrens's margins.
+        /// todo: consider a separate measure and layout pass: store the content size instead of returning it
         /// </summary>
         protected abstract Vector2D<float> GetContentSize(Vector2D<float> maxSize);
 
@@ -126,8 +129,8 @@ namespace AppInstall.UI
         /// </summary>
         public Vector2D<float> GetMinSize(Vector2D<float> maxSize, Margin padding)
         {
-            if (maxSize == null) throw new ArgumentNullException("maxSize");
-            if (padding == null) throw new ArgumentNullException("padding");
+            if (maxSize == null) throw new ArgumentNullException($"{maxSize}");
+            if (padding == null) throw new ArgumentNullException($"{padding}");
 
             var paddingOverhead = new Vector2D<float>(padding.Left + padding.Right, padding.Top + padding.Bottom);
             var contentSize = GetContentSize(maxSize - paddingOverhead);
@@ -153,18 +156,18 @@ namespace AppInstall.UI
 
             var old = nativeView.Frame; // the frame location is already adjusted for padding (whether built-in or not)
             if (BuiltinPadding)
-                nativeView.Frame = new RectangleF(nativeView.Frame.Location, this.Size.ToSize());
+                nativeView.Frame = new CGRect(nativeView.Frame.Location, Size.ToCGSize());
             else
-                nativeView.Frame = new RectangleF(nativeView.Frame.Location.X, nativeView.Frame.Location.Y, this.Size.X - this.Padding.Left - this.Padding.Right, this.Size.Y - this.Padding.Top - this.Padding.Bottom);
+                nativeView.Frame = new CGRect(nativeView.Frame.Location.X, nativeView.Frame.Location.Y, Size.X - Padding.Left - Padding.Right, Size.Y - Padding.Top - Padding.Bottom);
             Application.UILog.Log("frame of " + this.GetHashCode() + " adjusted from " + old + " to " + nativeView.Frame, LogType.Debug);
 
             if (Shadow) {
                 nativeView.Layer.MasksToBounds = false;
-                nativeView.Layer.ShadowOffset = new SizeF(0, 0f);
+                nativeView.Layer.ShadowOffset = new CGSize(0, 0f);
                 nativeView.Layer.ShadowRadius = 6f;
                 nativeView.Layer.ShadowOpacity = 0.5f;
                 nativeView.Layer.ShadowColor = Color.Black.ToCGColor();
-                nativeView.Layer.ShadowPath = MonoTouch.CoreGraphics.CGPath.FromRect(nativeView.Frame);
+                nativeView.Layer.ShadowPath = CoreGraphics.CGPath.FromRect(nativeView.Frame);
             }
             UpdateContentLayout();
         }

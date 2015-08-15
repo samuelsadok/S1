@@ -1,0 +1,6 @@
+Added Component: Designator=R2(0805 (R))
+Added Pin To Net: NetName=GND Pin=R2-2
+Added Pin To Net: NetName=NetR2_1 Pin=R2-1
+Added Pin To Net: NetName=NetR2_1 Pin=U1-G2
+Added Net: Name=NetR2_1
+Added Member To Class: ClassName=Main Member=Component R2 Res 15k

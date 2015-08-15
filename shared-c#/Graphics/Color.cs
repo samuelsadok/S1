@@ -28,8 +28,14 @@ namespace AppInstall.Graphics
         {
         }
 
+        public Color(byte red, byte green, byte blue, byte alpha = 255)
+            : base(red / 255f, green / 255f, blue / 255f, alpha / 255f)
+        {
+        }
+
+        [Obsolete("unclear ordering of R/G/B/A (e.g. android stores A at bit 24)")]
         public Color(uint rgba)
-            : base((float)(rgba >> 24 & 0xFF) / 255f, (float)(rgba >> 16 & 0xFF) / 255f, (float)(rgba >> 8 & 0xFF) / 255f, (float)(rgba >> 0 & 0xFF) / 255f)
+            : base(rgba >> 24 & 0xFF, rgba >> 16 & 0xFF, rgba >> 8 & 0xFF, rgba >> 0 & 0xFF)
         {
         }
 

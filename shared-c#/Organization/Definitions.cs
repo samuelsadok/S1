@@ -27,7 +27,11 @@ namespace AppInstall.Organization
 
         // Bluetooth service IDs
         public static Guid FLIGHT_SERVICE_UUID = new Guid("E20A39F4-73F5-4BC4-A12F-17D1AD07A961"); // exposes flight parameters
-        public static Guid FLIGHT_THROTTLE_CHARACTERISTIC_UUID = new Guid("08590F7E-DB05-467E-8757-72F6FAEB13D4"); // the current throttle
+        public static Guid FLIGHT_CONTROL_UUID = new Guid("08590F7E-DB05-467E-8757-72F6FAEB13D4"); // the current control input (throttle, yaw-pitch-roll)
+        public static Guid FLIGHT_CONFIG_UUID = new Guid("1D662171-E569-4CAA-A08A-CBFFACD9EB24"); // the current flight controller parameters
+        public static Guid MOTION_SERVICE_UUID = new Guid("47C751E2-5DF4-480B-8E5E-FA0E861B3E55"); // reports the device's motion data
+        public static Guid MOTION_ATTITUDE_UUID = new Guid("CC767FE7-192D-4675-B313-5117AAADF1C5"); // the current device attitude
+        public static Guid MOTION_ACCELERATION_UUID = new Guid("18DE0712-A406-4F4C-A8BA-1B52BCF294D1"); // the current accelerometer measurement
         public static Guid CONNECTION_MGR_SERVICE_UUID = new Guid("93236A4C-2424-4E86-9A68-E291585B1A59"); // exposes fields related to the wireless connection
         public static Guid CONNECTION_MGR_IDENTIFY_CHARACTERISTIC_UUID = new Guid("1ABFCC02-F883-469F-8868-FC8B8F2DD982"); // set to 1 to make the device blink its LEDs
 

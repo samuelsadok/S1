@@ -103,43 +103,36 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
-    <Folder Include="Hardware\Windows\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\RemoteControl\Application.cs">
       <Link>Application.cs</Link>
     </Compile>
-    <Compile Include="..\shared\Hardware\Abstraction.cs">
+    <Compile Include="..\..\shared\Hardware\Abstraction.cs">
       <Link>Hardware\Abstraction.cs</Link>
     </Compile>
-    <Compile Include="..\shared\Hardware\BluetoothUpdateManager.cs">
-      <Link>Hardware\BluetoothUpdateManager.cs</Link>
-    </Compile>
-    <Compile Include="..\shared\Organization\Definitions.cs">
+    <Compile Include="..\..\shared\Organization\Definitions.cs">
       <Link>Organization\Definitions.cs</Link>
     </Compile>
-    <Compile Include="..\shared\System\Abstraction.cs">
+    <Compile Include="..\..\shared\System\Abstraction.cs">
       <Link>System\Abstraction.cs</Link>
     </Compile>
-    <Compile Include="..\shared\System\Windows\Platform.cs">
+    <Compile Include="..\..\shared\System\Windows\Platform.cs">
       <Link>System\Windows\Platform.cs</Link>
     </Compile>
-    <Compile Include="..\shared\UI\Abstraction.cs">
+    <Compile Include="..\..\shared\UI\Abstraction.cs">
       <Link>UI\Abstraction.cs</Link>
     </Compile>
-    <Compile Include="..\shared\UI\Windows\MainViewController.cs">
+    <Compile Include="..\..\shared\UI\Windows\MainViewController.cs">
       <Link>UI\Windows\MainViewController.cs</Link>
     </Compile>
-    <Compile Include="..\shared\Utilities\Extensions.cs">
+    <Compile Include="..\..\shared\Utilities\Extensions.cs">
       <Link>Utilities\Extensions.cs</Link>
     </Compile>
-    <Compile Include="..\shared\Utilities\MemoryModels\CSRImage.cs">
-      <Link>Utilities\MemoryModels\CSRImage.cs</Link>
-    </Compile>
-    <Compile Include="..\shared\Utilities\MemoryModels\IMemoryModel.cs">
+    <Compile Include="..\..\shared\Utilities\MemoryModels\IMemoryModel.cs">
       <Link>Utilities\MemoryModels\IMemoryModel.cs</Link>
     </Compile>
-    <Compile Include="..\shared\Utilities\Windows\PlatformUtilities.cs">
+    <Compile Include="..\..\shared\Utilities\Windows\PlatformUtilities.cs">
       <Link>Utilities\Windows\PlatformUtilities.cs</Link>
     </Compile>
     <Compile Include="App.xaml.cs">

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
-using MonoTouch.CoreGraphics;
-using MonoTouch.CoreAnimation;
+using Foundation;
+using UIKit;
+using CoreGraphics;
+using CoreAnimation;
 using AppInstall.Framework;
 using AppInstall.Graphics;
 
@@ -76,7 +76,7 @@ namespace AppInstall.UI
 
         private UIEvent currE = null;
 
-        public override bool PointInside(PointF point, UIEvent uievent)
+        public override bool PointInside(CGPoint point, UIEvent uievent)
         {
             Application.UILog.Log("queried event" + uievent);
             return currE != uievent;
@@ -154,7 +154,7 @@ namespace AppInstall.UI
 
         private class ScrollViewDelegate : UIScrollViewDelegate
         {
-            float scale = 1f;
+            nfloat scale = 1f;
 
             public CALayer templateLayer { get; set; }
             public CALayer dynamicLayer { get; set; }
@@ -167,7 +167,7 @@ namespace AppInstall.UI
                 }
             }
 
-            public override void ZoomingEnded(UIScrollView scrollView, UIView withView, float atScale)
+            public override void ZoomingEnded(UIScrollView scrollView, UIView withView, nfloat atScale)
             {
                 scale = atScale;
                 if (dynamicLayer != null) {
@@ -253,8 +253,8 @@ namespace AppInstall.UI
         {
             // see also ListView implementation
 
-            touchView.Frame = new RectangleF(0, 0, nativeView.Frame.Width, nativeView.Frame.Height);
-            webView.Frame = new RectangleF(0, 0, nativeView.Frame.Width, nativeView.Frame.Height);
+            touchView.Frame = new CGRect(0, 0, nativeView.Frame.Width, nativeView.Frame.Height);
+            webView.Frame = new CGRect(0, 0, nativeView.Frame.Width, nativeView.Frame.Height);
             webView.LayoutSubviews();
             
 
@@ -293,7 +293,7 @@ namespace AppInstall.UI
             {
                 var bounds = layer.Bounds;
                 var nativeSize = parent.GetSize();
-                var scale = new SizeF(bounds.Width / nativeSize.X, bounds.Height / nativeSize.Y);
+                var scale = new CGSize(bounds.Width / nativeSize.X, bounds.Height / nativeSize.Y);
 
 
                 Application.UILog.Log("fill layer " + bounds);
@@ -394,7 +394,7 @@ namespace AppInstall.UI
                 return dynamicView;
             }
 
-            public override void ZoomingEnded(UIScrollView scrollView, UIView withView, float atScale)
+            public override void ZoomingEnded(UIScrollView scrollView, UIView withView, nfloat atScale)
             {
                 /*Application.UILog.Log("scroll scale " + scrollView.Window.ContentScaleFactor + ", " + scrollView.Window.Screen.Scale + ", " +  + " content scale factor " + dynamicView.ContentScaleFactor + ", layer scale " + dynamicView.Layer.ContentsScale + " raster " + dynamicView.Layer.RasterizationScale);
 
@@ -408,9 +408,9 @@ namespace AppInstall.UI
         }
 
 
-        private void ApplyContentScale(UIView view, float zoomScale)
+        private void ApplyContentScale(UIView view, nfloat zoomScale)
         {
-            var windowScale = 1f;
+            nfloat windowScale = 1f;
             if (view.Window != null)
                 if (view.Window.Screen != null)
                     windowScale = view.Window.Screen.NativeScale;
@@ -422,7 +422,7 @@ namespace AppInstall.UI
             }
 
             var nativeSize = graphicsLayer.GetSize();
-            nativeView.ContentSize = (nativeView.ZoomScale * nativeSize).ToSize();
+            nativeView.ContentSize = ((float)nativeView.ZoomScale * nativeSize).ToCGSize();
             nativeView.SetNeedsDisplay();
         }
 
@@ -469,7 +469,7 @@ namespace AppInstall.UI
         {
             // see also ListView implementation
 
-            nativeView.Frame = new RectangleF(0, 0, nativeView.Frame.Width, nativeView.Frame.Height);
+            nativeView.Frame = new CGRect(0, 0, nativeView.Frame.Width, nativeView.Frame.Height);
 
 
             var oldInset = nativeView.ContentInset.Top;
@@ -482,7 +482,7 @@ namespace AppInstall.UI
             // these updates are actually related to graphic updates
             var nativeSize = graphicsLayer.GetSize();
             Application.UILog.Log("nativesize is now: " + nativeSize);
-            graphicsView.Frame = graphicsLayer.Frame = new RectangleF(PointF.Empty, nativeSize.ToSize());
+            graphicsView.Frame = graphicsLayer.Frame = new CGRect(CGPoint.Empty, nativeSize.ToCGSize());
             nativeView.MaximumZoomScale = 4f * (nativeView.MinimumZoomScale = Math.Min((Size.X - Padding.Left - Padding.Right) / nativeSize.X, (Size.Y - Padding.Top - Padding.Bottom) / nativeSize.Y));
             ApplyContentScale(graphicsView, nativeView.ZoomScale);
             graphicsLayer.SetNeedsDisplay();

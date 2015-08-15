@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using AppInstall.Framework;
 
 namespace AppInstall.UI
@@ -86,7 +86,7 @@ namespace AppInstall.UI
 
         public int GetSelected(int section)
         {
-            return nativeView.SelectedRowInComponent(section) % data[section].Item1;
+            return (int)nativeView.SelectedRowInComponent((nint)section) % data[section].Item1;
         }
 
         private class DataSource : UIPickerViewModel
@@ -96,23 +96,23 @@ namespace AppInstall.UI
             {
                 this.parent = parent;
             }
-            public override int GetComponentCount(UIPickerView picker)
+            public override nint GetComponentCount(UIPickerView picker)
             {
                 return parent.data.Count();
             }
-            public override int GetRowsInComponent(UIPickerView picker, int component)
+            public override nint GetRowsInComponent(UIPickerView picker, nint component)
             {
                 //if (parent.data[component].Item2) return Int32.MaxValue;
-                return parent.data[component].Item1;
+                return parent.data[(int)component].Item1;
             }
-            public override string GetTitle(UIPickerView picker, int row, int component)
+            public override string GetTitle(UIPickerView picker, nint row, nint component)
             {
                 //return parent.data[component].Item1[row % parent.data[component].Item1.Count()];
-                return parent.data[component].Item2(row);
+                return parent.data[(int)component].Item2((int)row);
             }
-            public override float GetComponentWidth(UIPickerView picker, int component)
+            public override nfloat GetComponentWidth(UIPickerView picker, nint component)
             {
-                var result = parent.columnWidths[component];
+                var result = parent.columnWidths[(int)component];
                 //result = (320f - 6 * 5) / 7f;
                 if (component == 0)
                     result -= 5;
@@ -124,10 +124,10 @@ namespace AppInstall.UI
             {
                 Application.UILog.Log("datasource.didChange");
             }
-            public override void Selected(UIPickerView picker, int row, int component)
+            public override void Selected(UIPickerView picker, nint row, nint component)
             {
                 Application.UILog.Log("datasource.selected");
-                parent.Selected(component, row);
+                parent.Selected((int)component, (int)row);
             }
         }
     }

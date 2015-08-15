@@ -1,0 +1,31 @@
+Added Component: Designator=U1(ZQZ0096A)
+Added Pin To Net: NetName=GND Pin=U1-A1
+Added Pin To Net: NetName=GND Pin=U1-B8
+Added Pin To Net: NetName=GND Pin=U1-D8
+Added Pin To Net: NetName=GND Pin=U1-E5
+Added Pin To Net: NetName=GND Pin=U1-E6
+Added Pin To Net: NetName=GND Pin=U1-E7
+Added Pin To Net: NetName=GND Pin=U1-E8
+Added Pin To Net: NetName=GND Pin=U1-F5
+Added Pin To Net: NetName=GND Pin=U1-F6
+Added Pin To Net: NetName=GND Pin=U1-F7
+Added Pin To Net: NetName=GND Pin=U1-F8
+Added Pin To Net: NetName=GND Pin=U1-G5
+Added Pin To Net: NetName=GND Pin=U1-G6
+Added Pin To Net: NetName=GND Pin=U1-G7
+Added Pin To Net: NetName=GND Pin=U1-G8
+Added Pin To Net: NetName=GND Pin=U1-H4
+Added Pin To Net: NetName=GND Pin=U1-H5
+Added Pin To Net: NetName=GND Pin=U1-H8
+Added Pin To Net: NetName=NetU1_K6 Pin=U1-K6
+Added Pin To Net: NetName=NetU1_K7 Pin=U1-K7
+Added Pin To Net: NetName=NetU1_K8 Pin=U1-K8
+Added Pin To Net: NetName=NetC1_2 Pin=U1-K9
+Added Pin To Net: NetName=NetC2_2 Pin=U1-K10
+Added Pin To Net: NetName=GND Pin=U1-L1
+Added Pin To Net: NetName=NetU1_L6 Pin=U1-L6
+Added Pin To Net: NetName=NetU1_L7 Pin=U1-L7
+Added Pin To Net: NetName=NetU1_L8 Pin=U1-L8
+Added Pin To Net: NetName=NetC1_2 Pin=U1-L9
+Added Pin To Net: NetName=NetC2_2 Pin=U1-L10
+Added Member To Class: ClassName=Main Member=Component U1 TPS65982AAZQZR

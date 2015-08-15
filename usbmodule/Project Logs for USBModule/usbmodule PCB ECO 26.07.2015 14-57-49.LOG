@@ -1,0 +1,18 @@
+Added Component: Designator=R4(0201 (R))
+Added Component: Designator=R5(0201 (R))
+Added Component: Designator=R6(0201 (R))
+Added Pin To Net: NetName=+3.3V Pin=R4-2
+Added Pin To Net: NetName=+3.3V Pin=R5-2
+Added Pin To Net: NetName=+3.3V Pin=R6-2
+Added Pin To Net: NetName=NetR4_1 Pin=R4-1
+Added Pin To Net: NetName=NetR4_1 Pin=U1-D2
+Added Net: Name=NetR4_1
+Added Pin To Net: NetName=NetR5_1 Pin=R5-1
+Added Pin To Net: NetName=NetR5_1 Pin=U1-D1
+Added Net: Name=NetR5_1
+Added Pin To Net: NetName=NetR6_1 Pin=R6-1
+Added Pin To Net: NetName=NetR6_1 Pin=U1-C1
+Added Net: Name=NetR6_1
+Added Member To Class: ClassName=Main Member=Component R4 Res 10k
+Added Member To Class: ClassName=Main Member=Component R5 Res 10k
+Added Member To Class: ClassName=Main Member=Component R6 Res 10k

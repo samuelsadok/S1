@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Net.Sockets;
+using AppInstall.Networking;
 using AppInstall.Framework;
 
 namespace AppInstall.Hardware
 {
-    public class FlightControllerEndpoint
+    public class FlightControllerService : Service
     {
         private const int MAX_SUPPORTED_VERSION = 1;
         
@@ -93,21 +96,16 @@ namespace AppInstall.Hardware
         #endregion
 
 
-
-        private readonly LogContext logContext;
-
-        private readonly II2CPort port;
-
         private float P, I, D, ILimit, A, T;
 
         private readonly SlowAction readDataAction;
-        private readonly SlowAction readLogAction;
+        //private readonly SlowAction readLogAction;
         private readonly SlowAction controlAction;
         private readonly SlowAction configureAction;
 
         
         public int Version { get; private set; }
-        public YawPitchRoll Attitude { get; private set; }
+        public Quaternion Attitude { get; private set; }
         public YawPitchRoll AngularRate { get; private set; }
         
         public float Throttle { get; set; }
@@ -117,45 +115,40 @@ namespace AppInstall.Hardware
         public float[] PitchActionLog { get; private set; }
 
 
-        public FlightControllerEndpoint(II2CPort port, LogContext logContext)
+        public FlightControllerService(ZeroConfService network, BluetoothPeripheral bluetooth, LogContext logContext)
+            : base("flight-service", AppInstall.Organization.GlobalConstants.FLIGHT_SERVICE_UUID, network, bluetooth, logContext)
         {
-            this.logContext = logContext;
+            readDataAction = new SlowAction(c => ReadDataEx(c).Wait(c));
+            //readLogAction = new SlowAction(ReadLogEx);
+            controlAction = new SlowAction(c => ControlEx(c).Wait(c));
+            configureAction = new SlowAction(c => ConfigureEx(c).Wait(c));
 
-            readDataAction = new SlowAction(ReadDataEx);
-            readLogAction = new SlowAction(ReadLogEx);
-            controlAction = new SlowAction(ControlEx);
-            configureAction = new SlowAction(ConfigureEx);
-
-            //byte[] bla;
-            //bla = new byte[]{ 0x12, 0x23, 0x34, 0x45, 0x56, 0x67, 0x78, 0x89, 0x9A, 0xAB, 0xBC, 0xCD, 0xDE, 0xEF, 0xF1, 0x13, 0x24, 0x35, 0x46, 0x57 };
-            //port.Write(I2C_SLAVE_ADDRESS, 0x1337, 2, bla);
-            //byte[] bla2 = port.Read(I2C_SLAVE_ADDRESS, 0x1337, 2, 20);
-            this.port = port;
-            byte[] version = port.Read(I2C_SLAVE_ADDRESS, 0, I2C_SLAVE_ADDRESS_BYTES, 2);
-            Version = BitConverter.ToInt16(version, 0);
-            logContext.Log("actual firmware version: " + Version);
-            if (Version > MAX_SUPPORTED_VERSION) throw new NotSupportedException("the device is too new");
             ControlAttitude = new YawPitchRoll();
         }
 
+
         /// <summary>
-        /// blocks until data is read
+        /// Blocks until data is read
         /// </summary>
         public void ReadData()
         {
             readDataAction.Trigger(ApplicationControl.ShutdownToken).WaitOne();
         }
 
+        /*
         public void ReadLog()
         {
             readLogAction.Trigger(ApplicationControl.ShutdownToken).WaitOne();
-        }
+        }*/
 
         public WaitHandle Control()
         {
             return controlAction.Trigger(ApplicationControl.ShutdownToken);
         }
 
+        /// <summary>
+        /// Configures the parameters of the flight controller.
+        /// </summary>
         public WaitHandle Configure(float p, float i, float d, float iLimit, float a, float t)
         {
             P = p;
@@ -173,68 +166,79 @@ namespace AppInstall.Hardware
 
         private float AngleFromData(byte[] data, int offset)
         {
-            return (float)BitConverter.ToInt16(data, offset) / (float)0x4000 * (float)Math.PI;
+            return (float)ByteConverter.ToInt16LE(data, offset) / (float)0x4000 * (float)Math.PI;
         }
 
         private void AngleToData(byte[] data, int offset, float angle)
         {
-            Array.Copy(BitConverter.GetBytes((UInt16)(angle / (float)Math.PI * (float)0x4000)), 0, data, offset, 2);
+            Array.Copy(ByteConverter.GetBytesLE((UInt16)(angle / (float)Math.PI * (float)0x4000)), 0, data, offset, 2);
         }
 
-        private void ReadDataEx(CancellationToken cancellationToken)
+        private float QuatFromData(byte[] data, int offset)
         {
-            byte[] data = port.Read(I2C_SLAVE_ADDRESS, STATE_STRUCT_OFFSET, I2C_SLAVE_ADDRESS_BYTES, STATE_STRUCT_SIZE);
-            float y1 = AngleFromData(data, 0), p1 = AngleFromData(data, 2), r1 = AngleFromData(data, 4);
-            float y2 = AngleFromData(data, 7), p2 = AngleFromData(data, 9), r2 = AngleFromData(data, 11);
-            Attitude = new YawPitchRoll(y1, p1, r1);
-            AngularRate = new YawPitchRoll(y2, p2, r2);
+            return (float)ByteConverter.ToSingleLE(data, offset);
         }
 
+        private void QuatToData(byte[] data, int offset, float val)
+        {
+            Array.Copy(ByteConverter.GetBytesLE(val), 0, data, offset, 4);
+        }
+
+        private async Task ReadDataEx(CancellationToken cancellationToken)
+        {
+            byte[] data1 = await base.ReadEndpoint("attitude", AppInstall.Organization.GlobalConstants.MOTION_ATTITUDE_UUID, cancellationToken);
+            Attitude = new Quaternion(QuatFromData(data1, 0), QuatFromData(data1, 4), QuatFromData(data1, 8));
+
+            byte[] data2 = await base.ReadEndpoint("angular-rate", AppInstall.Organization.GlobalConstants.MOTION_ATTITUDE_UUID, cancellationToken);
+            AngularRate = new YawPitchRoll(AngleFromData(data2, 0),  AngleFromData(data2, 2),  AngleFromData(data2, 4));
+        }
+
+        /*
         private void ReadLogEx(CancellationToken cancellationToken)
         {
             byte[] data = new byte[LOG_STRUCT_SIZE];
-            Utilities.PartitionWork(0, LOG_STRUCT_SIZE, 17, (start, count) => {
+            Utilities.PartitionWork(0, LOG_STRUCT_SIZE, 17, async (start, count) => {
+                ReadEndpoint("log", new Guid(), cancellationToken);
                 Array.Copy(port.Read(I2C_SLAVE_ADDRESS, LOG_STRUCT_OFFSET + start, I2C_SLAVE_ADDRESS_BYTES, count), 0, data, start, count);
             });
 
             PitchSensorLog = new float[LOG_BUFFER_SIZE];
             PitchActionLog = new float[LOG_BUFFER_SIZE];
 
-            int startIndex = BitConverter.ToUInt16(data, 0);
+            int startIndex = ByteConverter.ToUInt16LE(data, 0);
             for (int i = 0; i < LOG_BUFFER_SIZE; i++) {
                 int sourceIndex = startIndex + i;
                 sourceIndex = (sourceIndex + 1 - ((sourceIndex < LOG_BUFFER_SIZE) ? 0 : LOG_BUFFER_SIZE)) * 2; // circle through if necessary, skip first word, convert to byte index
-                PitchSensorLog[i] = BitConverter.ToInt16(data, sourceIndex);
-                PitchActionLog[i] = BitConverter.ToInt16(data, sourceIndex + 2 * LOG_BUFFER_SIZE);
+                PitchSensorLog[i] = ByteConverter.ToInt16LE(data, sourceIndex);
+                PitchActionLog[i] = ByteConverter.ToInt16LE(data, sourceIndex + 2 * LOG_BUFFER_SIZE);
             }
         }
+         * */
 
-        public void ControlEx(CancellationToken cancellationToken)
+        private async Task ControlEx(CancellationToken cancellationToken)
         {
             byte[] data = new byte[CONTROL_STRUCT_SIZE];
-            Array.Copy(BitConverter.GetBytes((UInt16)(Throttle * (float)FULL_THROTTLE)), 0, data, 0, 2);
+            Array.Copy(ByteConverter.GetBytesLE((UInt16)(Throttle * (float)FULL_THROTTLE)), 0, data, 0, 2);
             AngleToData(data, 2, ControlAttitude.Yaw);
             AngleToData(data, 4, ControlAttitude.Pitch);
             AngleToData(data, 6, ControlAttitude.Roll);
             DateTime start = DateTime.Now;
-            port.Write(I2C_SLAVE_ADDRESS, CONTROL_STRUCT_OFFSET, I2C_SLAVE_ADDRESS_BYTES, data);
+            await WriteEndpoint("control", AppInstall.Organization.GlobalConstants.FLIGHT_CONFIG_UUID, data, cancellationToken);
             logContext.Log("write took " + DateTime.Now.Subtract(start).TotalMilliseconds + " ms");
         }
 
-        public void ConfigureEx(CancellationToken cancellationToken)
+        private async Task ConfigureEx(CancellationToken cancellationToken)
         {
             byte[] pidData = new byte[20];
-            Array.Copy(BitConverter.GetBytes(P), 0, pidData, 0, 4);
-            Array.Copy(BitConverter.GetBytes(I), 0, pidData, 4, 4);
-            Array.Copy(BitConverter.GetBytes(D / LOOP_PERIOD), 0, pidData, 8, 4);
-            Array.Copy(BitConverter.GetBytes(ILimit), 0, pidData, 12, 4);
-            Array.Copy(BitConverter.GetBytes(-ILimit), 0, pidData, 16, 4);
-            port.Write(I2C_SLAVE_ADDRESS, CONFIG_STRUCT_OFFSET + 3 * KALMAN_SIZE + 1 * PID_SIZE, I2C_SLAVE_ADDRESS_BYTES, pidData); // config pitch controller
-            port.Write(I2C_SLAVE_ADDRESS, CONFIG_STRUCT_OFFSET + 3 * KALMAN_SIZE + 2 * PID_SIZE, I2C_SLAVE_ADDRESS_BYTES, pidData); // config roll controller
+            Array.Copy(ByteConverter.GetBytesLE(P), 0, pidData, 0, 4);
+            Array.Copy(ByteConverter.GetBytesLE(I), 0, pidData, 4, 4);
+            Array.Copy(ByteConverter.GetBytesLE(D / LOOP_PERIOD), 0, pidData, 8, 4);
+            Array.Copy(ByteConverter.GetBytesLE(ILimit), 0, pidData, 12, 4);
+            Array.Copy(ByteConverter.GetBytesLE(-ILimit), 0, pidData, 16, 4);
 
             byte[] kalmanData = new byte[2] { (byte)((int)A & 0xFF), (byte)((int)(T / LOOP_PERIOD) & 0xFF) };
-            port.Write(I2C_SLAVE_ADDRESS, CONFIG_STRUCT_OFFSET + 1 * KALMAN_SIZE, I2C_SLAVE_ADDRESS_BYTES, kalmanData); // config pitch filter
-            port.Write(I2C_SLAVE_ADDRESS, CONFIG_STRUCT_OFFSET + 2 * KALMAN_SIZE, I2C_SLAVE_ADDRESS_BYTES, kalmanData); // config roll filter
+
+            await WriteEndpoint("config", AppInstall.Organization.GlobalConstants.FLIGHT_CONTROL_UUID, pidData.Concat(kalmanData).ToArray(), cancellationToken); // todo: format data correctly
         }
 
         #endregion

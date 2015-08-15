@@ -39,9 +39,18 @@ namespace AppInstall.Networking
         }
 
 
-        public string Host { get; set; }
+        /// <summary>
+        /// Gets/sets the host name. Writing to this property closes the connection and cancels any pending requests.
+        /// </summary>
+        public string Host { get { return host; } set { lock (disconnectLockRef) { CloseConnection(); host = value; } } }
+        private string host;
 
-        public int Port { get; set; }
+        /// <summary>
+        /// Gets/sets the port. Writing to this property closes the connection and cancels any pending requests.
+        /// </summary>
+        public int Port { get { return port; } set { lock (disconnectLockRef) { CloseConnection(); port = value; } } }
+        private int port;
+
 
         /// <summary>
         /// Can be used to configure a callback that checks if the response indicates an error on the server side.
@@ -51,75 +60,172 @@ namespace AppInstall.Networking
         /// </summary>
         public Func<NetMessage<M, S>, NetMessage<M, S>, Exception> ResponseCheck { get; set; }
 
+
+
+
+
+        private NetworkStream stream; // non-null while the connection is open
+        private object streamLockRef = new object();
+
+        private Action disconnectAction;
+        private object disconnectLockRef = new object();
+
+        private Mutex sendMutex = new Mutex();
+        private bool receiverTaskRunning = false;
+        private Queue<Tuple<NetworkStream, ResponseHandlerDelegate>> receivers = new Queue<Tuple<NetworkStream, ResponseHandlerDelegate>>(); // the handlers in this queue must not throw an exception
+
+        private delegate void ResponseHandlerDelegate(Tuple<NetMessage<M, S>, BinaryContent> result, Exception exception);
+
         /// <summary>
-        /// Connects to the server.
+        /// Returns a network pipe to the server.
+        /// If the connection is currently not open, it will be establised.
         /// </summary>
-        private NetworkStream Connect(TcpClient client, CancellationToken cancellationToken)
+        /// <param name="cancellationToken">cancels the connection attempt</param>
+        private NetworkStream GetConnection(CancellationToken cancellationToken)
         {
-            var result = client.BeginConnect(Host, Port, null, null);
+            lock (streamLockRef) {
+                if (stream == null) {
+                    logContext.Log("creating tcp client...");
+                    TcpClient client = new TcpClient();
+                    logContext.Log("connecting to " + Host + ":" + Port + "...");
 
-            if (WaitHandle.WaitAny(new WaitHandle[] { cancellationToken.WaitHandle, result.AsyncWaitHandle }) == 0) {
-                client.Close();
-                throw new OperationCanceledException();
+                    lock (disconnectLockRef)
+                        disconnectAction = () => client.Close();
+
+                    var ar = client.BeginConnect(Host, Port, null, null);
+
+                    try {
+                        ar.AsyncWaitHandle.WaitOne(cancellationToken);
+                        client.EndConnect(ar);
+                        stream = client.GetStream();
+                    } catch {
+                        CloseConnection();
+                        throw;
+                    }
+                }
+
+                return stream;
             }
-
-            client.EndConnect(result);
-
-            return client.GetStream();
         }
+
+
+        /// <summary>
+        /// Closes the connection with the server if it is open.
+        /// Any attempt of establishing a new connection will also be interrupted.
+        /// </summary>
+        private void CloseConnection()
+        {
+            lock (disconnectLockRef) {
+                if (stream != null) {
+                    stream.Dispose();
+                    stream = null;
+                }
+
+                if (disconnectAction != null)
+                    disconnectAction();
+                disconnectAction = null;
+            }
+        }
+
 
         /// <summary>
         /// Sends a message to the server and receives the response.
         /// Sends additional messages if instructed by the response check.
         /// Only the response to the last message will be returned.
         /// </summary>
+        /// <param name="cancellationToken">Cancels the request by closing the connection. This also cancels any other pending requests.</param>
         public async Task<NetMessage<M, S>> SendRequest(NetMessage<M, S> request, CancellationToken cancellationToken)
         {
             int attempt = 1;
 
             while (true) {
 
-                Tuple<NetMessage<M, S>, BinaryContent> response;
+                Tuple<NetMessage<M, S>, BinaryContent> response = null;
+                Exception exception = null;
 
-                logContext.Log("creating tcp client...");
-                using (TcpClient client = new TcpClient()) {
-                    logContext.Log("connecting to " + Host + ":" + Port + "...");
-                    using (NetworkStream stream = Connect(client, cancellationToken)) {
+                var stream = GetConnection(cancellationToken);
 
-                        // create watchdog task that closes the stream on cancellation
-                        ManualResetEvent transferComplete = new ManualResetEvent(false);
+                // create watchdog task that closes the stream on cancellation
+                ManualResetEvent transferComplete = new ManualResetEvent(false);
+                new Task(() => {
+                    if (WaitHandle.WaitAny(new WaitHandle[] { cancellationToken.WaitHandle, transferComplete }) == 0)
+                        CloseConnection();
+                }).Start();
+
+
+                // set up request
+                logContext.Log("sending request " + request.Header);
+                request["Host"] = Host;
+
+                // send request and expect response
+                sendMutex.WaitOne(cancellationToken);
+                await request.WriteToStream(stream, cancellationToken);
+                lock (receivers) {
+                    receivers.Enqueue(new Tuple<NetworkStream, ResponseHandlerDelegate>(stream, (result, ex) => {
+                        response = result;
+                        exception = ex;
+                        transferComplete.Set();
+                    }));
+                }
+                sendMutex.ReleaseMutex();
+
+
+                // maintain a separate task that is responsible for receiving responses in the correct order
+                // this task will run as required and terminate eventually when the connection is closed
+                lock (receivers) {
+                    if (!receiverTaskRunning) {
                         new Task(() => {
-                            if (WaitHandle.WaitAny(new WaitHandle[] { cancellationToken.WaitHandle, transferComplete }) == 0)
-                                stream.Close();
-                        }).Start();
+                            Tuple<NetworkStream, ResponseHandlerDelegate> receiver;
 
-                        try {
-                            // send response and receive answer
-                            logContext.Log("sending request " + request.Header);
-                            request["Host"] = Host;
-                            await request.WriteToStream(stream, cancellationToken);
-                            response = await NetMessage<M, S>.ReadFromStream<BinaryContent>(stream, cancellationToken);
-                            transferComplete.Set();
-                            logContext.Log("received response");
-                        } catch {
-                            cancellationToken.ThrowIfCancellationRequested();
-                            logContext.Log("request failed", LogType.Error);
-                            throw;
-                        }
+                            while (true) {
+                                lock (receivers) {
+                                    if (!receivers.Any()) {
+                                        receiverTaskRunning = false;
+                                        return;
+                                    }
+                                    receiver = receivers.Dequeue();
+                                }
+
+                                Tuple<NetMessage<M, S>, BinaryContent> result = null;
+
+                                try {
+                                    result = NetMessage<M, S>.ReadFromStream<BinaryContent>(receiver.Item1, cancellationToken).WaitForResult(cancellationToken);
+                                } catch (Exception ex) {
+                                    receiver.Item2(null, ex);
+                                    receiver = null;
+                                }
+
+                                if (receiver != null)
+                                    receiver.Item2(result, null);
+                            }
+                        }).Start();
                     }
                 }
 
-                // exception handling
-                Exception ex = null;
-                if (ResponseCheck != null) ex = ResponseCheck(request, response.Item1);
-                var retry = ex as RetryRequiredException;
+                await transferComplete.WaitAsync(cancellationToken);
+                cancellationToken.ThrowIfCancellationRequested();
+                
+                logContext.Log("received response");
+
+                // handle transport layer errors
+                if (exception != null) {
+                    logContext.Log("request failed", LogType.Error);
+                    throw exception;
+                }
+
+                // handle server side errors
+                if (ResponseCheck != null)
+                    exception = ResponseCheck(request, response.Item1);
+
+                // there is a special kind of exception that tells the client to resend the request (e.g. redirection, credentials required, ...)
+                var retry = exception as RetryRequiredException;
                 if (retry != null)
                     if (retry.MaxAttemts > attempt++)
                         request = retry.NewRequest;
                     else
                         throw new Exception("too many attemts were made to complete a request, last attempt was \"" + request.Header + "\"");
-                else if (ex != null)
-                    throw new ServerSideException(request.Header, ex);
+                else if (exception != null)
+                    throw new ServerSideException(request.Header, exception);
                 else
                     return response.Item1;
             }

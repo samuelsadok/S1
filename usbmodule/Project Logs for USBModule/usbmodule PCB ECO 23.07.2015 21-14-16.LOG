@@ -1,0 +1,28 @@
+Added Component: Designator=C1(0201 (C))
+Added Component: Designator=C2(0201 (C))
+Added Component: Designator=U2(WDFN-16 (4mmx1.7mm))
+Added Pin To Net: NetName=GND Pin=C1-1
+Added Pin To Net: NetName=GND Pin=C2-1
+Added Pin To Net: NetName=NetC1_2 Pin=C1-2
+Added Pin To Net: NetName=NetC1_2 Pin=U1-K9
+Added Pin To Net: NetName=NetC1_2 Pin=U1-L9
+Added Net: Name=NetC1_2
+Added Pin To Net: NetName=NetC2_2 Pin=C2-2
+Added Pin To Net: NetName=NetC2_2 Pin=U1-K10
+Added Pin To Net: NetName=NetC2_2 Pin=U1-L10
+Added Net: Name=NetC2_2
+Added Pin To Net: NetName=NetJ1_A6 Pin=J1-A6
+Added Pin To Net: NetName=NetJ1_A6 Pin=U2-14
+Added Net: Name=NetJ1_A6
+Added Pin To Net: NetName=NetJ1_A7 Pin=J1-A7
+Added Pin To Net: NetName=NetJ1_A7 Pin=U2-13
+Added Net: Name=NetJ1_A7
+Added Pin To Net: NetName=NetJ1_B6 Pin=J1-B6
+Added Pin To Net: NetName=NetJ1_B6 Pin=U2-12
+Added Net: Name=NetJ1_B6
+Added Pin To Net: NetName=NetJ1_B7 Pin=J1-B7
+Added Pin To Net: NetName=NetJ1_B7 Pin=U2-11
+Added Net: Name=NetJ1_B7
+Added Member To Class: ClassName=Main Member=Component C1 Cap 220pF
+Added Member To Class: ClassName=Main Member=Component C2 Cap 220pF
+Added Member To Class: ClassName=Main Member=Component U2 CM1235

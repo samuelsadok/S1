@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
-using MonoTouch.CoreGraphics;
+using UIKit;
+using CoreGraphics;
 using AppInstall.Framework;
 using AppInstall.OS;
 using AppInstall.Graphics;
@@ -18,38 +14,62 @@ namespace AppInstall.UI
     /// </summary>
     public static class Abstraction
     {
-        public static Vector2D<float> ToVector2D(this System.Drawing.SizeF size)
+        public static Vector2D<float> ToVector2D(this SizeF size)
         {
             return new Vector2D<float>(size.Width, size.Height);
         }
-        public static Vector2D<float> ToVector2D(this System.Drawing.PointF point)
+        public static Vector2D<float> ToVector2D(this PointF point)
         {
             return new Vector2D<float>(point.X, point.Y);
         }
-        public static Vector4D<float> ToVector4D(this System.Drawing.RectangleF rectangle)
+        public static Vector2D<float> ToVector2D(this CGSize size)
+        {
+            return new Vector2D<float>((float)size.Width, (float)size.Height);
+        }
+        public static Vector2D<float> ToVector2D(this CGPoint point)
+        {
+            return new Vector2D<float>((float)point.X, (float)point.Y);
+        }
+        public static Vector4D<float> ToVector4D(this RectangleF rectangle)
         {
             return new Vector4D<float>(rectangle.X, rectangle.Y, rectangle.Width, rectangle.Height);
         }
-        public static SizeF ToSize(this Vector2D<float> vector)
+        public static Vector4D<float> ToVector4D(this CGRect rectangle)
+        {
+            return new Vector4D<float>((float)rectangle.X, (float)rectangle.Y, (float)rectangle.Width, (float)rectangle.Height);
+        }
+        public static SizeF ToSizeF(this Vector2D<float> vector)
         {
             return new SizeF(vector.X, vector.Y);
         }
-        public static PointF ToPoint(this Vector2D<float> vector)
+        public static PointF ToPointF(this Vector2D<float> vector)
         {
             return new PointF(vector.X, vector.Y);
         }
-        public static RectangleF ToRectangle(this Vector4D<float> vector)
+        public static CGSize ToCGSize(this Vector2D<float> vector)
+        {
+            return new CGSize(vector.X, vector.Y);
+        }
+        public static CGPoint ToCGPoint(this Vector2D<float> vector)
+        {
+            return new CGPoint(vector.X, vector.Y);
+        }
+        public static RectangleF ToRectangleF(this Vector4D<float> vector)
         {
             return new RectangleF(vector.V1, vector.V2, vector.V3, vector.V4);
+        }
+        public static CGRect ToCGRect(this Vector4D<float> vector)
+        {
+            return new CGRect(vector.V1, vector.V2, vector.V3, vector.V4);
         }
 
         public static Color ToColor(this UIColor color)
         {
             if (color == null)
                 return null;
-            float r, g, b, a;
+            nfloat r, g, b, a;
             color.GetRGBA(out r, out g, out b, out a);
-            return new Color(r, g, b, a);
+            return new Color((float)r, (float)g, (float)b, (float)a);
         }
         public static Color ToColor(this CGColor color)
         {
@@ -93,9 +113,9 @@ namespace AppInstall.UI
 
     public partial class Animation
     {
-        public void PlatformExecute(int duration)
+        private void PlatformExecute(int duration)
         {
-            UIView.Animate(((float)duration) / 1000f, 0, UIViewAnimationOptions.BeginFromCurrentState, new NSAction(() => { Application.UILog.Log("animating: " + duration); InvokeAnimatedAction(); Application.UILog.Log("animate block end"); }), new NSAction(() => { Application.UILog.Log("animating complete"); InvokeEndAction(); }));
+            UIView.Animate(((float)duration) / 1000f, 0, UIViewAnimationOptions.BeginFromCurrentState, () => { Application.UILog.Log("animating: " + duration); InvokeAnimatedAction(); Application.UILog.Log("animate block end"); }, () => { Application.UILog.Log("animating complete"); InvokeEndAction(); });
         }
     }
 

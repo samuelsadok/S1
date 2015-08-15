@@ -1,0 +1,6 @@
+Added Component: Designator=J1(DX07S024JJ2)
+Added Pin To Net: NetName=GND Pin=J1-A1
+Added Pin To Net: NetName=GND Pin=J1-A12
+Added Pin To Net: NetName=GND Pin=J1-B1
+Added Pin To Net: NetName=GND Pin=J1-B12
+Added Member To Class: ClassName=Main Member=Component J1 USB Type C

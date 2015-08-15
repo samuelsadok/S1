@@ -1,0 +1,12 @@
+Added Component: Designator=U5(WQFN-16 (3mm x 3mm))
+Added Pin To Net: NetName=HV Pin=U5-1
+Added Pin To Net: NetName=HV Pin=U5-2
+Added Pin To Net: NetName=HV Pin=U5-3
+Added Pin To Net: NetName=GND Pin=U5-4
+Added Pin To Net: NetName=HV Pin=U5-15
+Added Pin To Net: NetName=HV Pin=U5-16
+Added Pin To Net: NetName=GND Pin=U5-PAD
+Change Net Name : Old Net Name=HV New Net Name=V_USB
+Added Pin To Net: NetName=NetU5_7 Pin=U5-7
+Added Net: Name=NetU5_7
+Added Member To Class: ClassName=Battery Member=Component U5 5A Buck Regulator

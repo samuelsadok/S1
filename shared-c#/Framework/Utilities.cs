@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace AppInstall.Framework
@@ -17,13 +18,13 @@ namespace AppInstall.Framework
         /// Does work on a dataset by partitioning it into several parts of equal size (except the last). Each partition is guaranteed to be of non-zero size.
         /// </summary>
         /// <param name="action">The action that accepts the offset into the data and the partition size as arguments</param>
-        public static void PartitionWork(int start, int count, int partitionSize, Action<int, int> action)
+        public static async Task PartitionWork(int start, int count, int partitionSize, Func<int, int, Task> action)
         {
             if (count == 0) return;
             int i;
             for (i = start; i < start + count - partitionSize; i += partitionSize)
-                action(i, partitionSize);
-            action(i, count - i);
+                await action(i, partitionSize);
+            await action(i, count - i);
         }
 
         /// <summary>
@@ -46,6 +47,24 @@ namespace AppInstall.Framework
                 if (Directory.GetDirectories(path).Count() > 0) return;
                 Directory.Delete(path);
                 path = Directory.GetParent(path).FullName;
+            }
+        }
+
+        /// <summary>
+        /// Logs the top-level contents of a direcory (for debugging).
+        /// </summary>
+        public static void DumpDir(string directory, LogContext logContext)
+        {
+            try {
+                logContext.Log(directory + ":");
+                foreach (var dir in Directory.EnumerateDirectories(directory)) {
+                    logContext.Log("dir " + dir);
+                }
+                foreach (var file in Directory.EnumerateFiles(directory)) {
+                    logContext.Log("file " + file);
+                }
+            } catch (Exception ex) {
+                logContext.Log(ex.ToString());
             }
         }
 

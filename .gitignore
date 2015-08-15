@@ -5,8 +5,13 @@ desktop.ini
 
 Thumbs.db
 
-**/*.v12.suo
+*.v12.suo
+*.csproj.user
 bin/
 obj/
 simulation/
 depend_Release_CSR101x_A05/
+
+
+# Altium Designer
+History/**/.PrjPCB.zip

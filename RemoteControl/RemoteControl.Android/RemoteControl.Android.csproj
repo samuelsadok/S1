@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9766C885-DEAB-4D6B-8085-967DC6AD11BE}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RemoteControl</RootNamespace>
+    <AssemblyName>RemoteControl</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidApplication>true</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\shared-c#\Framework\Activity.cs">
+      <Link>Framework\Activity.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\ApplicationControl.cs">
+      <Link>Framework\ApplicationControl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Console.cs">
+      <Link>Framework\Console.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\DataSource.cs">
+      <Link>Framework\DataSource.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Extensions.cs">
+      <Link>Framework\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\LogSystem.cs">
+      <Link>Framework\LogSystem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Matrix.cs">
+      <Link>Framework\Math\Matrix.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Scalar.cs">
+      <Link>Framework\Math\Scalar.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Math\Vector.cs">
+      <Link>Framework\Math\Vector.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\SlowAction.cs">
+      <Link>Framework\SlowAction.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Framework\Utilities.cs">
+      <Link>Framework\Utilities.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\Graphics\Color.cs">
+      <Link>Graphics\Color.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\OS\Foundation.cs">
+      <Link>OS\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Extensions.cs">
+      <Link>UI\Extensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Features\Feature.cs">
+      <Link>UI\Features\Feature.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Foundation.cs">
+      <Link>UI\Foundation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\Generic\Layout.cs">
+      <Link>UI\Generic\Layout.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\DetailViewController.cs">
+      <Link>UI\ViewControllers\DetailViewController.cs</Link>
+    </Compile>
+    <Compile Include="..\..\shared-c#\UI\ViewControllers\ViewController.cs">
+      <Link>UI\ViewControllers\ViewController.cs</Link>
+    </Compile>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="OS\Android\Main.cs" />
+    <Compile Include="OS\Android\Platform.cs" />
+    <Compile Include="OS\Android\PlatformUtilities.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Abstraction.Android.cs" />
+    <Compile Include="UI\Fields.Android\Field.cs" />
+    <Compile Include="UI\ViewControllers.Android\CustomViewController.cs" />
+    <Compile Include="UI\ViewControllers.Android\ViewController.cs" />
+    <Compile Include="UI\Views.Android\Button.cs" />
+    <Compile Include="UI\Views.Android\ContainerView.cs" />
+    <Compile Include="UI\Views.Android\View.cs" />
+    <Compile Include="UI\Views.Android\Window.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+     Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
