@@ -1,11 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
 using AppInstall.Framework;
 
 namespace AppInstall.UI

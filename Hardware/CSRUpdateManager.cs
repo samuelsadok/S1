@@ -9,7 +9,7 @@ using AppInstall.Framework.MemoryModels;
 
 namespace AppInstall.Hardware
 {
-    class BluetoothUpdateManager
+    class CSRUpdateManager
     {
         private const byte MINIMUM_SUPPORTED_BOOTLOADER_VERSION = 3; // the earliest bootloader version that is supported by this update manager
         private const byte MAXIMUM_SUPPORTED_BOOTLOADER_VERSION = 3; // the latest bootloader version that is supported by this update manager

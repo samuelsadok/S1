@@ -41,6 +41,16 @@ namespace AppInstall.Framework
             };
         }
 
+        /* issue: results in ambiguous function call
+        /// <summary>
+        /// Creates a slow action from an async action.
+        /// </summary>
+        public SlowAction(Func<CancellationToken, Task> asyncAction)
+            : this(c => asyncAction(c).Wait(c))
+        {
+        }
+        */
+
         /// <summary>
         /// Determines if the execution handler thread should be launched
         /// </summary>

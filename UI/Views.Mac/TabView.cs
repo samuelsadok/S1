@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using AppInstall.Framework;
 
 namespace AppInstall.UI
@@ -82,7 +82,7 @@ namespace AppInstall.UI
 
 
                 this.nativeView.ItemSelected += (o, e) =>
-                    SelectedItem.SafeInvoke(pages[e.Item.Tag], e.Item.Tag);
+                    SelectedItem.SafeInvoke(pages[(int)e.Item.Tag], (int)e.Item.Tag);
 
                 items = new UITabBarItem[pages.Count()];
                 for (int i = 0; i < pages.Count(); i++) {

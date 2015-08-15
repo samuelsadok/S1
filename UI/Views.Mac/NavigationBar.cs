@@ -1,10 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using UIKit;
 using AppInstall.Framework;
 
 namespace AppInstall.UI
@@ -80,7 +77,7 @@ namespace AppInstall.UI
         public void NavigateBack(bool animated)
         {
             navBarDel.CodeBackNavigation = true;
-            nativeView.PopNavigationItemAnimated(animated);
+            nativeView.PopNavigationItem(animated);
             navBarDel.CodeBackNavigation = false;
         }
 

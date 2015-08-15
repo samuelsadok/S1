@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using UIKit;
+using CoreGraphics;
 using AppInstall.Framework;
 using AppInstall.Graphics;
 using AppInstall.OS;
@@ -35,7 +34,7 @@ namespace AppInstall.UI
         /// </summary>
         protected virtual float Opacity { get { return 1f; } }
 
-        public virtual float Height { get { return this.Frame.Height; } }
+        public virtual float Height { get { return (float)Frame.Height; } }
 
         /// <summary>
         /// A value between 0 and 1.
@@ -182,20 +181,20 @@ namespace AppInstall.UI
 
             if (collapsing) {
                 var scale = (BoundedPull + 0.1f) / 1.1f; // animation doesn't work when scaling to 0
-                activityIndicator.Transform = MonoTouch.CoreGraphics.CGAffineTransform.MakeScale(scale, scale);
+                activityIndicator.Transform = CoreGraphics.CGAffineTransform.MakeScale(scale, scale);
                 label.Alpha = 0f;
             } else {
-                //activityIndicator.Transform = MonoTouch.CoreGraphics.CGAffineTransform.MakeRotation(2 * (float)Math.PI * pullProgress);
-                //activityIndicator.Transform = MonoTouch.CoreGraphics.CGAffineTransform.MakeScale(2f - pullProgress, pullProgress);
-                activityIndicator.Transform = MonoTouch.CoreGraphics.CGAffineTransform.MakeIdentity();
+                //activityIndicator.Transform = CoreGraphics.CGAffineTransform.MakeRotation(2 * (float)Math.PI * pullProgress);
+                //activityIndicator.Transform = CoreGraphics.CGAffineTransform.MakeScale(2f - pullProgress, pullProgress);
+                activityIndicator.Transform = CoreGraphics.CGAffineTransform.MakeIdentity();
                 label.Alpha = 1f;
             }
 
             // update frames
             var activityIndicatorSize = activityIndicator.SizeThatFits(new SizeF(float.MaxValue, float.MaxValue));
             var labelSize = label.SizeThatFits(new SizeF(float.MaxValue, float.MaxValue)) + new SizeF(0, 8f);
-            activityIndicator.Frame = new RectangleF((this.Frame.Width - activityIndicatorSize.Width) / 2, (this.Frame.Height - activityIndicatorSize.Height - label.Frame.Height) / 2, activityIndicatorSize.Width, activityIndicatorSize.Height);
-            label.Frame = new RectangleF((this.Frame.Width - labelSize.Width) / 2, (this.Frame.Height + activityIndicatorSize.Height - labelSize.Height) / 2, labelSize.Width, labelSize.Height);
+            activityIndicator.Frame = new CGRect((this.Frame.Width - activityIndicatorSize.Width) / 2, (this.Frame.Height - activityIndicatorSize.Height - label.Frame.Height) / 2, activityIndicatorSize.Width, activityIndicatorSize.Height);
+            label.Frame = new CGRect((this.Frame.Width - labelSize.Width) / 2, (this.Frame.Height + activityIndicatorSize.Height - labelSize.Height) / 2, labelSize.Width, labelSize.Height);
             base.LayoutSubviews();
         }
 
@@ -253,7 +252,7 @@ namespace AppInstall.UI
                 UpdateText();
                 activityIndicator.StartAnimating();
 
-                NSAction animatedAction = () => {
+                Action animatedAction = () => {
                     PerformLayoutChange();
                 };
 
@@ -279,7 +278,7 @@ namespace AppInstall.UI
                 UpdateText();
                 activityIndicator.StopAnimating();
 
-                NSAction animatedAction = () => {
+                Action animatedAction = () => {
                     BoundedPull = 0f;
                     LayoutSubviews();
                     PerformLayoutChange();
@@ -357,12 +356,12 @@ namespace AppInstall.UI
 
         public override void LayoutSubviews()
         {
-            label.Transform = MonoTouch.CoreGraphics.CGAffineTransform.MakeScale(1f, (BoundedPull + 0.1f) / 1.1f);
+            label.Transform = CoreGraphics.CGAffineTransform.MakeScale(1f, (BoundedPull + 0.1f) / 1.1f);
 
-            this.Frame = new RectangleF(this.Frame.Left, this.Frame.Top, this.Frame.Width, BoundedPull * Height);
+            this.Frame = new CGRect(Frame.Left, Frame.Top, Frame.Width, BoundedPull * Height);
             var labelSize = label.SizeThatFits(new SizeF(float.MaxValue, float.MaxValue)) + new SizeF(0, 8f);
             //label.Frame = new RectangleF((this.Frame.Width - labelSize.Width) / 2, (this.Frame.Height - labelSize.Height) / 2, labelSize.Width, labelSize.Height);
-            label.Frame = new RectangleF(0, 0, this.Frame.Width, this.Frame.Height);
+            label.Frame = new CGRect(0, 0, Frame.Width, Frame.Height);
 
             base.LayoutSubviews();
         }

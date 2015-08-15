@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using UIKit;
 using AppInstall.Framework;
 using AppInstall.Graphics;
 
@@ -14,7 +8,7 @@ namespace AppInstall.UI
     {
         public string SizeSampleText { get; set; }
         public string Text { get { return nativeView.Text; } set { nativeView.Text = value; } }
-        public float FontSize { get { return nativeView.Font.PointSize; } set { nativeView.Font = nativeView.Font.WithSize(value); } }
+        public float FontSize { get { return (float)nativeView.Font.PointSize; } set { nativeView.Font = nativeView.Font.WithSize(value); } }
         public TextAlignment TextAlignment { get { return Abstraction.ToTextAlignment(nativeView.TextAlignment); } set { nativeView.TextAlignment = Abstraction.ToUITextAlignment(value); } }
         public Color TextColor { get { return nativeView.TextColor.ToColor(); } set { nativeView.TextColor = value.ToUIColor(); } }
 

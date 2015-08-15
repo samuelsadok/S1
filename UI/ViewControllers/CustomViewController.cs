@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AppInstall.Framework;
 
 namespace AppInstall.UI
 {
     class CustomViewController<T> : DataViewController<DataSource<T>>
     {
-        public Func<View> ViewConstructor;
+        public Func<View> ViewConstructor { get; set; }
 
         protected override NavigationPage ConstructNavigationPageEx(NavigationView nav)
         {

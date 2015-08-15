@@ -101,12 +101,12 @@ namespace AppInstall.UI
             this[2, 0] = throttleLabel;
 
 
-            this.nativeView.AddGestureRecognizer(new MonoTouch.UIKit.UIPanGestureRecognizer(recognizer => {
+            this.nativeView.AddGestureRecognizer(new UIKit.UIPanGestureRecognizer(recognizer => {
                 //LogSystem.Log("state: "  + recognizer.State.ToString());
                 switch (recognizer.State) {
-                    case MonoTouch.UIKit.UIGestureRecognizerState.Began:
-                    case MonoTouch.UIKit.UIGestureRecognizerState.Changed:
-                        Throttle = -recognizer.TranslationInView(this.nativeView).Y / Math.Min(this.nativeView.Bounds.Height * MAX_THROTTLE_WAY_RATIO, MAX_THROTTLE_WAY_DISTANCE);
+                    case UIKit.UIGestureRecognizerState.Began:
+                    case UIKit.UIGestureRecognizerState.Changed:
+                        Throttle = -((float)recognizer.TranslationInView(nativeView).Y) / Math.Min((float)nativeView.Bounds.Height * MAX_THROTTLE_WAY_RATIO, MAX_THROTTLE_WAY_DISTANCE);
                         break;
                     default:
                         Application.UILog.Log("pan: " + recognizer.State.ToString());
