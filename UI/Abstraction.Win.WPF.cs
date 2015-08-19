@@ -113,7 +113,7 @@ namespace AppInstall.UI
         }
 
 
-        public void PlatformExecute(int duration)
+        private void PlatformExecute(int duration)
         {
             this.duration = new System.Windows.Duration(TimeSpan.FromMilliseconds(duration));
             changes = new List<Tuple<System.Windows.FrameworkElement,System.Windows.DependencyProperty,System.Windows.Media.Animation.AnimationTimeline>>();
@@ -124,6 +124,8 @@ namespace AppInstall.UI
 
             if (changes.Any())
                 changes.Last().Item3.Completed += (o, e) => InvokeEndAction();
+            else
+                InvokeEndAction();
 
             foreach (var change in changes)
                 change.Item1.BeginAnimation(change.Item2, change.Item3);
