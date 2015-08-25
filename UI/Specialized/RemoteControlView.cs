@@ -28,7 +28,7 @@ namespace AppInstall.UI
                 throttle = Math.Max(0, Math.Min(1, value));
                 ThrottleChanged.SafeInvoke(this, throttle);
                 throttleLabel.Text = Math.Round(throttle * 1000) / 10 + "%";
-                LayoutSubviews();
+                UpdateLayout();
             }
         }
         public float P { get { return sliderP.Value; } set { sliderP.Value = value; } }
@@ -45,24 +45,24 @@ namespace AppInstall.UI
         Label tagLabelL = new Label() { Text = "max I:" };
         Label tagLabelA = new Label() { Text = "a:" };
         Label tagLabelT = new Label() { Text = "t:" };
-        Label valLabelP = new Label() { Text = "", SizeSampleText = "99.9%", TextAlignment = new Directions(false, true, true, true) };
-        Label valLabelI = new Label() { Text = "", SizeSampleText = "99.9%", TextAlignment = new Directions(false, true, true, true) };
-        Label valLabelD = new Label() { Text = "", SizeSampleText = "99.9%", TextAlignment = new Directions(false, true, true, true) };
-        Label valLabelL = new Label() { Text = "", SizeSampleText = "9.999", TextAlignment = new Directions(false, true, true, true) };
-        Label valLabelA = new Label() { Text = "", SizeSampleText = "999", TextAlignment = new Directions(false, true, true, true) };
-        Label valLabelT = new Label() { Text = "", SizeSampleText = "999ms", TextAlignment = new Directions(false, true, true, true) };
-        Slider sliderP = new Slider() { MinValue = 0f, MaxValue = 1.0f, Margin = new Vector4D<float>(10, 10, 3, 3) };
-        Slider sliderI = new Slider() { MinValue = 0f, MaxValue = 2.0f, Margin = new Vector4D<float>(10, 10, 3, 3) };
-        Slider sliderD = new Slider() { MinValue = 0f, MaxValue = 0.2f, Margin = new Vector4D<float>(10, 10, 3, 3) };
-        Slider sliderL = new Slider() { MinValue = 0f, MaxValue = 5000f, Margin = new Vector4D<float>(10, 10, 3, 3) };
-        Slider sliderA = new Slider() { MinValue = 0f, MaxValue = 255f, Margin = new Vector4D<float>(10, 10, 3, 3) };
-        Slider sliderT = new Slider() { MinValue = 0f, MaxValue = 0.765f, Margin = new Vector4D<float>(10, 10, 3, 3) };
+        Label valLabelP = new Label() { Text = "", SizeSampleText = "99.9%", TextAlignment = UI.TextAlignment.Right };
+        Label valLabelI = new Label() { Text = "", SizeSampleText = "99.9%", TextAlignment = UI.TextAlignment.Right };
+        Label valLabelD = new Label() { Text = "", SizeSampleText = "99.9%", TextAlignment = UI.TextAlignment.Right };
+        Label valLabelL = new Label() { Text = "", SizeSampleText = "9.999", TextAlignment = UI.TextAlignment.Right };
+        Label valLabelA = new Label() { Text = "", SizeSampleText = "999", TextAlignment = UI.TextAlignment.Right };
+        Label valLabelT = new Label() { Text = "", SizeSampleText = "999ms", TextAlignment = UI.TextAlignment.Right };
+        Slider sliderP = new Slider() { MinValue = 0f, MaxValue = 1.0f, Margin = new Margin(10f, 3f) };
+        Slider sliderI = new Slider() { MinValue = 0f, MaxValue = 2.0f, Margin = new Margin(10f, 3f) };
+        Slider sliderD = new Slider() { MinValue = 0f, MaxValue = 0.2f, Margin = new Margin(10f, 3f) };
+        Slider sliderL = new Slider() { MinValue = 0f, MaxValue = 5000f, Margin =new Margin(10f, 3f) };
+        Slider sliderA = new Slider() { MinValue = 0f, MaxValue = 255f, Margin = new Margin(10f, 3f) };
+        Slider sliderT = new Slider() { MinValue = 0f, MaxValue = 0.765f, Margin=new Margin(10f, 3f) };
         Button button = new Button() { Text = "test" };
 
 
         Label throttleLabel = new Label() {
             Text = "100%",
-            TextAlignment = new Directions(true, true, false, false)
+            TextAlignment = UI.TextAlignment.Center
         };
 
         public RemoteControlView()
@@ -84,7 +84,7 @@ namespace AppInstall.UI
             sliderA.ValueChanged += (o, e) => updateSlider(valLabelA, e, 0);
             sliderT.ValueChanged += (o, e) => updateSlider(valLabelT, e, 2);
 
-            button.Clicked += (o) => SupplementaryAction.SafeInvoke(this);
+            button.Triggered += (o) => SupplementaryAction.SafeInvoke(this);
 
             GridLayout grid = new GridLayout(6, 3);
             grid[0, 0] = tagLabelP; grid[0, 1] = sliderP; grid[0, 2] = valLabelP;
@@ -101,15 +101,15 @@ namespace AppInstall.UI
             this[2, 0] = throttleLabel;
 
 
-            this.AddGestureRecognizer(new MonoTouch.UIKit.UIPanGestureRecognizer((recognizer) => {
+            this.nativeView.AddGestureRecognizer(new UIKit.UIPanGestureRecognizer(recognizer => {
                 //LogSystem.Log("state: "  + recognizer.State.ToString());
                 switch (recognizer.State) {
-                    case MonoTouch.UIKit.UIGestureRecognizerState.Began:
-                    case MonoTouch.UIKit.UIGestureRecognizerState.Changed:
-                        Throttle = -recognizer.TranslationInView(this).Y / Math.Min(this.Bounds.Height * MAX_THROTTLE_WAY_RATIO, MAX_THROTTLE_WAY_DISTANCE);
+                    case UIKit.UIGestureRecognizerState.Began:
+                    case UIKit.UIGestureRecognizerState.Changed:
+                        Throttle = -((float)recognizer.TranslationInView(nativeView).Y) / Math.Min((float)nativeView.Bounds.Height * MAX_THROTTLE_WAY_RATIO, MAX_THROTTLE_WAY_DISTANCE);
                         break;
                     default:
-                        LogSystem.Log("pan: " + recognizer.State.ToString());
+                        Application.UILog.Log("pan: " + recognizer.State.ToString());
                         Throttle = 0;
                         break;
                 }

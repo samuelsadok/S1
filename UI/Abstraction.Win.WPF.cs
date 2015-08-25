@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AppInstall.Framework;
 using AppInstall.OS;
+using AppInstall.Graphics;
 
 namespace AppInstall.UI
 {
@@ -113,7 +112,7 @@ namespace AppInstall.UI
         }
 
 
-        private void PlatformExecute(int duration)
+        public void PlatformExecute(int duration)
         {
             this.duration = new System.Windows.Duration(TimeSpan.FromMilliseconds(duration));
             changes = new List<Tuple<System.Windows.FrameworkElement,System.Windows.DependencyProperty,System.Windows.Media.Animation.AnimationTimeline>>();
@@ -124,8 +123,6 @@ namespace AppInstall.UI
 
             if (changes.Any())
                 changes.Last().Item3.Completed += (o, e) => InvokeEndAction();
-            else
-                InvokeEndAction();
 
             foreach (var change in changes)
                 change.Item1.BeginAnimation(change.Item2, change.Item3);

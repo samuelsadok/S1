@@ -62,7 +62,8 @@ namespace AppInstall.UI
         }
 
 
-
+        // UnresolvedMergeConflict: had to be removed to test android
+        /*
         public static void ConnectToField(this BoolInput ui, FieldSource<bool> fieldSource)
         {
             FieldSource<bool?> uiField = new FieldSource<bool?>(() => ui.Value, (val) => ui.Value = val);
@@ -83,5 +84,6 @@ namespace AppInstall.UI
                 (val) => new Tuple<double, bool>(val, true), (val) => new Tuple<int, bool>((int)val, (double)((int)val) == val),
                 null, null);
         }
+        */
     }
 }

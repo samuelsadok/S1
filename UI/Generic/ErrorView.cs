@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AppInstall.OS;
 using AppInstall.Framework;
+using AppInstall.Graphics;
 
 namespace AppInstall.UI
 {

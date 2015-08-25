@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 using AppInstall.Framework;
-using AppInstall.OS;
 
 
 namespace AppInstall.UI
@@ -63,7 +61,7 @@ namespace AppInstall.UI
                 this.parent = parent;
             }
 
-            public override int NumberOfSections(UITableView tableView)
+            public override nint NumberOfSections(UITableView tableView)
             {
                 return parent.GetNumberOfSections();
             }
@@ -73,19 +71,20 @@ namespace AppInstall.UI
                 return indexPath.Row >= parent.GetSection(indexPath.Section).NumberOfRows;
             }
 
-            public override int RowsInSection(UITableView tableView, int section)
+            public override nint RowsInSection(UITableView tableView, nint section)
             {
-                return parent.GetSection(section).NumberOfRows + parent.GetSection(section).SpecialItems.Count();
+                var s = parent.GetSection((int)section);
+                return s.NumberOfRows + s.SpecialItems.Count();
             }
 
-            public override string TitleForHeader(UITableView tableView, int section)
+            public override string TitleForHeader(UITableView tableView, nint section)
             {
-                return parent.GetSection(section).Header;
+                return parent.GetSection((int)section).Header;
             }
 
-            public override string TitleForFooter(UITableView tableView, int section)
+            public override string TitleForFooter(UITableView tableView, nint section)
             {
-                return parent.GetSection(section).Footer;
+                return parent.GetSection((int)section).Footer;
             }
 
             private ListViewItem GetCell(NSIndexPath indexPath)
@@ -101,7 +100,7 @@ namespace AppInstall.UI
                 return GetCell(indexPath);
             }
 
-            public override float GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
+            public override nfloat GetHeightForRow(UITableView tableView, NSIndexPath indexPath)
             {
                 return GetCell(indexPath).Height;
             }
@@ -248,8 +247,8 @@ namespace AppInstall.UI
         {
             var totalHeaderHeight = HeaderHeight;
             var totalExpandedHeight = headers.Sum((header) => header.Visible ? header.Height : 0f);
-            var offset = Math.Min(Padding.Top + nativeView.ContentOffset.Y + totalExpandedHeight - totalHeaderHeight, 0f);
-            var pull = -Math.Min(Padding.Top + nativeView.ContentOffset.Y, 0f);
+            var offset = Math.Min(Padding.Top + (float)nativeView.ContentOffset.Y + totalExpandedHeight - totalHeaderHeight, 0f);
+            var pull = -Math.Min(Padding.Top + (float)nativeView.ContentOffset.Y, 0f);
 
             offset += totalHeaderHeight;
 
@@ -260,7 +259,7 @@ namespace AppInstall.UI
                 offset -= delta;
 
                 header.PullChanged(pull / headerHeight);
-                header.Frame = new RectangleF(0, offset, nativeView.Frame.Width, header.Frame.Height);
+                header.Frame = new CGRect(0, offset, nativeView.Frame.Width, header.Frame.Height);
 
                 if (collapsed)
                     pull -= delta;
@@ -269,7 +268,7 @@ namespace AppInstall.UI
             var oldHeight = nativeView.TableHeaderView.Frame.Height;
             var newHeight = totalHeaderHeight + VerticalPadding;
             if (oldHeight != newHeight) {
-                nativeView.TableHeaderView.Frame = new RectangleF(0, 0, 0, newHeight);
+                nativeView.TableHeaderView.Frame = new CGRect(0, 0, 0, newHeight);
                 nativeView.TableHeaderView = nativeView.TableHeaderView;
             }
         }
@@ -290,7 +289,7 @@ namespace AppInstall.UI
 
             // make sure that the scroll position stays the same when padding changes
             if (!nativeView.Dragging)
-                nativeView.ContentOffset = new PointF(nativeView.ContentOffset.X, oldOffset + oldInset - nativeView.ContentInset.Top);
+                nativeView.ContentOffset = new CGPoint(nativeView.ContentOffset.X, oldOffset + oldInset - nativeView.ContentInset.Top);
             
             base.UpdateContentLayout();
         }
@@ -343,8 +342,8 @@ namespace AppInstall.UI
         }
         public void MakeVisible(ListViewItem item, bool animated)
         {
-            var frame = new RectangleF(item.Frame.Location, new SizeF(item.Frame.Width, Size.Y - Padding.Top - Padding.Bottom));
-            nativeView.ScrollRectToVisible( frame, animated);
+            var frame = new CGRect(item.Frame.Location, new CGSize(item.Frame.Width, Size.Y - Padding.Top - Padding.Bottom));
+            nativeView.ScrollRectToVisible(frame, animated);
             //if (IsBefore(section, row, visible.First().Section, visible.First().Row))
             //    list.ScrollToRow(NSIndexPath.FromRowSection(row, section), UITableViewScrollPosition.Top, animated);
             //else if (!IsBefore(section, row, visible.Last().Section, visible.Last().Row))

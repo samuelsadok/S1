@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
 using AppInstall.Framework;
 using AppInstall.Graphics;
 
@@ -15,7 +15,7 @@ namespace AppInstall.UI
     /// </summary>
     public class EnhancedTextView : UITextView
     {
-        public override RectangleF GetCaretRectForPosition(UITextPosition position)
+        public override CoreGraphics.CGRect GetCaretRectForPosition(UITextPosition position)
         {
             if (this.Delegate.ShouldChangeText(this, new NSRange(this.GetOffsetFromPosition(this.BeginningOfDocument, position), 1), null))
                 return base.GetCaretRectForPosition(position);
@@ -39,7 +39,7 @@ namespace AppInstall.UI
 
         public string Text { get { return nativeView.Text; } set { nativeView.Text = value; } }
         public string PlaceholderText { get { return placeholderLabel.Text; } set { placeholderLabel.Text = value; } }
-        public float FontSize { get { return nativeView.Font.PointSize; } set { nativeView.Font = placeholderLabel.Font = nativeView.Font.WithSize(value); } }
+        public float FontSize { get { return (float)nativeView.Font.PointSize; } set { nativeView.Font = placeholderLabel.Font = nativeView.Font.WithSize(value); } }
         public Color TextColor { get { return nativeView.TextColor.ToColor(); } set { nativeView.TextColor = value.ToUIColor(); } }
         public TextAlignment TextAlignment { get { return Abstraction.ToTextAlignment(nativeView.TextAlignment); } set { nativeView.TextAlignment = Abstraction.ToUITextAlignment(value); } }
         public Toolbar KeyboardToolbar { get { return keyboardToolbar; } set { nativeView.InputAccessoryView = new PlatformViewWrapper(keyboardToolbar = value).NativeView; } }

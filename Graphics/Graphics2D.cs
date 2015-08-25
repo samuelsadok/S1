@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Drawing;
-using MonoTouch.CoreGraphics;
-using MonoTouch.CoreAnimation;
+using CoreGraphics;
+using CoreAnimation;
 using AppInstall.Framework;
 using AppInstall.UI;
 
@@ -139,7 +138,7 @@ namespace AppInstall.Graphics
 
             if (Background != Color.Clear) {
                 context.SetFillColor(Background.ToCGColor());
-                context.FillRect(new RectangleF(PointF.Empty, size.ToSize()));
+                context.FillRect(new CGRect(CGPoint.Empty, size.ToCGSize()));
             }
 
             context.SaveState();

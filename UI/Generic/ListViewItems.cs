@@ -9,6 +9,12 @@ namespace AppInstall.UI
 {
 
 
+    // todo: most of the listview item types are now deprecated since the view controller model is used to generate any kind of listview item => remove deprecated types
+
+
+
+
+
     //public class ButtonListViewItem : ListViewItem
     //{
     //    private IPhysicalQuantity quantity;
@@ -45,6 +51,8 @@ namespace AppInstall.UI
     //    }
     //}
 
+
+    [Obsolete("use the built-in listview generator of the ListViewController", true)]
     public class TimeRangeListViewItem : ListViewItem
     {
         private string delimiter;
@@ -118,6 +126,8 @@ namespace AppInstall.UI
     //    }
     //}
 
+
+    [Obsolete("use the built-in listview generator of the ListViewController", true)]
     public class TextFieldListViewItem : PlainListViewItem
     {
         private TextField textField;
@@ -141,6 +151,7 @@ namespace AppInstall.UI
     }
 
 
+    [Obsolete("use the built-in listview generator of the ListViewController", true)]
     public class AccessoryListViewItem<T> : ListViewItem
         where T : View, new()
     {
@@ -178,12 +189,15 @@ namespace AppInstall.UI
     }
 
 
+    [Obsolete("only used by a deprecated list view item type", true)]
     public interface IDoubleDisplayString
     {
         string DisplayString { get; }
         string SecondaryDisplayString { get; }
     }
 
+
+    [Obsolete("use the built-in listview generator of the ListViewController", true)]
     public class SelectionListViewItem : ListViewItem
     {
         private IDoubleDisplayString DefaultItem;
@@ -214,6 +228,8 @@ namespace AppInstall.UI
         }
     }
 
+
+    [Obsolete("use the built-in listview generator of the ListViewController", true)]
     public class OptionsListViewItem<T> : ListViewItem
     {
         private T[] options;

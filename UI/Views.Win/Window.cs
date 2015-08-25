@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AppInstall.Framework;
 using AppInstall.Hardware;
+using AppInstall.Graphics;
 
 namespace AppInstall.UI
 {

@@ -53,7 +53,7 @@ namespace AppInstall.Hardware
         private void GetSetup()
         {
             byte[] result = peripheral.ReadCharacteristic(GlobalConstants.GUID_I2C_PROXY_SERVICE, GlobalConstants.GUID_I2C_PROXY_SETUP);
-            LogSystem.Log(result.ToString());
+            peripheral.logContext.Log("setup: " + result.ToString());
         }
     }
 }

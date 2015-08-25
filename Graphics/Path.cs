@@ -80,6 +80,11 @@ namespace AppInstall.Graphics
     /// </summary>
     public partial class Path2D : Path<float, Vector2D<float>, PathElement2D>
     {
+        public void MoveToPoint(float x, float y)
+        {
+            MoveToPoint(new Vector2D<float>(x, y));
+        }
+
         /// <summary>
         /// Moves the cursor to the specified point and places a line
         /// </summary>

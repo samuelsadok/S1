@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace AppInstall.Framework
 {
@@ -64,7 +60,7 @@ namespace AppInstall.Framework
             shutdownTokenSource = new CancellationTokenSource();
             ShutdownToken = shutdownTokenSource.Token;
             Application app = new Application(args);
-            (new System.Threading.Thread(app.Main)).Start();
+            new Thread(app.Main).Start();
         }
 
         /// <summary>

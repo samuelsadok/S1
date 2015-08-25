@@ -1,10 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Runtime.CompilerServices;
-using AppInstall.OS;
-using AppInstall.UI;
 
 namespace AppInstall.Framework
 {
@@ -66,10 +61,10 @@ namespace AppInstall.Framework
         {
             return new LogContext((c, m, t) => {
                 switch (t) {
-                    case LogType.Debug: console.SetColor(AppInstall.Framework.ConsoleColor.DarkGray, AppInstall.Framework.ConsoleColor.Black); break;
-                    case LogType.Info: console.SetColor(AppInstall.Framework.ConsoleColor.Green, AppInstall.Framework.ConsoleColor.Black); break;
-                    case LogType.Warning: console.SetColor(AppInstall.Framework.ConsoleColor.Yellow, AppInstall.Framework.ConsoleColor.Black); break;
-                    case LogType.Error: console.SetColor(AppInstall.Framework.ConsoleColor.Red, AppInstall.Framework.ConsoleColor.Black); break;
+                    case LogType.Debug: console.SetColor(ConsoleColor.DarkGray, ConsoleColor.Black); break;
+                    case LogType.Info: console.SetColor(ConsoleColor.Green, ConsoleColor.Black); break;
+                    case LogType.Warning: console.SetColor(ConsoleColor.Yellow, ConsoleColor.Black); break;
+                    case LogType.Error: console.SetColor(ConsoleColor.Red, ConsoleColor.Black); break;
                 }
                 console.WriteLine(c + ": " + m);
             }, name);

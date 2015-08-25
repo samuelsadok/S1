@@ -70,6 +70,8 @@ namespace AppInstall.UI
 
         protected override View ConstructViewEx()
         {
+            // todo: maybe add split view style for ipad
+            /*
             var mainContainer = ConstructMainView();
 
             if (DetailViewConstructor == null)
@@ -87,6 +89,9 @@ namespace AppInstall.UI
             split[0, 1] = detailContainer;
 
             return split;
+            */
+
+            return base.ConstructViewEx();
         }
 
         protected override NavigationPage ConstructNavigationPageEx(NavigationView nav)

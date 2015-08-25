@@ -256,6 +256,16 @@ namespace AppInstall.Framework
         }
 
         /// <summary>
+        /// Waits until the wait handle is triggered while allowing for cancellation.
+        /// </summary>
+        /// <exception cref=""></exception>
+        public static void WaitOne(this WaitHandle waitHandle, CancellationToken cancellationToken)
+        {
+            WaitHandle.WaitAny(new WaitHandle[] { waitHandle, cancellationToken.WaitHandle });
+            cancellationToken.ThrowIfCancellationRequested();
+        }
+
+        /// <summary>
         /// Does nothing with the task. Used to suppress warnings and to make clear that asynchronous running of the task was intended.
         /// </summary>
         public static void Run(this Task task)

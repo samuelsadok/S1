@@ -18,8 +18,8 @@ namespace AppInstall.Framework
     {
         private readonly Action<CancellationToken> action;
         private readonly object lockRef = new object();
-        private EventWaitHandle executionFinishedHandle; // a non-null value in this field indicates that another execution of the action must be done
-        private bool executing;
+        private EventWaitHandle nextExecutionFinishedHandle; // a non-null value in this field indicates that another execution of the action must be done
+        private EventWaitHandle executionFinishedHandle; // a non-null value in this field indicates that an execution is currently in progress
 
         public ActivityTracker Tracker { get; private set; }
 
@@ -41,19 +41,34 @@ namespace AppInstall.Framework
             };
         }
 
+        /* issue: results in ambiguous function call
+        /// <summary>
+        /// Creates a slow action from an async action.
+        /// </summary>
+        public SlowAction(Func<CancellationToken, Task> asyncAction)
+            : this(c => asyncAction(c).Wait(c))
+        {
+        }
+        */
+
         /// <summary>
         /// Determines if the execution handler thread should be launched
         /// </summary>
+        /// <param name="soft">if true and an execution is already running, no new execution will be enqueued</param>
         /// <param name="waitHandle">set to the wait handle that is triggered upon completition of the execution</param>
-        /// <returns></returns>
-        private bool ShouldExecute(out WaitHandle waitHandle)
+        private bool ShouldExecute(bool soft, out WaitHandle waitHandle)
         {
             lock (lockRef) {
-                if (executionFinishedHandle == null)
-                    executionFinishedHandle = new ManualResetEvent(false);
-                waitHandle = executionFinishedHandle;
-                if (!executing) {
-                    executing = true;
+                if (soft && executionFinishedHandle != null) {
+                    waitHandle = executionFinishedHandle;
+                    return false;
+                }
+
+                if (nextExecutionFinishedHandle == null)
+                    nextExecutionFinishedHandle = new ManualResetEvent(false);
+                waitHandle = nextExecutionFinishedHandle;
+                if (executionFinishedHandle == null) {
+                    executionFinishedHandle = nextExecutionFinishedHandle;
                     return true;
                 }
                 return false;
@@ -61,15 +76,14 @@ namespace AppInstall.Framework
         }
 
         /// <summary>
-        /// determines if another execution is required in which case it returns the wait handle that waits for the execution to complete
+        /// Determines if another execution is required in which case it returns the wait handle that waits for the execution to complete
         /// </summary>
         private EventWaitHandle AcquireHandleForExecution()
         {
             EventWaitHandle result;
             lock (lockRef) {
-                if ((result = executionFinishedHandle) == null)
-                    executing = false;
-                executionFinishedHandle = null;
+                result = executionFinishedHandle = nextExecutionFinishedHandle;
+                nextExecutionFinishedHandle = null;
                 return result;
             }
         }
@@ -77,10 +91,12 @@ namespace AppInstall.Framework
         /// <summary>
         /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the first execution of the action that was started after triggering.
         /// </summary>
-        public WaitHandle Trigger(CancellationToken cancellationToken)
+        /// <param name="soft">if true and an execution is already in progress, no new execution is enqueued</param>
+        /// <param name="cancellationToken">cancels the action (must be the same in every call => todo: fix)</param>
+        public WaitHandle Trigger(bool soft, CancellationToken cancellationToken)
         {
             WaitHandle result;
-            if (ShouldExecute(out result))
+            if (ShouldExecute(soft, out result))
                 Task.Run(() => {
                     EventWaitHandle handle;
                     while ((handle = AcquireHandleForExecution()) != null) {
@@ -92,12 +108,41 @@ namespace AppInstall.Framework
         }
 
         /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the first execution of the action that was started after triggering.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle Trigger(CancellationToken cancellationToken)
+        {
+            return Trigger(false, cancellationToken);
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the current execution of the action.
+        /// If an execution is already in progress, no new execution is enqueued.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle SoftTrigger(CancellationToken cancellationToken)
+        {
+            return Trigger(true, cancellationToken);
+        }
+
+        /// <summary>
         /// Triggers the underlying action and blocks until it was completed.
         /// </summary>
         /// <param name="cancellationToken">causes the routine to stop waiting but does not revoke or cancel the triggered action</param>
         public async Task TriggerAndWait(CancellationToken cancellationToken)
         {
-            await Trigger(cancellationToken).WaitAsync(cancellationToken); // todo: propagate errors from this triggering
+            await Trigger(false, cancellationToken).WaitAsync(cancellationToken); // todo: propagate errors from this triggering
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and blocks until it was completed.
+        /// If an execution is already in progress, no new execution is enqueued and this function blocks until the current execution completes.
+        /// </summary>
+        /// <param name="cancellationToken">causes the routine to stop waiting but does not revoke or cancel the triggered action</param>
+        public async Task SoftTriggerAndWait(CancellationToken cancellationToken)
+        {
+            await Trigger(true, cancellationToken).WaitAsync(cancellationToken); // todo: propagate errors from this triggering
         }
 
         /// <summary>
@@ -111,7 +156,7 @@ namespace AppInstall.Framework
         {
             Task.Run(() => {
                 do {
-                    Trigger(cancellationToken);
+                    Trigger(false, cancellationToken);
                 } while (!cancellationToken.WaitHandle.WaitOne(interval));
             });
         }

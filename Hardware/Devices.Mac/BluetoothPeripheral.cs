@@ -4,12 +4,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 using AppInstall.Framework;
-using MonoTouch.Foundation;
-using MonoTouch.CoreBluetooth;
+using Foundation;
+using CoreBluetooth;
 
 
 namespace AppInstall.Hardware
@@ -20,7 +20,10 @@ namespace AppInstall.Hardware
     {
         public const int MTU_SIZE = 20;
 
-        public readonly CBPeripheral peripheral; // used for communications lock - (never lock within a data lock!)
+        public readonly LogContext logContext;
+
+        public readonly CBPeripheral peripheral;
+        public readonly Mutex comMutex = new Mutex(); // used to ensure exclusive communication lock - (never acquire within a data lock!)
         object activeProcesses; // keeps track of the currently running actions on peripheral
         Exception lastException;
 
@@ -33,7 +36,7 @@ namespace AppInstall.Hardware
                 Thread.MemoryBarrier();
                 CountdownEvent result;
                 while ((result = (CountdownEvent)Thread.VolatileRead(ref activeProcesses)) == null) {
-                    LogSystem.Log("counter is null");
+                    logContext.Log("counter is null");
                     Thread.Sleep(100);
                 }
                 return result;
@@ -70,33 +73,42 @@ namespace AppInstall.Hardware
         /// </summary>
         public bool IsConnected { get; set; }
 
+        /// <summary>
+        /// Triggered when the metadata of this device are updated (e.g. name, list of services, etc).
+        /// </summary>
+        public event Action<BluetoothPeripheral> InfoChanged;
+
         
         private Dictionary<Guid, Dictionary<Guid, object>> services = new Dictionary<Guid, Dictionary<Guid, object>>(); // used for data lock (on services, characteristics and descriptors)
         
 
 
-        public BluetoothPeripheral(CBPeripheral peripheral, NSDictionary advertismentData, int RSSI)
+        public BluetoothPeripheral(CBPeripheral peripheral, NSDictionary advertismentData, int RSSI, LogContext logContext)
         {
+            this.logContext = logContext;
+
             this.peripheral = peripheral;
             this.RSSI = RSSI;
 
             //ServiceData = new Dictionary<Guid, byte[]>();
 
+            Name = peripheral.Name;
             UpdateData(advertismentData, RSSI);
-            if (Name == null) throw new ArgumentException();
+            //if (Name == null) throw new ArgumentException();
 
 
 
 
             Action<string, NSError, Action> bluetoothHandler = (eventName, error, action) => {
                 try {
-                    if (error != null) error.Throw();
+                    if (error != null)
+                        throw error.ToException();
 #if BT_DEBUG
                     LogSystem.Log("BTP: " + eventName);
 #endif
                     if (action != null) action();
                 } catch (Exception ex) {
-                    LogSystem.Log("bluetooth error (event: " + eventName + "): " + ex.ToString());
+                    logContext.Log("bluetooth error (event: " + eventName + "): " + ex.ToString());
                     lastException = ex;
                 } finally {
                     ActiveProcesses.Signal();
@@ -109,7 +121,7 @@ namespace AppInstall.Hardware
             peripheral.RssiUpdated += (o, e) => bluetoothHandler("updated rssi", e.Error, null);
             peripheral.UpdatedName += (o, e) => bluetoothHandler("updated name", null, null);
             peripheral.UpdatedNotificationState += (o, e) => bluetoothHandler("updated notification state", e.Error, null);
-            peripheral.UpdatedValue += (o, e) => bluetoothHandler("updated value", e.Error, null);
+            peripheral.UpdatedValue += (o, e) => bluetoothHandler("updated value " + e.Descriptor.Characteristic, e.Error, null);
             peripheral.WroteDescriptorValue += (o, e) => bluetoothHandler("wrote descriptor value", e.Error, null);
 
 
@@ -123,7 +135,7 @@ namespace AppInstall.Hardware
                 }
             });
 
-            peripheral.DiscoverCharacteristic += (o, e) => bluetoothHandler("discovered characteristic", e.Error, () => {
+            peripheral.DiscoveredCharacteristic += (o, e) => bluetoothHandler("discovered characteristic", e.Error, () => {
                 foreach (CBCharacteristic c in e.Service.Characteristics) {
                     ActiveProcesses.AddCount();
                     peripheral.DiscoverDescriptors(c);
@@ -164,6 +176,8 @@ namespace AppInstall.Hardware
                     }
                 }
             }
+
+            InfoChanged.SafeInvoke(this);
         }
 
 
@@ -173,22 +187,24 @@ namespace AppInstall.Hardware
         /// </summary>
         public void RetrieveDetails()
         {
-            lock (peripheral) {
+            comMutex.WaitOne();
+
+            try {
                 // discover services and wait until done
                 lastException = null;
                 ActiveProcesses = new CountdownEvent(1);
-                LogSystem.Log("now discovering");
+                logContext.Log("now discovering");
                 peripheral.DiscoverServices();
-                LogSystem.Log("waiting");
+                logContext.Log("waiting");
                 ActiveProcesses.Wait(); // todo: allow cancelling
-                LogSystem.Log("done discovering");
+                logContext.Log("done discovering");
                 ActiveProcesses = null;
 
                 // copy data into our store
                 lock (services) {
                     services.Clear();
                     foreach (CBService service in (peripheral.Services == null ? new CBService[0] : peripheral.Services)) {
-                        Dictionary<Guid, object> serviceContent = new Dictionary<Guid,object>();
+                        Dictionary<Guid, object> serviceContent = new Dictionary<Guid, object>();
                         services[service.UUID.ToGuid()] = serviceContent;
                         foreach (CBCharacteristic characteristic in (service.Characteristics == null ? new CBCharacteristic[0] : service.Characteristics)) {
                             serviceContent[characteristic.UUID.ToGuid()] = characteristic;
@@ -197,16 +213,18 @@ namespace AppInstall.Hardware
                         }
                     }
                 }
+            } finally {
+                comMutex.ReleaseMutex();
             }
 
             lock (services) {
                 foreach (var service in services) {
-                    LogSystem.Log("BTP: service: " + service.Key.ToString());
+                    logContext.Log("  service: " + service.Key.ToString());
                     foreach (var content in service.Value) {
                         if (content.Value.GetType() == typeof(CBCharacteristic))
-                            LogSystem.Log("BTP:     characteristic: " + content.Key.ToString());
+                            logContext.Log("    characteristic: " + content.Key.ToString());
                         else
-                            LogSystem.Log("BTP:     descriptor: " + content.Key.ToString());
+                            logContext.Log("    descriptor: " + content.Key.ToString());
                     }
                 }
             }
@@ -242,37 +260,44 @@ namespace AppInstall.Hardware
         /// <summary>
         /// Reads the value of a characteristic or descriptor on the remote device
         /// </summary>
-        public byte[] ReadCharacteristic(Guid service, Guid characteristic)
+        public async Task<byte[]> ReadCharacteristic(Guid service, Guid characteristic, CancellationToken cancellationToken)
         {
             object o;
             lock (services)
                 o = services[service][characteristic];
 
-            lock (peripheral) {
+            await comMutex.WaitAsync(cancellationToken);
+
+            try {
+
                 lastException = null;
+
                 ActiveProcesses = new CountdownEvent(1);
                 if (o.GetType() == typeof(CBCharacteristic))
                     peripheral.ReadValue((CBCharacteristic)o);
                 else
                     peripheral.ReadValue((CBDescriptor)o); // todo: add descriptor support
-                ActiveProcesses.Wait(); // todo: allow cancelling
+                await ActiveProcesses.WaitHandle.WaitAsync(cancellationToken); // todo: allow cancelling
                 ActiveProcesses = null;
                 if (lastException != null) throw new Exception("bluetooth error", lastException);
 
-
-                if (o.GetType() == typeof(CBCharacteristic))
-                    return (((CBCharacteristic)o).Value).ToByteArray();
-                else
-                    throw new NotImplementedException(); // todo: return descriptor value
-                //return ToByteArray(((CBDescriptor)o).Value);
+            } finally {
+                comMutex.ReleaseMutex();
             }
+
+            if (o.GetType() == typeof(CBCharacteristic))
+                return (((CBCharacteristic)o).Value).ToByteArray();
+            else
+                throw new NotImplementedException(); // todo: return descriptor value
+            //return ToByteArray(((CBDescriptor)o).Value);
         }
+    
 
         /// <summary>
         /// Sets the value of a characteristic or descriptor on the remote device.
         /// Using a progress observer is advised if the value is very large.
         /// </summary>
-        public void WriteCharacteristic(Guid service, Guid characteristic, byte[] value, ProgressObserver progressObserver = null)
+        public async Task WriteCharacteristic(Guid service, Guid characteristic, byte[] value, CancellationToken cancellationToken, ProgressObserver progressObserver = null)
         {
             NSData data = NSData.FromArray(value);
 
@@ -286,24 +311,27 @@ namespace AppInstall.Hardware
             
             using (UnmanagedMemory mem = new UnmanagedMemory(value.Count())) {
                 Marshal.Copy(value, 0, mem.Handle, value.Count());
-
-                Utilities.PartitionWork(0, value.Count(), MTU_SIZE, (i, count) => {
-                    WriteCharacteristic((CBCharacteristic)o, NSData.FromBytesNoCopy(IntPtr.Add(mem.Handle, i), (uint)count, false));
+                
+                await Utilities.PartitionWork(0, value.Count(), MTU_SIZE, async (i, count) => {
+                    await WriteCharacteristic((CBCharacteristic)o, NSData.FromBytesNoCopy(IntPtr.Add(mem.Handle, i), (uint)count, false), cancellationToken);
                     progressMonitor.Advance(count);
                 });
                 progressMonitor.Complete();
             }
         }
 
-        private void WriteCharacteristic(CBCharacteristic characteristic, NSData value)
+        private async Task WriteCharacteristic(CBCharacteristic characteristic, NSData value, CancellationToken cancellationToken)
         {
-            lock (peripheral) {
+            await comMutex.WaitAsync(cancellationToken);
+            try {
                 lastException = null;
                 ActiveProcesses = new CountdownEvent(1);
                 peripheral.WriteValue(value, characteristic, CBCharacteristicWriteType.WithResponse);
-                ActiveProcesses.Wait(); // todo: allow cancelling // todo: detect completition
+                await ActiveProcesses.WaitHandle.WaitAsync(cancellationToken); // todo: allow cancelling // todo: detect completition
                 ActiveProcesses = null;
                 if (lastException != null) throw new Exception("bluetooth error", lastException);
+            } finally {
+                comMutex.ReleaseMutex();
             }
         }
 
@@ -318,13 +346,18 @@ namespace AppInstall.Hardware
             if (o.GetType() != typeof(CBCharacteristic))
                 throw new KeyNotFoundException("the selected GUID is not a characteristic");
 
-            lock (peripheral) {
+            comMutex.WaitOne();
+
+            try {
                 lastException = null;
                 ActiveProcesses = new CountdownEvent(1);
                 peripheral.SetNotifyValue(true, (CBCharacteristic)o);
+                throw new NotImplementedException("need to implement update handler using UpdatedValue or UpdatedNotificationState");
                 ActiveProcesses.Wait(); // todo: allow cancelling // todo: detect completition
                 ActiveProcesses = null;
                 if (lastException != null) throw new Exception("bluetooth error", lastException);
+            } finally {
+                comMutex.ReleaseMutex();
             }
         }
     }
