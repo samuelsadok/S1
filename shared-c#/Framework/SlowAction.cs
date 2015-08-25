@@ -16,8 +16,13 @@ namespace AppInstall.Framework
     /// </summary>
     public class SlowAction
     {
+<<<<<<< HEAD
         private readonly Action<CancellationToken> action;
         private readonly object lockRef = new object();
+=======
+        private readonly Action<CancellationToken> action;
+        private readonly object lockRef = new object();
+>>>>>>> 87e0e9fe2550075c41156b21489ae1aac1323f5f
         private EventWaitHandle nextExecutionFinishedHandle; // a non-null value in this field indicates that another execution of the action must be done
         private EventWaitHandle executionFinishedHandle; // a non-null value in this field indicates that an execution is currently in progress
 
@@ -105,6 +110,44 @@ namespace AppInstall.Framework
                     }
                 });
             return result;
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the first execution of the action that was started after triggering.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle Trigger(CancellationToken cancellationToken)
+        {
+            return Trigger(false, cancellationToken);
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the current execution of the action.
+        /// If an execution is already in progress, no new execution is enqueued.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle SoftTrigger(CancellationToken cancellationToken)
+        {
+            return Trigger(true, cancellationToken);
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the first execution of the action that was started after triggering.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle Trigger(CancellationToken cancellationToken)
+        {
+            return Trigger(false, cancellationToken);
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the current execution of the action.
+        /// If an execution is already in progress, no new execution is enqueued.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle SoftTrigger(CancellationToken cancellationToken)
+        {
+            return Trigger(true, cancellationToken);
         }
 
         /// <summary>
