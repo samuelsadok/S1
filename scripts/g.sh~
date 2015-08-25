@@ -1,0 +1,66 @@
+#!/bin/bash
+#
+# Git Maintainer Script
+#
+# g.sh push [branch]: pushes the main repo and all subtrees
+# g.sh pull [branch]: pulls the main repo and all subtrees
+#
+
+TC='\x1b['
+Green="${TC}32m";
+Yellow="${TC}33m";
+Red="${TC}31m";
+Rst="${TC}0m";     # Reset all coloring and style
+
+
+if [ $# -lt 1 ]
+then
+    echo "${Yellow}$0: specify an option${Rst}"
+    exit 1
+fi
+
+if [ $# -gt 1 ]
+then
+    br=$2
+else
+    br=master
+fi
+
+
+subtrees=`git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq | xargs -I {} bash -c 'if [ -d $(git rev-parse --show-toplevel)/{} ] ; then echo {}; fi'`
+nsubtrees=`echo "$var" | wc -l`
+
+case $1 in
+    show)
+        for subtree in $subtrees
+	do
+	    echo "found subtree: $subtree"
+	done;;
+    push)
+	for subtree in $subtrees
+	do
+	    echo "push subtree: $subtree"
+	    git subtree push --prefix=$subtree $subtree-origin master
+	    if [[ $? != 0 ]]
+	    then
+		echo -e "${Red}pushing $subtree failed, try $0 pull first${Rst}"
+		exit 1
+	    fi
+	done
+        echo -e "${Green}pushed $nsubtrees subtrees successfully${Rst}";;
+    pull)
+	for subtree in $subtrees
+	do
+	    echo "pull subtree: $subtree"
+	    git subtree pull --prefix=$subtree $subtree-origin master
+	    if [[ $? != 0 ]]
+	    then
+		echo -e "${Red}pulling $subtree failed, try $0 pull first${Rst}"
+		exit 1
+	    fi
+	done
+        echo -e "${Green}pulled $nsubtrees subtrees successfully${Rst}";;
+    *)
+	echo -e "${Yellow}$0: unknown command $1${Rst}" >&2
+	exit 1;;
+esac
