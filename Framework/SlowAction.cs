@@ -127,6 +127,25 @@ namespace AppInstall.Framework
         }
 
         /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the first execution of the action that was started after triggering.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle Trigger(CancellationToken cancellationToken)
+        {
+            return Trigger(false, cancellationToken);
+        }
+
+        /// <summary>
+        /// Triggers the underlying action and returns a wait handle that will be triggered upon completition of the current execution of the action.
+        /// If an execution is already in progress, no new execution is enqueued.
+        /// </summary>
+        /// <param name="cancellationToken">cancels the action</param>
+        public WaitHandle SoftTrigger(CancellationToken cancellationToken)
+        {
+            return Trigger(true, cancellationToken);
+        }
+
+        /// <summary>
         /// Triggers the underlying action and blocks until it was completed.
         /// </summary>
         /// <param name="cancellationToken">causes the routine to stop waiting but does not revoke or cancel the triggered action</param>

@@ -122,11 +122,11 @@ namespace AppInstall.Framework
                     if (exceptions.Any())
                         throw new AggregateException("failed to refresh dependencies", exceptions);
 
-                    var newItems = dataProvider(cancellationToken);
+                    var newData = dataProvider(cancellationToken);
                     if (refreshOnMainThread)
-                        Platform.InvokeMainThread(() => Refresh(newItems));
+                        Platform.InvokeMainThread(() => Refresh(newData));
                     else
-                        Refresh(newItems);
+                        Refresh(newData);
 
                     IsLoaded = true;
                 });

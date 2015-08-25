@@ -1,5 +1,9 @@
 using System;
+<<<<<<< HEAD
 using System.Collections.Generic;
+=======
+using System.Collections.Generic;
+>>>>>>> 53fe43163059a78460cbb221250cae4fb4c9d3fc
 
 namespace AppInstall.Framework
 {

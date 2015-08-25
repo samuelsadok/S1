@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Threading;
 
@@ -59,8 +59,13 @@ namespace AppInstall.Framework
         {
             shutdownTokenSource = new CancellationTokenSource();
             ShutdownToken = shutdownTokenSource.Token;
+<<<<<<< HEAD
             Application app = new Application(args);
             new Thread(app.Main).Start();
+=======
+            Application app = new Application(args);
+            new Thread(app.Main).Start();
+>>>>>>> 53fe43163059a78460cbb221250cae4fb4c9d3fc
         }
 
         /// <summary>
