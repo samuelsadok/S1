@@ -1,12 +1,5 @@
 using System;
-<<<<<<< HEAD
 using System.Collections.Generic;
-=======
-using System.Collections.Generic;
-<<<<<<< HEAD
-=======
->>>>>>> 53fe43163059a78460cbb221250cae4fb4c9d3fc
->>>>>>> 87e0e9fe2550075c41156b21489ae1aac1323f5f
 
 namespace AppInstall.Framework
 {
@@ -66,21 +59,12 @@ namespace AppInstall.Framework
 
         public static LogContext FromConsole(IConsole console, string name)
         {
-<<<<<<< HEAD
             return new LogContext((c, m, t) => {
                 switch (t) {
                     case LogType.Debug: console.SetColor(ConsoleColor.DarkGray, ConsoleColor.Black); break;
                     case LogType.Info: console.SetColor(ConsoleColor.Green, ConsoleColor.Black); break;
                     case LogType.Warning: console.SetColor(ConsoleColor.Yellow, ConsoleColor.Black); break;
                     case LogType.Error: console.SetColor(ConsoleColor.Red, ConsoleColor.Black); break;
-=======
-            return new LogContext((c, m, t) => {
-                switch (t) {
-                    case LogType.Debug: console.SetColor(ConsoleColor.DarkGray, ConsoleColor.Black); break;
-                    case LogType.Info: console.SetColor(ConsoleColor.Green, ConsoleColor.Black); break;
-                    case LogType.Warning: console.SetColor(ConsoleColor.Yellow, ConsoleColor.Black); break;
-                    case LogType.Error: console.SetColor(ConsoleColor.Red, ConsoleColor.Black); break;
->>>>>>> 87e0e9fe2550075c41156b21489ae1aac1323f5f
                 }
                 console.WriteLine(c + ": " + m);
             }, name);

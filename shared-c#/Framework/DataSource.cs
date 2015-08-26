@@ -42,13 +42,8 @@ namespace AppInstall.Framework
         /// Multiple concurrent refresh calls will result in less refreshes than requested.
         /// </summary>
         public async Task Refresh(CancellationToken cancellationToken)
-<<<<<<< HEAD
         {
             Platform.DefaultLog.Log("refresh triggered in data source " + this.GetHashCode());
-=======
-        {
-            Platform.DefaultLog.Log("refresh triggered in data source " + this.GetHashCode());
->>>>>>> 87e0e9fe2550075c41156b21489ae1aac1323f5f
             await refreshAction.TriggerAndWait(cancellationToken);
         }
 

@@ -14,19 +14,6 @@ namespace AppInstall.OS
         /// </summary>
         Unknown,
 
-<<<<<<< HEAD
-        /// <summary>
-        /// The application is running as a classic Windows desktop app.
-        /// Console applications and services on Windows are also considered classic Windows apps.
-        /// </summary>
-        WindowsDesktop,
-
-        /// <summary>
-        /// The application is running as a Windows metro app (modern UI).
-        /// </summary>
-        WindowsMetro,
-
-=======
         /// <summary>
         /// Our concept OS
         /// </summary>
@@ -38,7 +25,6 @@ namespace AppInstall.OS
         /// </summary>
         Windows,
         
->>>>>>> 87e0e9fe2550075c41156b21489ae1aac1323f5f
         /// <summary>
         /// The application is running on Linux (other than Android)
         /// </summary>
