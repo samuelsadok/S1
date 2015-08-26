@@ -113,7 +113,7 @@ case $cmd in
 	if [[ $? != 0 ]] ; then
 	    echo -e "failed to add subtree" >&2 ; exit 1
 	fi
-	exe git read-tree --prefix=$subtree/ -u $subtree-$remote/$branch --squash
+	exe git read-tree --prefix=$subtree -u $subtree-$remote/$branch --squash
 	if [[ $? != 0 ]] ; then
 	    echo -e "failed to add subtree" >&2 ; exit 1
 	fi
