@@ -155,7 +155,7 @@ case $cmd in
 	for subtree in $subtrees
 	do
 	    echo "pull subtree: $subtree"
-	    exe git pull $strategy $strategyF --no-commit $subtree-$remote $branch
+	    exe git pull $strategy $strategyF --no-commit --squash $subtree-$remote $branch
 	    if [[ $? != 0 ]]
 	    then
 		echo -e "${Red}pulling $subtree failed${Rst}" >&2
