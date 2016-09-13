@@ -35,6 +35,8 @@ Hardware bugs in the S1 prototype 1 hardware, to be solved in updated versions:
 
 ## Folder Structure
 
+| Folder                        | Purpose                                                                                    |
+| ----------------------------- | ------------------------------------------------------------------------------------------ |
 | baseband			|    application specific files for the baseband controller firmware                         |
 | baseband_bootloader		|    application specific files for the baseband controller bootloader                       |
 | flightcontroller		|    application specific files for the flight controller firmware                           |
@@ -45,9 +47,7 @@ Hardware bugs in the S1 prototype 1 hardware, to be solved in updated versions:
 | shared-c# *			|    C# code shared by all applications                                                      |
 | schematics			|    Altium Designer circuit schematics and PCB layout of the quadrocopter and base station  |
 
-* these folders are git subtrees (i.e. they are git repositories themselves)
-
-
+The folders marked with a star are git subtrees (i.e. they are git repositories themselves)
 
 
 ## Git Structure
